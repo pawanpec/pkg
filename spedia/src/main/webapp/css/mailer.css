@@ -1,0 +1,288 @@
+
+.slideshow h2,.trend-story h2 {
+	text-indent: 10px;
+	border-bottom: none;
+	color: #fff;
+	background: #333333;
+	font-size: 22px;
+	line-height: 35px;
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+	font-weight: 400;
+	font-family: 'Roboto', arial;
+	position: relative;
+}
+
+.slideshow-wrapper {
+	position: relative;
+	height: 390px;
+	margin-bottom: 10px;
+	clear:both;
+}
+
+.slideshow .slide {
+	border-top: none;
+	border-bottom: none;
+	display: none;
+	background: #333;
+	font-weight: 300;
+	font-family: 'Roboto', arial;
+	overflow:hidden;
+}
+
+.slide .image {
+	height: 390px;
+	position: relative;
+}
+
+.slide .image img {
+	width: 100%;
+	margin-left: -15px;
+	margin-right: -15px;
+}
+
+.slideshow .actrl {
+	position: absolute;
+	top: 50%;
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	background: #000;
+	margin-top: -25px;
+	z-index: 2;
+	display: table-cell;
+	text-align: center;
+	padding-top: 7px;
+}
+
+.slideshow .actrl span {
+	border: 13px solid transparent;
+	font-size: 2px;
+	height: 0;
+	width: 0;
+	border-radius: 5px;
+	vertical-align: middle;
+}
+
+.slideshow .actrl.prev {
+	left: 0px;
+}
+
+.slideshow .actrl.next {
+	left: 419px;
+}
+
+.slideshow .actrl.next span {
+	border-left-color: #fff;
+	border-right: 0;
+}
+
+.slideshow .actrl.prev span {
+	border-right-color: #fff;
+	margin-left: -9px;
+	border-left: 0;
+}
+
+.slideshow .slide .article {
+	padding: 15px;
+	padding-bottom: 0;
+	background: #333;
+	position: relative;
+}
+
+.slideshow .slide .article i {
+	width: 0;
+	height: 0;
+	font-size: 0;
+	border: solid 25px transparent;
+	border-right-color: #333;
+	left: -50px;
+	position: absolute;
+	top: 10px;
+	display: none;
+}
+
+.article p {
+	color: #fff;
+	font-size: 14px;
+	line-height: 19px;
+	margin-bottom: 10px;
+	font-weight: 300;
+	font-family: 'Roboto', arial;
+}
+
+.disable {
+	opacity: 0.3;
+	cursor: default;
+}
+
+#pagination {
+	border: solid 2px transparent;
+	background: #333333;
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	clear:both;
+}
+
+#pagination ul,#pagination li {
+	display: inline-block;
+}
+
+#pagination li+li {
+	margin-left: 5px;
+}
+
+#pagination li a {
+	display: block;
+	width: 23px;
+	line-height: 23px;
+	text-decoration: none;
+	background: #fff;
+	color: #333;
+	font-weight: 500;
+	font-size: 14px;
+	font-family: 'Roboto', arial;
+	text-align: center;
+}
+
+#pagination li a:hover {
+	text-decoration: none;
+}
+
+#pagination li a.active {
+	background: #ff9900;
+	border-color: #ff9900;
+}
+
+h3.pageHeading2 {
+	font-size: 22px;
+	padding-bottom: 12px;
+	font-family: 'Roboto', arial;
+	font-weight: 500;
+	color: #fff;
+	margin:0;
+}
+
+.article .smallD {
+	margin-top: -10px;
+}
+
+.article .smallD p {
+	font-size: 12px;
+	line-height: 18px;
+	margin-bottom: 5px;
+}
+
+.article .smallD h3 {
+	padding-bottom: 5px;
+}
+
+.rightctrl {
+	right: 0;
+	position: absolute;
+	width: 78px;
+	padding: 0 20px;
+	top: 0;
+	overflow: hidden;
+	height: 40px;
+}
+
+.topPagi {
+	white-space: nowrap;
+	width: 45px;
+	overflow: hidden;
+	height: 40px;
+	position: relative;
+}
+
+.rightctrl ul {
+	left: 0;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	text-indent: 0;
+	top: 0;
+}
+
+.rightctrl li {
+	display: inline-block;
+	text-indent: 0;
+	text-align: center;
+	width: 23px;
+}
+
+.rightctrl li a {
+	font-size: 14px;
+	color: #fff;
+	cursor: default;
+}
+
+.rightctrl li a.active {
+	color: #ff9900;
+}
+
+.rightctrl li a,.rightctrl li a:hover {
+	text-decoration: none;
+}
+
+.rightctrl .nextT,.rightctrl .prevT {
+	position: absolute;
+	top: 0px; height:40px;
+	width: 20px;
+	display:table-cell;
+}
+
+.rightctrl .prevT {
+	left: -2px;
+}
+
+.rightctrl .nextT {
+	right: 4px;;
+}
+
+.rightctrl .nextT i,.rightctrl .prevT i {
+	width: 0;
+	height: 0;
+	border-radius: 4px;
+	font-size: 2px;
+	border: solid 8px transparent;
+	text-indent: 0;
+	vertical-align: middle;
+}
+
+.rightctrl .prevT i {
+	border-right-color: #fff;
+	border-left: none;
+}
+
+.rightctrl .nextT i {
+	border-left-color: #fff;
+	border-right: none;
+}
+
+.trend-row {
+	margin-bottom: 15px;
+	font-family: "Roboto", arial;
+	font-weight: 300;
+}
+
+.trend-row div a {
+	font-size: 16px;
+	color: #333;
+}
+
+.trend-row a {
+	color: #cc3333;
+	text-decoration: none;
+	font-size: 14px;
+}
+
+.trend-row img {
+	float: left;
+	margin-right: 10px;
+}
+.cms_pic {max-height: 100px; overflow: hidden; margin-bottom:10px;}
+.cms_pic img{width:100%}
+.pageHeading{font-size:18px;}
+.fb_iframe_widget{padding:15px;}

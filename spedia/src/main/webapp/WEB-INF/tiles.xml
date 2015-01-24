@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="mainTemplate" template="/WEB-INF/pages/mainLayout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="/WEB-INF/pages/schoolHeader.jsp" />
+		<put-attribute name="body" value="" />
+		<!-- <put-attribute name="footer" value="/WEB-INF/pages/schoolFooter.jsp" /> -->
+	</definition>
+	<!--  COMPANY RELATED PAGES  --> 
+    <definition name="schoolHome" extends="mainTemplate">
+		<put-attribute name="body" value="/WEB-INF/pages/school/schoolHome.jsp" />
+	</definition>
+	
+	<definition name="notfound" template="/WEB-INF/pages/404.jsp">		
+	</definition>
+</tiles-definitions>
