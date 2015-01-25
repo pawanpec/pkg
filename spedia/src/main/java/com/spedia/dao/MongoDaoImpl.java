@@ -1,8 +1,11 @@
 package com.spedia.dao;
 
+import java.util.List;
+
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.Mongo;
 
@@ -34,6 +37,20 @@ public class MongoDaoImpl implements MongoDao {
 	}
 	public void setMongo(Mongo mongo) {
 		this.mongo = mongo;
+	}
+	@Override
+	public DBObject getContentByNid(Integer nid) {
+		DBCollection node = getMongoDatabase().getCollection(
+				"fields_current.node");
+		DBObject cond = new BasicDBObject();
+		cond.put("_id", nid);
+		return node.findOne(cond);
+	}
+	@Override
+	public DBCursor getContent(BasicDBObject basicDBObject) {
+		DBCollection node = getMongoDatabase().getCollection(
+				"fields_current.node");
+		return node.find(basicDBObject);
 	}
 
 }

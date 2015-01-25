@@ -46,10 +46,12 @@
 							<!--########### Company OverView with logo Start Here ###########-->
 						
 						
-						<!--########### COMPANY REVIEW WEDGIT HERE ###########-->
+						<!--########### SCHOOL REVIEW WEDGIT HERE ###########-->
 						<%@include file="schoolReviewWidget.jsp"%>
-						<!--########### COMPANY REVIEW WEDGIT HERE ###########-->
-
+						<!--########### SCHOOL REVIEW WEDGIT HERE ###########-->
+						<!--########### SCHOOL News WEDGIT Start HERE ###########-->
+						<%@include file="schoolNews.jsp"%>
+						<!--########### SCHOOL News WEDGIT END HERE ###########-->
 						<!--########### Company Gallery START HERE ###########-->
 						<%-- 	<%@include file="schoolGallery.jsp"%> --%>
 						<!--########### Company Gallery ENDS HERE###########-->
@@ -61,13 +63,3 @@
 		<!--########### Main Container Ends Here ###########-->
 	</div>
 </div>
-
-
-
-
-	<!-- ###### Script include code ############ -->
-	<script src="<%=WebConstants.JS_URL%>js/company/companyPage.js" type="text/javascript"></script>
-	<script src="<%=WebConstants.JS_URL%>js/interview/interview-landing.js" type="text/javascript"></script>
-	<!-- ###### Script include code ############ -->
-
-
