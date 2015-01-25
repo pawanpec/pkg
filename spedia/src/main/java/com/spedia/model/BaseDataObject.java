@@ -1,5 +1,6 @@
-package com.spedia.users.dao;
+package com.spedia.model;
 
+import java.net.URLEncoder;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
@@ -12,8 +13,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
-import com.spedia.users.model.GenericObject;
 
 
 /**
@@ -56,7 +55,7 @@ public class BaseDataObject extends GenericObject {
 	 */
 	@Temporal( TemporalType.TIMESTAMP)
 	private Date updatedDate;
-
+	
 	/**
 	 * Id
 	 * @return id
@@ -152,7 +151,7 @@ public class BaseDataObject extends GenericObject {
 		this.name = name;
 	}
 	
-
+	
 	
 	/**
 	 * Rich Method to return beautiful created date
@@ -164,9 +163,6 @@ public class BaseDataObject extends GenericObject {
 		calendar.setTime(cd);
 		return calendar.get(Calendar.DAY_OF_MONTH);
 	}
-	
-	
-
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */

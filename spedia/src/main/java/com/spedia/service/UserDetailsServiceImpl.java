@@ -1,4 +1,4 @@
-package com.spedia.users.service;
+package com.spedia.service;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -15,8 +15,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.spedia.users.dao.UserDao;
-import com.spedia.users.model.UserRole;
+import com.spedia.dao.UserDao;
+import com.spedia.model.UserRole;
+
 @Service("userDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService {
 
@@ -27,7 +28,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
 	
-		com.spedia.users.model.User user = userDao.findByUserName(username);
+		com.spedia.model.User user = userDao.findByUserName(username);
 		List<GrantedAuthority> authorities = buildUserAuthority(user.getUserRole());
 
 		return buildUserForAuthentication(user, authorities);
@@ -36,7 +37,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	// Converts com.mkyong.users.model.User user to
 	// org.springframework.security.core.userdetails.User
-	private User buildUserForAuthentication(com.spedia.users.model.User user, List<GrantedAuthority> authorities) {
+	private User buildUserForAuthentication(com.spedia.model.User user, List<GrantedAuthority> authorities) {
 		return new User(user.getUsername(), user.getPassword(), user.isEnabled(), true, true, true, authorities);
 	}
 

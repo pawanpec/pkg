@@ -1,4 +1,4 @@
-package com.spedia.web.controller;
+package com.spedia.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class MainController {
+public class LoginController {
 
 	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
 	public ModelAndView defaultPage() {

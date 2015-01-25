@@ -1,9 +1,10 @@
 /**
  * 
  */
-package com.spedia.content.controller;
+package com.spedia.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mongodb.DBObject;
-import com.spedia.content.dao.MongoDao;
+import com.spedia.dao.IReviewsDAO;
+import com.spedia.dao.MongoDao;
+import com.spedia.model.Reviews;
 
 /**
  * @author pawan
@@ -29,13 +32,19 @@ public class ContentController {
 	@Autowired
 	@Qualifier("mongoDao")
 	private MongoDao mongoDao;
+	@Autowired
+	@Qualifier("reviewsDAO")
+	private IReviewsDAO reviewsDAO;
 	@RequestMapping(value = { "/website.html" }, method = { RequestMethod.GET })
 	public ModelAndView contentDetails(HttpServletRequest request, HttpServletResponse response) {
 		Map<String, Object> model=new HashMap<String, Object>();
 		ModelAndView view = new ModelAndView("schoolHome");
 		String url="website/bal-bharti-pub-school-sector-14-rohini-delhi";
 		DBObject content=mongoDao.getContentByURL(url);
+		Integer nid=(Integer) content.get("nid");
+		List<Reviews> reviews=reviewsDAO.findByNid(nid, 10);
     	model.put("content", content);
+    	model.put("reviews", reviews);
     	view.addAllObjects(model);
 		return view;
 		

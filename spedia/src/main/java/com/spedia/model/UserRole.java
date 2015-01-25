@@ -1,4 +1,4 @@
-package com.spedia.users.model;
+package com.spedia.model;
 
 import static javax.persistence.GenerationType.IDENTITY;
 

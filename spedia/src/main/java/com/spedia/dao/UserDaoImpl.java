@@ -1,4 +1,4 @@
-package com.spedia.users.dao;
+package com.spedia.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,9 +8,11 @@ import javax.persistence.TypedQuery;
 
 
 
+
 import org.springframework.stereotype.Repository;
 
-import com.spedia.users.model.User;
+import com.spedia.model.User;
+
 @Repository("userDao") 
 public class UserDaoImpl extends BaseDAOImpl<User, Long> implements UserDao {
 

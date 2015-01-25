@@ -1,4 +1,4 @@
-package com.spedia.users.model;
+package com.spedia.model;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "users", catalog = "sp_new")
-public class User extends GenericObject implements java.io.Serializable {
+public class User extends GenericObject {
 
 	private String username;
 	private String password;

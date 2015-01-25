@@ -51,7 +51,7 @@
 						<!--########### COMPANY REVIEW WEDGIT HERE ###########-->
 
 						<!--########### Company Gallery START HERE ###########-->
-							<%@include file="schoolGallery.jsp"%>
+						<%-- 	<%@include file="schoolGallery.jsp"%> --%>
 						<!--########### Company Gallery ENDS HERE###########-->
 						</div>
 					</div>

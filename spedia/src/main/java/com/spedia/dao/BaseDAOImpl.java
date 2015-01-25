@@ -1,4 +1,4 @@
-package com.spedia.users.dao;
+package com.spedia.dao;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.text.ParseException;
@@ -18,7 +18,9 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import com.spedia.users.model.GenericObject;
+import com.spedia.model.BaseDataObject;
+import com.spedia.model.GenericObject;
+
 
 
 /**

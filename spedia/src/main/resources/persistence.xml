@@ -5,6 +5,7 @@
 	<persistence-unit name="jobbuzzPU">				
 		<class>com.spedia.users.model.User</class>
 		<class>com.spedia.users.model.UserRole</class>
+		<class>com.spedia.content.model.Reviews</class>
 		<properties>
 			<!-- <property name="javax.persistence.jdbc.driver" value="com.ibm.db2.jcc.DB2Driver" />
 			<property name="javax.persistence.jdbc.url" value="${dbUrl}" />

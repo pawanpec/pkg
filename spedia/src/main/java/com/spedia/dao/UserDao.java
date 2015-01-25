@@ -1,6 +1,7 @@
-package com.spedia.users.dao;
+package com.spedia.dao;
 
-import com.spedia.users.model.User;
+import com.spedia.model.User;
+
 
 public interface UserDao {
 

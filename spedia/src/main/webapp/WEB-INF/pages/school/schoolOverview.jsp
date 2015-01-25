@@ -13,16 +13,13 @@
 		<div class="story-wrap z2new">
 			<div class="row">
 				<div class="text-left notifyRow">
-					<c:if test="${not empty companyLogoImage}">
-						<img src="<%=WebConstants.LOGO_URL %>${companyLogoImage}" alt="${content.title}" data-errsrc="round" data-font="30" data-width="60" style="width:63px;" />
+					<c:if test="${not empty content.schoolBean.LogoPath}">
+						<img src="<%=WebConstants.LOGO_URL %>${content.schoolBean.LogoPath}" alt="${content.title}" data-errsrc="round" data-font="30" data-width="60" style="width:63px;" />
 					</c:if>
 					<c:if test="${ empty companyLogoImage}">
 						<span data-firstletter="${content.title}" class="width60 position" data-type="round" data-font="30"></span>
 					</c:if>
 					
-				</div>
-				<div class="ratting_star text-left"> 
-					<strong>${content.title}</strong>
 				</div>
 			${content.body.value}
 			</div>

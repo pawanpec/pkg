@@ -1,4 +1,4 @@
-package com.spedia.content.dao;
+package com.spedia.dao;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;

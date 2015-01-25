@@ -1,11 +1,12 @@
-package com.spedia.users.dao;
+package com.spedia.dao;
 
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import com.spedia.users.model.GenericObject;
+import com.spedia.model.GenericObject;
+
 
 
 

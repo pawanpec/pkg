@@ -18,11 +18,11 @@ http://www.springframework.org/schema/cache http://www.springframework.org/schem
 
 </context:annotation-config>
 
-<context:component-scan base-package="com.spedia.users.*"></context:component-scan>
+<context:component-scan base-package="com.spedia.*"></context:component-scan>
  <bean id="mongo" class="com.mongodb.Mongo">
 		<constructor-arg value="127.0.0.1:27017" />
 	</bean>
-	<bean id="mongoDao" class="com.spedia.content.dao.MongoDaoImpl" init-method="init">
+	<bean id="mongoDao" class="com.spedia.dao.MongoDaoImpl" init-method="init">
 		<property name="mongo" ref="mongo"/>
 	</bean>
 <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -43,10 +43,8 @@ http://www.springframework.org/schema/cache http://www.springframework.org/schem
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
-        <property name="packagesToScan" value="com.mkyong.users.model" />
+        <property name="packagesToScan" value="com.spedia.model" />
         <property name="jpaDialect"	ref="jpaDialect"/>
-        <property name="persistenceXmlLocation"	value="classpath:persistence.xml"/>
-        <property name="persistenceUnitName"	value="jobbuzzPU"/>
     </bean>
    
  	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
