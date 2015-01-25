@@ -11,19 +11,16 @@ public class WebConstants {
 	
 	public static final String source = "JOBBUZZ";
 
-	public static final String SERVER_NAME = "http://localhost:8080/spedia/";//reader.getValue("server.name");// "http://socialdev.timesjobs.com:8080/jobbuzz/";
+	public static final String SERVER_NAME = "http://dev.timesjobs.com/spedia/";//reader.getValue("server.name");// "http://socialdev.timesjobs.com:8080/jobbuzz/";
 	public static final String APPLICATION_URL = "http://dev.timesjobs.com/";//reader.getValue("application.url");
 
-	public static final String NDATA_IMAGE_URL = "http://localhost:8080/spedia/";//reader.getValue("ndata.image.url"); //"http://53.jobbuzz.timesjobs.com";
+	public static final String NDATA_IMAGE_URL = "http://dev.timesjobs.com/spedia/";//reader.getValue("ndata.image.url"); //"http://53.jobbuzz.timesjobs.com";
 	public static final String LOGO_URL = NDATA_IMAGE_URL ;//+ reader.getValue("logo.url");
 	public static final String BANNER_URL = NDATA_IMAGE_URL; //+ reader.getValue("banner.url");
 	public static final String BACKGROUND_URL = NDATA_IMAGE_URL ;//+ reader.getValue("background.url");
 	public static final String SUB_SECTION_URL = NDATA_IMAGE_URL ;//+ reader.getValue("subsection.url");
 	public static final String PHOTOS_URL = NDATA_IMAGE_URL + "/ndata_images/company/photos/";//reader.getValue("photos.url");
 	public static final String JOB_LANDING_URL = "all-jobs.html?datacenter=7&view=all&txtKeywords=";//reader.getValue("jobLanding.url");
-	public static final String TJ_CANDIDATE_SITE_URL = "http://candqc.timesjobs.com"; //reader.getValue("candidate.site.url"); //"http://candqc.timesjobs.com";
-	
-	
 	public static String FULLY_COOKIE_NAME = "FULLY_COOKIE_KEY";// ecm
 	public static String HALF_COOKIE_NAME= "ACEGI_SECURITY_HASHED_REMEMBER_ME_COOKIE";
 	

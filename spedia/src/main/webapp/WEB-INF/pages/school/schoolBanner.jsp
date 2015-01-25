@@ -26,7 +26,7 @@ String defaultBGPath=WebConstants.IMAGE_URL+"images/bg_images/"+randBgImageIndex
 <c:set value="<%=SchoolsConstants.COMPANY_CARD_LIST_SIZE%>"
 	var="COMPANY_CARD_LIST_SIZE" />
 	
-<c:set var="_compName" 	value="${companyViewBean.companyMast.companyName}"/>
+<c:set var="_compName" 	value="${content.title}"/>
 <c:set var="_compId" 	value="${companyViewBean.companyMast.companyId}"/>
 <!--########### Company Details with logo Start Here ###########-->
 ------${totalReviewCount}------
@@ -78,29 +78,14 @@ String defaultBGPath=WebConstants.IMAGE_URL+"images/bg_images/"+randBgImageIndex
 			<div class="col-sm-10 position companyinfo">
 				<h1>
 					<c:if test="${not empty companyLogoImage}">
-					<img class="companypagelogo" src="<%=WebConstants.LOGO_URL %>${companyLogoImage}" data-errsrc="round" data-font="45" data-width="97" data-center="center" alt="${companyViewBean.companyMast.companyName}" />
+					<img class="companypagelogo" src="<%=WebConstants.LOGO_URL %>${companyLogoImage}" data-errsrc="round" data-font="45" data-width="97" data-center="center" alt="${content.title}" />
 					</c:if>
 				<c:if test="${empty companyLogoImage}">
-					<span data-firstletter="${companyViewBean.companyMast.companyName}" class="width97 margincenter position" data-type="round" data-font="45"></span>
+					<span data-firstletter="${content.title}" class="width97 margincenter position" data-type="round" data-font="45"></span>
 				</c:if>
 				</h1>
 				<h2>${content.title}</h2>
-				<div class="hidden-xs">
-					<a href="${companyViewBean.companyMast.companyWebsite}" target="_blank">${companyViewBean.companyMast.companyWebsite}</a>
-				</div>
 				<div class="font12 row ratting_star companyrate ">
-				<div style="display: inline-block;">
-					<c:choose>
-						<c:when test="${content.review.oar ne null && content.review.oar > 2.5}">
-							<input type="number" data-star-rating="${content.review.oar}" name="reviewrate" readonly="true" class="rating" min="0" max="5" data-ng-model="reviewPageData.overAllRating" value="${content.review.oar}" step="0.1" data-rate={{$index}} data-stars="5" data-size="xs" data-default-caption="">	
-						</c:when>
-						<c:otherwise>
-							<input type="number" data-star-rating="2.5" name="reviewrate" readonly="true" class="rating" min="0" max="5" data-ng-model="reviewPageData.overAllRating" value="2.5" step="0.1" data-rate={{$index}} data-stars="5" data-size="xs" data-default-caption="" />	
-						</c:otherwise>
-					</c:choose>
-					
-					
-				</div>
 					<span itemscope itemtype="http://data-vocabulary.org/Review-aggregate" class="fl fileupload">
 						<span itemprop="rating" itemscope itemtype="http://data-vocabulary.org/Rating"> 
 							<span itemprop="average">
