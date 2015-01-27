@@ -23,6 +23,7 @@ import com.mongodb.DBObject;
 import com.spedia.dao.IReviewsDAO;
 import com.spedia.dao.MongoDao;
 import com.spedia.model.Reviews;
+import com.spedia.utils.SEOURLUtils;
 
 /**
  * @author pawan
@@ -71,6 +72,46 @@ public class ContentController {
 			}
 		}
     	model.put("content", content);
+    	view.addAllObjects(model);
+		return view;
+		
+	}
+	@RequestMapping(value = { "/tags.html" }, method = { RequestMethod.GET })
+	public ModelAndView getContentByTags(HttpServletRequest request, HttpServletResponse response) {
+		Map<String, Object> model=new HashMap<String, Object>();
+		ModelAndView view = new ModelAndView("searchResult");
+		String url=request.getParameter("url");
+		url=url.replace("-", " ");
+		//String url="nursery-admission/heritage-school-vasant-kunj-nursery-admission-schedule-and-criteria-session-2013";
+		BasicDBObject basicDBObject=new BasicDBObject();
+		basicDBObject.put("tags", url);
+		DBCursor contents=mongoDao.getContent(basicDBObject);
+    	model.put("contents", contents);
+    	view.addAllObjects(model);
+		return view;
+		
+	}
+	@RequestMapping(value = { "/searchSchool.html" }, method = { RequestMethod.GET })
+	public ModelAndView searchSchool(HttpServletRequest request, HttpServletResponse response) {
+		Map<String, Object> model=new HashMap<String, Object>();
+		ModelAndView view = new ModelAndView("searchResult");
+		String province=request.getParameter("province");
+		String city=request.getParameter("city");
+		String postal_code=request.getParameter("postal_code");
+		//String url="nursery-admission/heritage-school-vasant-kunj-nursery-admission-schedule-and-criteria-session-2013";
+		BasicDBObject basicDBObject=new BasicDBObject();
+		basicDBObject.put("type", "group");
+		if(SEOURLUtils.chkNull(province)){
+			basicDBObject.put("location.province", province);
+		}
+		if(SEOURLUtils.chkNull(city)){
+			basicDBObject.put("location.city", city);
+		}
+		if(SEOURLUtils.chkNull(city)){
+			basicDBObject.put("location.postal_code", postal_code);
+		}
+		DBCursor contents=mongoDao.getContent(basicDBObject);
+    	model.put("contents", contents);
     	view.addAllObjects(model);
 		return view;
 		

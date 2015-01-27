@@ -22,8 +22,8 @@
 					<div class="col-sm-12">	
 						<ol class="breadcrumb">
 							  <li><a href="/"><img src="<%=WebConstants.IMAGE_URL %>images/spacer.gif" class="cus-icon cus-home-small" alt="home"></a></li>
-							  <li class="active">Schools in ${content.location.province}</li>
-							  <li class="active">Schools in ${content.location.city}</li>
+							  <li class="active"><a href="india/schools-in/${content.location.province}">Schools in ${content.location.province}</a></li>
+							  <li class="active"><a href="india/${content.location.province}/schools-in/${content.location.city}">Schools in ${content.location.city}</a></li>
 							  <li class="active">${content.title}</li>
 						</ol>
 					</div>

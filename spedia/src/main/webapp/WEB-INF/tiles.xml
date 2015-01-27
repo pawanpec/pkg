@@ -14,6 +14,9 @@
 	 <definition name="news" extends="mainTemplate">
 		<put-attribute name="body" value="/WEB-INF/pages/news/news_content.jsp" />
 	</definition>
+	 <definition name="searchResult" extends="mainTemplate">
+		<put-attribute name="body" value="/WEB-INF/pages/search/searchResult.jsp" />
+	</definition>
 	<definition name="notfound" template="/WEB-INF/pages/404.jsp">		
 	</definition>
 </tiles-definitions>
