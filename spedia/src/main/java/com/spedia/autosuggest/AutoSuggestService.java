@@ -20,9 +20,10 @@ import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.QueryBuilder;
 import org.apache.lucene.util.Version;
 
+import com.spedia.utils.SchoolsConstants;
+
 public class AutoSuggestService {
 	private static IndexSearcher searcher;
-	private static String INDEX_PATH = "/opt/indexes/spedia/auto";
 
 	public AutoSuggestService() {
 	}
@@ -33,7 +34,7 @@ public class AutoSuggestService {
 
 	public static Set<Document> getDocument(Map<String,String> query, int hitCount) throws IOException {
 		IndexReader reader = DirectoryReader.open(FSDirectory
-				.open(new File(INDEX_PATH)));
+				.open(new File(SchoolsConstants.INDEX_PATH)));
 		searcher = new IndexSearcher(reader);
 		QueryBuilder queryBuilder = new QueryBuilder(getAnalyzer());
 		String term =query.get("title");

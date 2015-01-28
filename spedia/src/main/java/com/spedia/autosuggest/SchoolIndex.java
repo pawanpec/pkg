@@ -19,14 +19,12 @@ import org.omg.CORBA.INTF_REPOS;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
+import com.spedia.utils.SchoolsConstants;
 
 public class SchoolIndex {
 	/**
 	 * path where index will be created.
 	 */
-	private static String INDEX_PATH = "/opt/indexes/spedia/auto";
-
-	
 	/**
 	 * will write the documents into the file system.
 	 */
@@ -56,7 +54,7 @@ public class SchoolIndex {
 	 */
 	public static void initializeWriter() {
 		try {
-			FSDirectory dir = FSDirectory.open(new File(INDEX_PATH));
+			FSDirectory dir = FSDirectory.open(new File(SchoolsConstants.INDEX_PATH));
 			IndexWriterConfig config = new IndexWriterConfig(
 					Version.LUCENE_4_10_3, getAnalyzer());
 			writer = new IndexWriter(dir, config);
