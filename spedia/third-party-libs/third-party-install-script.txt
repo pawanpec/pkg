@@ -1,5 +1,1 @@
-mvn install:install-file -DgroupId=com.tbs -DartifactId=search -Dversion=1.1 -Dfile=search-api-1.1.jar -Dpackaging=jar -DgeneratePom=true
-mvn install:install-file -DgroupId=org.json -DartifactId=json -Dversion=tj_1.0 -Dfile=json.jar -Dpackaging=jar -DgeneratePom=true
-mvn install:install-file -DgroupId=org.jdom -DartifactId=jdom -Dversion=tj_1.0 -Dfile=jdom.jar -Dpackaging=jar -DgeneratePom=true
-mvn install:install-file -DgroupId=com.aliasi -DartifactId=lingpipe -Dversion=tj-4.1.0 -Dfile=lingpipe-4.1.0.jar -Dpackaging=jar -DgeneratePom=true
 mvn install:install-file -DgroupId=com.mongodb -DartifactId=mongo -Dversion=2.9.1 -Dfile=mongo-2.9.1.jar -Dpackaging=jar -DgeneratePom=true

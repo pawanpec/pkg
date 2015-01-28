@@ -29,7 +29,7 @@ String defaultPath1=WebConstants.IMAGE_URL+"images/static/"+random+".jpg";
 						</div>
 						<div class="cmpwhodetail">
 							<h3>About Us</h3>
-							${companyText.sectionText}
+							${content.body.summary}
 						</div>
 					</div>
 				</div>

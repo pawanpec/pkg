@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="2.0">
   <wb-module deploy-name="spedia">
+    <property name="context-root" value="spedia"/>
     <wb-resource deploy-path="/" source-path="src/main/webapp"/>
     <property name="java-output-path" value="/target/classes"/>
-        <property name="context-root" value="/spedia"/>
     <dependent-module archiveName="commons-dbcp-1.4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/commons-dbcp/commons-dbcp/1.4/commons-dbcp-1.4.jar">
       <dependency-type>uses</dependency-type>
     </dependent-module>
@@ -216,11 +217,16 @@
     <dependent-module archiveName="tiles-compat-3.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/apache/tiles/tiles-compat/3.0.1/tiles-compat-3.0.1.jar">
       <dependency-type>uses</dependency-type>
     </dependent-module>
-    <dependent-module archiveName="mongo-2.9.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/com/mongodb/mongo/2.9.1/mongo-2.9.1.jar">
+    <dependent-module archiveName="mongo-java-driver-2.12.5.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/mongodb/mongo-java-driver/2.12.5/mongo-java-driver-2.12.5.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="lucene-core-4.10.3.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/apache/lucene/lucene-core/4.10.3/lucene-core-4.10.3.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="lucene-analyzers-common-4.10.3.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/apache/lucene/lucene-analyzers-common/4.10.3/lucene-analyzers-common-4.10.3.jar">
       <dependency-type>uses</dependency-type>
     </dependent-module>
     <wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/java"/>
     <wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/resources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/test"/>
   </wb-module>
 </project-modules>
