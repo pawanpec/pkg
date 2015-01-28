@@ -2,7 +2,9 @@ package com.spedia.autosuggest;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.lucene.analysis.Analyzer;
@@ -16,26 +18,28 @@ import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopScoreDocCollector;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.QueryBuilder;
+import org.apache.lucene.util.Version;
 
 public class AutoSuggestService {
 	private static IndexSearcher searcher;
-	private static String INDEX_PATH = "/home/pawan/git/pkg/spedia/auto";
+	private static String INDEX_PATH = "/opt/indexes/spedia/auto";
 
 	public AutoSuggestService() {
 	}
 
 	public static Analyzer getAnalyzer() {
-		Analyzer analyzer = new StandardAnalyzer();
-		return analyzer;
+		return  new StandardAnalyzer(Version.LUCENE_4_10_3);
 	}
 
-	public static Set<Document> getDocument(String term, int hitCount) throws IOException {
+	public static Set<Document> getDocument(Map<String,String> query, int hitCount) throws IOException {
 		IndexReader reader = DirectoryReader.open(FSDirectory
 				.open(new File(INDEX_PATH)));
 		searcher = new IndexSearcher(reader);
 		QueryBuilder queryBuilder = new QueryBuilder(getAnalyzer());
+		String term =query.get("title");
 		term = parseQueryString(term);
 		Query q = queryBuilder.createPhraseQuery("title", term);
+		System.out.println(q.toString());
 		Set<Document> result = new LinkedHashSet<Document>();
 		TopScoreDocCollector collector = TopScoreDocCollector.create(hitCount,
 				true);
@@ -79,14 +83,15 @@ public class AutoSuggestService {
 	public static void main(String[] args) {
 		int hitCount = 10;
 		Set<Document> d = null;
+		Map<String,String> query=new HashMap<String,String>();
 		try {
-			d = getDocument("bal", hitCount);
+			query.put("title", "bal");
+			query.put("city", "rohini");
+			query.put("state", "delhi");
+			d = getDocument(query, hitCount);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		for (Document document : d) {
-			System.out.println(document);
 		}
 	}
 

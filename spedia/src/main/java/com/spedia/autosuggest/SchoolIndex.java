@@ -9,6 +9,7 @@ import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.IntField;
 import org.apache.lucene.document.StringField;
+import org.apache.lucene.document.TextField;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.store.FSDirectory;
@@ -23,12 +24,9 @@ public class SchoolIndex {
 	/**
 	 * path where index will be created.
 	 */
-	private static String INDEX_PATH = "/home/pawan/git/pkg/spedia/auto";
+	private static String INDEX_PATH = "/opt/indexes/spedia/auto";
 
-	/**
-	 * sql Query for fetching company master & variant name.
-	 */
-	private static String sqlComp = "select A.COMPANY_NAME ,A.COMPANY_ID, B.varient_name from tcadmin.COMPANY_MAST A, TCUSER.company_varient B where B.company_id  =   A.COMPANY_ID";
+	
 	/**
 	 * will write the documents into the file system.
 	 */
@@ -50,8 +48,7 @@ public class SchoolIndex {
 	 */
 
 	public static Analyzer getAnalyzer() {
-		Analyzer analyzer = new StandardAnalyzer();
-		return analyzer;
+		return  new StandardAnalyzer(Version.LUCENE_4_10_3);
 	}
 
 	/**
@@ -87,7 +84,7 @@ public class SchoolIndex {
 
 		Document doc = new Document();
 		if(title!=null){
-			doc.add(new StringField("title", title.trim().toLowerCase(), Field.Store.YES));
+			doc.add(new TextField("title", title.trim().toLowerCase(), Field.Store.YES));
 		}
 		doc.add(new IntField("id", id, Field.Store.YES));
 		if(province!=null){
@@ -124,11 +121,12 @@ public class SchoolIndex {
 				DBObject dbObject = dbCursor.next();
 				insertIntoIndex(dbObject);
 			}
+			writer.commit();
+			writer.close();
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			// DO SOMETHING HERE.
 		} finally {
-
 		}
 		System.out.println("Total Documents Indexed = " + sizeCounter);
 		System.out.println("ENDING THE PROCESS......>>>>>>>.");
