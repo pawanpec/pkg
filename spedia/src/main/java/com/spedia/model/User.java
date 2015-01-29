@@ -64,7 +64,7 @@ public class User extends GenericObject {
 		this.enabled = enabled;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
 	public Set<UserRole> getUserRole() {
 		return this.userRole;
 	}

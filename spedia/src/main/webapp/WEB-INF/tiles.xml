@@ -17,6 +17,9 @@
 	 <definition name="searchResult" extends="mainTemplate">
 		<put-attribute name="body" value="/WEB-INF/pages/search/searchResult.jsp" />
 	</definition>
-	<definition name="notfound" template="/WEB-INF/pages/404.jsp">		
-	</definition>
+	<definition name="notfound" template="/WEB-INF/pages/404.jsp"/>	
+	<definition name="login" template="/WEB-INF/pages/login.jsp"/>	
+	<definition name="admin" template="/WEB-INF/pages/admin.jsp"/>	
+	<definition name="hello" template="/WEB-INF/pages/hello.jsp"/>	
+	<definition name="403" template="/WEB-INF/pages/403.jsp"/>			
 </tiles-definitions>
