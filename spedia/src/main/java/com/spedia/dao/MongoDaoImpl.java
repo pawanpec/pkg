@@ -8,6 +8,8 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.Mongo;
+import com.spedia.model.Connection;
+import com.spedia.model.Profile;
 
 public class MongoDaoImpl implements MongoDao {
 	private static final String MONGO_DB_NAME = "drupal";
@@ -51,6 +53,16 @@ public class MongoDaoImpl implements MongoDao {
 		DBCollection node = getMongoDatabase().getCollection(
 				"fields_current.node");
 		return node.find(basicDBObject);
+	}
+	@Override
+	public String saveProfile(Profile profile) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public void saveConnections(Profile profile, List<Connection> connections) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

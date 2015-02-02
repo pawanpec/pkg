@@ -32,6 +32,16 @@
 			</list>
 		</property>
 	</bean> 
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>classpath:application</value>
+			</list>
+		</property>
+		<property name="cacheSeconds" value="60"/>
+		<property name="useCodeAsDefaultMessage" value="true"/>
+	</bean> 
 	<!-- Static Pages -->
 		<mvc:view-controller path="/termsofuse.html" view-name="termsofuse"/>
 		<mvc:view-controller path="/privacypolicy.html" view-name="privacypolicy"/>
