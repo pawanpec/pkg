@@ -14,6 +14,8 @@ import com.spedia.model.Profile;
 
 public interface MongoDao {
 	public String saveProfile(Profile profile) ;
+	public DBObject getUserProfileByProfileID(String profileId, String apc);
+	public DBObject getConnection(String pid) ;
 	public void saveConnections(Profile profile, List<Connection> connections);
 	DBObject getContentByURL(String url);
 	DBObject getContentByNid(Integer nid);
