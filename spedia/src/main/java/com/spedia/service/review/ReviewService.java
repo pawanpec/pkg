@@ -1,0 +1,90 @@
+package com.spedia.service.review;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
+import com.mongodb.WriteResult;
+import com.spedia.dao.IReviewsDAO;
+import com.spedia.dao.MongoDao;
+import com.spedia.model.Reviews;
+@Service("reviewService")
+public class ReviewService implements IReviewService {
+	@Autowired
+	IReviewsDAO reviewsDao;
+	@Autowired
+	MongoDao mongoDao;
+
+	@Override
+	public Reviews writeReview(Reviews reviews) {
+		 // TODO Auto-generated method stub
+		reviews=reviewsDao.persist(reviews);
+		return reviews;
+	}
+
+	@Override
+	public Reviews approveReview(Integer rid) {
+		Reviews reviews=reviewsDao.findById(rid);
+		reviews.setStatus(1);
+		reviewsDao.persist(reviews);
+		Integer nid=reviews.getNid();
+		DBObject node=mongoDao.getContentByNid(nid);
+		if (node.containsField("review")&& node.get("review")!=null) {
+			DBObject review=(DBObject) node.get("review");
+			Integer count = (Integer) review.get("count");
+			Double ora = (Double) review.get("ora");
+			Double orb = (Double) review.get("orb");
+			Integer orc = (Integer) review.get("orc");
+			Double ord = (Double) review.get("ord");
+			Integer ore = (Integer) review.get("ore");
+			Double oar = (Double) review.get("oar");
+			Integer newcount = count + 1;
+			ora = (ora * count + reviews.getA()) / newcount;
+			orb = (orb * count + reviews.getB()) / newcount;
+			orc = (orc * count + reviews.getC()) / newcount;
+			ord = (ord * count + reviews.getD()) / newcount;
+			ore = (ore * count + reviews.getE()) / newcount;
+			oar = (ora + orb + orc + ord + ore) / 5;
+			review.put("ora", ora);
+			review.put("orb", orb);
+			review.put("orb", orb);
+			review.put("ord", ord);
+			review.put("ore", ore);
+			review.put("oar", oar);
+			review.put("count", newcount);
+			node.put("review", review);
+			WriteResult c=mongoDao.updateOverAllRating(node);
+			System.out.println(c);
+		}else{
+			Double ora = reviews.getA()*1.0;
+			Double orb = reviews.getB()*1.0;
+			Double orc = reviews.getC()*1.0;
+			Double ord = reviews.getD()*1.0;
+			Double ore = reviews.getE()*1.0;
+			Double oar = (ora + orb + orc + ord + ore) / 5;
+			DBObject review=new BasicDBObject();
+			review.put("_id", reviews.getNid());
+			review.put("ora", ora);
+			review.put("orb", orb);
+			review.put("orb", orb);
+			review.put("ord", ord);
+			review.put("ore", ore);
+			review.put("oar", oar);
+			review.put("count", 1);
+			node.put("review", review);
+			WriteResult c=mongoDao.updateOverAllRating(node);
+		}
+		return null;
+	}
+
+	@Override
+	public List<Reviews> findByNid(Integer nid, int i) {
+		// TODO Auto-generated method stub
+		return reviewsDao.findByNid(nid, i);
+	}
+
+}
