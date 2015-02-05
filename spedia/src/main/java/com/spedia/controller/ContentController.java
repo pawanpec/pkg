@@ -36,8 +36,7 @@ public class ContentController {
 	@Qualifier("mongoDao")
 	private MongoDao mongoDao;
 	@Autowired
-	@Qualifier("reviewsDAO")
-	private IReviewsDAO reviewsDAO;
+	private IReviewsDAO reviewsDao;
 	@RequestMapping(value = { "/website.html" }, method = { RequestMethod.GET })
 	public ModelAndView schoolDetails(HttpServletRequest request, HttpServletResponse response) {
 		Map<String, Object> model=new HashMap<String, Object>();
@@ -46,7 +45,7 @@ public class ContentController {
 		//String url="website/bal-bharti-pub-school-sector-14-rohini-delhi";
 		DBObject content=mongoDao.getContentByURL(url);
 		Integer nid=(Integer) content.get("nid");
-		List<Reviews> reviews=reviewsDAO.findByNid(nid, 10);
+		List<Reviews> reviews=reviewsDao.findByNid(nid, 10);
 		BasicDBObject basicDBObject=new BasicDBObject("field_group.target_id", nid);
 		DBCursor news=mongoDao.getContent(basicDBObject);
     	model.put("content", content);

@@ -10,19 +10,24 @@
 	<name>Spedia Example</name>
 	<properties>
 		<jdk.version>1.7</jdk.version>
-		<spring.version>3.2.8.RELEASE</spring.version>
+		<spring.version>4.0.6.RELEASE</spring.version>
 		<spring.security.version>3.2.3.RELEASE</spring.security.version>
 		<jstl.version>1.2</jstl.version>
 		<mysql.connector.version>5.1.30</mysql.connector.version>
 		<logback.version>1.1.2</logback.version>
 		<slf4j.version>1.7.6</slf4j.version>
-		<hibernate.version>4.2.11.Final</hibernate.version>
+		<hibernate.version>4.3.6.Final</hibernate.version>
 		<dbcp.version>1.4</dbcp.version>
 		<servletapi.version>2.5</servletapi.version>
 	</properties>
 
 	<dependencies>
-
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
 		<!-- database pool -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
@@ -89,6 +94,12 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>${spring.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<scope>compile</scope>
+			<version>${spring.version}</version>
 		</dependency>
 
 		<!-- jstl for jsp page -->
@@ -181,12 +192,15 @@
 			<artifactId>json</artifactId>
 			<version>tj_1.0</version>
 		</dependency>
-
-
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.3.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>
-		<finalName>SpringSecurity</finalName>
+		<finalName>spedia</finalName>
 		<plugins>
 
 			<plugin>

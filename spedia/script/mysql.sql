@@ -24,3 +24,20 @@ INSERT INTO user_roles (username, role)
 VALUES ('admin', 'ROLE_ADMIN');
 INSERT INTO user_roles (username, role)
 VALUES ('alex', 'ROLE_USER');
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `uid` int(10) unsigned NOT NULL DEFAULT '0',
+  `username` varchar(60) NOT NULL,
+  `password` varchar(128) NOT NULL DEFAULT '',
+  `mail` varchar(254) DEFAULT '' COMMENT 'User’s e-mail address.',
+  `created` int(11) NOT NULL DEFAULT '0',
+  `updated` int(11) NOT NULL DEFAULT '0',
+  `login` int(11) DEFAULT '0',
+  `enabled` tinyint(4) NOT NULL DEFAULT '0',
+  `social_login_id` varchar(50) DEFAULT NULL,
+  `social_type` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `mail_2` (`mail`),
+  KEY `mail` (`mail`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;

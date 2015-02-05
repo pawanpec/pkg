@@ -17,6 +17,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.spedia.model.BaseDataObject;
 import com.spedia.model.GenericObject;
@@ -99,7 +100,7 @@ public abstract class BaseDAOImpl<T extends GenericObject, ID extends Serializab
 		}
 		return entities;
 	}
-
+	@Transactional
 	public T persist(T entity) {
 		logger.debug("persist entity " + entity.toString());
 		if(entity instanceof BaseDataObject){

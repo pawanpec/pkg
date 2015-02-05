@@ -1,6 +1,5 @@
 package com.spedia.service;
 
-import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -13,7 +12,6 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.codec.Hex;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,7 +31,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 		com.spedia.model.User user = userDao.findByUserName(username);
 		List<GrantedAuthority> authorities = buildUserAuthority(user
-				.getUserRole());
+				.getUserRoleses());
 
 		return buildUserForAuthentication(user, authorities);
 
@@ -44,7 +42,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	private User buildUserForAuthentication(com.spedia.model.User user,
 			List<GrantedAuthority> authorities) {
 		return new User(user.getUsername(), user.getPassword(),
-				user.isEnabled(), true, true, true, authorities);
+				user.getEnabled(), true, true, true, authorities);
 	}
 
 	private List<GrantedAuthority> buildUserAuthority(Set<UserRole> userRoles) {

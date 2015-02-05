@@ -3,6 +3,7 @@ package com.spedia.dao;
 import java.util.List;
 
 import com.spedia.model.Reviews;
+import com.spedia.model.User;
 
 
 
@@ -12,8 +13,8 @@ import com.spedia.model.Reviews;
  * @author MyEclipse Persistence Tools
  */
 
-public interface IReviewsDAO {
+public interface IReviewsDAO extends BaseDao<Reviews, Integer>{
+	public List<Reviews> findByNid(Integer nid, int i);
 
-	List<Reviews> findByNid(Integer nid, int i);
 
 }

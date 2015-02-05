@@ -19,6 +19,7 @@ http://www.springframework.org/schema/cache http://www.springframework.org/schem
 </context:annotation-config>
 
 <context:component-scan base-package="com.spedia.*"></context:component-scan>
+	<tx:annotation-driven/>
  <bean id="mongo" class="com.mongodb.Mongo">
 		<constructor-arg value="127.0.0.1:27017" />
 	</bean>
@@ -50,8 +51,8 @@ http://www.springframework.org/schema/cache http://www.springframework.org/schem
  	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 	 		<property name="entityManagerFactory"	ref="entityManagerFactory"/>
  	</bean>
- 	 	<!-- FOR PROGRAMATTIC TRANSACTION MANAGER -->
- 	
+ 		<!-- FOR PROGRAMATTIC TRANSACTION MANAGER -->
+ 	<tx:annotation-driven transaction-manager="transactionManager" />
  	
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>

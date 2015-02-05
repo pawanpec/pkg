@@ -1,4 +1,5 @@
 package com.spedia.utils;
+
 import static com.spedia.utils.SessionAttributes.APP_CODE;
 import static com.spedia.utils.SessionAttributes.ATTR_OAUTH_ACCESS_TOKEN;
 import static com.spedia.utils.SessionAttributes.ATTR_OAUTH_REQUEST_TOKEN;
@@ -10,6 +11,7 @@ import static com.spedia.utils.SessionAttributes.PROVIDER_ID_REQUEST;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -31,35 +33,35 @@ import com.mongodb.DBObject;
 import com.mongodb.util.JSON;
 import com.spedia.model.Connection;
 
-
 public class SocialUtility {
-	
-	static class  Wrapper<K,V extends Number & Comparable> implements Comparable<Wrapper> {
-        K key;
-        V value;
 
-       K getKey() {
-           return key;
-       }
+	static class Wrapper<K, V extends Number & Comparable> implements
+			Comparable<Wrapper> {
+		K key;
+		V value;
 
-       void setKey(K key) {
-           this.key = key;
-       }
+		K getKey() {
+			return key;
+		}
 
-       V getValue() {
-           return value;
-       }
+		void setKey(K key) {
+			this.key = key;
+		}
 
-       void setValue(V value) {
-           this.value = value;
-       }
+		V getValue() {
+			return value;
+		}
 
-       @Override
-       public int compareTo(Wrapper w) {
-           return value.compareTo(w.getValue());
-       }
-   }
-	
+		void setValue(V value) {
+			this.value = value;
+		}
+
+		@Override
+		public int compareTo(Wrapper w) {
+			return value.compareTo(w.getValue());
+		}
+	}
+
 	public static boolean chkNull(Object value) {
 		String strValue = null;
 
@@ -255,33 +257,34 @@ public class SocialUtility {
 				+ session.getAttribute(CLIENT_CALLBACK_URL));
 	}
 
+	public static <K, V extends Number & Comparable> Map<K, V> sortMapnOnValues(
+			Map<K, V> inputMap, boolean descending) {
+		List<Wrapper<K, V>> wrappers = new ArrayList<Wrapper<K, V>>();
+		for (Map.Entry<K, V> es : inputMap.entrySet()) {
+			Wrapper<K, V> slw = new Wrapper<K, V>();
+			slw.setKey(es.getKey());
+			slw.setValue(es.getValue());
+			wrappers.add(slw);
+		}
+		// Collections.sort(wrappers,
+		// Collections.reverseOrder(getComparator()));
+		Collections.sort(wrappers);
+		if (descending) {
+			Collections.reverse(wrappers);
+		}
+		// System.out.println("Between:" + wrappers);
 
-	
-	public static <K,V extends Number & Comparable> Map<K,V> sortMapnOnValues(Map<K,V> inputMap,boolean descending){
-		 List<Wrapper<K,V>> wrappers = new ArrayList<Wrapper<K,V>>();
-	        for(Map.Entry<K,V> es : inputMap.entrySet()){
-	            Wrapper<K,V> slw = new Wrapper<K,V>();
-	            slw.setKey(es.getKey());
-	            slw.setValue(es.getValue());
-	            wrappers.add(slw);
-	        }
-	        //Collections.sort(wrappers, Collections.reverseOrder(getComparator()));
-	        Collections.sort(wrappers);
-	        if(descending){
-	        	Collections.reverse(wrappers);
-	        }
-	        //System.out.println("Between:" + wrappers);
+		Map<K, V> newMap = new LinkedHashMap<K, V>();
 
-	        Map<K, V> newMap = new LinkedHashMap<K,V>();
+		Iterator<Wrapper<K, V>> iter = wrappers.iterator();
+		while (iter.hasNext()) {
+			Wrapper<K, V> slw = iter.next();
+			newMap.put(slw.getKey(), slw.getValue());
+		}
 
-	        Iterator<Wrapper<K,V>> iter = wrappers.iterator();
-	        while(iter.hasNext()){
-	            Wrapper<K,V> slw = iter.next();
-	            newMap.put(slw.getKey(),slw.getValue());
-	        }
-	        
-	        return newMap;
+		return newMap;
 	}
+
 	public static void setResultInResponse(HttpServletResponse resp,
 			String result) {
 		resp.setContentType("application/x-javascript");
@@ -294,5 +297,25 @@ public class SocialUtility {
 			// Error while setting result in respones
 			System.out.println("Written Response " + result);
 		}
+	}
+
+	public static String getMD5(String message) {
+		try {
+			MessageDigest digest = MessageDigest.getInstance("MD5");
+			byte[] hashedBytes = digest.digest(message.getBytes("UTF-8"));
+
+			return convertByteArrayToHexString(hashedBytes);
+		} catch (Exception ex) {
+		}
+		return null;
+	}
+
+	public static String convertByteArrayToHexString(byte[] arrayBytes) {
+		StringBuffer stringBuffer = new StringBuffer();
+		for (int i = 0; i < arrayBytes.length; i++) {
+			stringBuffer.append(Integer.toString(
+					(arrayBytes[i] & 0xff) + 0x100, 16).substring(1));
+		}
+		return stringBuffer.toString();
 	}
 }

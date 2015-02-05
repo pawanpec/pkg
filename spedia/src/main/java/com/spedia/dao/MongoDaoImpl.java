@@ -13,6 +13,7 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.Mongo;
+import com.mongodb.WriteResult;
 import com.spedia.model.Connection;
 import com.spedia.model.Profile;
 import com.spedia.utils.Constants;
@@ -341,6 +342,15 @@ public class MongoDaoImpl implements MongoDao {
 
 		DBObject returnObject = col.findOne(cond, fields);
 		return returnObject;
+	}
+	@Override
+	public WriteResult updateOverAllRating(DBObject node) {
+		DBCollection nodeCollection = getMongoDatabase().getCollection(
+				"fields_current.node");
+		BasicDBObject nodeQuery = new BasicDBObject();
+		nodeQuery.put("_id", node.get("_id"));
+		WriteResult c = nodeCollection.update(nodeQuery, node);
+		return c;
 	}
 
 }

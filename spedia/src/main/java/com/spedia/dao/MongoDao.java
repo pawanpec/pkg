@@ -6,6 +6,7 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
+import com.mongodb.WriteResult;
 import com.spedia.model.Connection;
 import com.spedia.model.Profile;
 
@@ -20,5 +21,6 @@ public interface MongoDao {
 	DBObject getContentByURL(String url);
 	DBObject getContentByNid(Integer nid);
 	DBCursor getContent(BasicDBObject basicDBObject);
+	public WriteResult updateOverAllRating(DBObject review) ;
 	public DB getMongoDatabase();
 }

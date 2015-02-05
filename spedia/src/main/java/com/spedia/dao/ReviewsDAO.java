@@ -18,8 +18,8 @@ import com.spedia.model.Reviews;
  * @see com.spedia.content.model.Reviews
  * @author MyEclipse Persistence Tools
  */
-@Repository("reviewsDAO")
-public class ReviewsDAO extends BaseDAOImpl<Reviews, Long> implements IReviewsDAO {
+@Repository("reviewsDao")
+public class ReviewsDAO extends BaseDAOImpl<Reviews, Integer> implements IReviewsDAO{
 
 	@Override
 	public List<Reviews> findByNid(Integer nid, int i) {
@@ -28,4 +28,6 @@ public class ReviewsDAO extends BaseDAOImpl<Reviews, Long> implements IReviewsDA
 			setParameter(1, nid);
 		return query.getResultList();
 	}
+
+	
 }

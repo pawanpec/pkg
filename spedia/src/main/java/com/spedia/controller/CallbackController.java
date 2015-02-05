@@ -31,6 +31,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
+import com.spedia.dao.MongoDao;
 import com.spedia.model.Connection;
 import com.spedia.model.Profile;
 import com.spedia.service.ISocialService;
@@ -53,6 +56,8 @@ public class CallbackController {
 	private ServiceImplementationProvider serviceImplementationProvider;
 	@Autowired
 	private SocialServiceProvider socialServiceProvider;
+	@Autowired
+	MongoDao mongoDao;
 	private ExecutorService executorService = Executors.newSingleThreadExecutor(new ThreadFactory() {
 		   @Override
 		   public Thread newThread(Runnable runnable) {
@@ -63,7 +68,7 @@ public class CallbackController {
 		});
 	
 	@RequestMapping(value = { "/callback.html" }, method = { RequestMethod.GET })
-	public ModelAndView schoolDetails(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView callback(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		
 		final String provider  = request.getParameter("pId");
@@ -109,28 +114,10 @@ public class CallbackController {
 			}
 			
 			/**call the caller application call-back URL**/
-			final String pid=processData(	providerService, oauthResponseUser, oauthResponseContact, request);
+			final String pid=processData(providerService, oauthResponseUser, oauthResponseContact, request);
+			DBObject dbObject=mongoDao.getUserProfileByProfileID(pid, appCode);
 			model.put("profileID", pid);
 			model.put("provider", provider);
-			
-			/*	executorService.execute(new Runnable() {
-				@Override
-				public void run() {
-					try{
-						
-						if(MongoConstants.MONGO_PROVIDER_FACEBOOK.equals(provider)){
-						// update facebook data into grapth db
-						//networkDiscoveryFacade.addFacebookUserDataIntoGraphDb(pid, appCode);
-						logger.info("updating data in orientDb done");
-						}else{
-							logger.debug("Not Logging for provider:"+provider);
-						}
-					}catch(Exception ex){
-						logger.error("error updating data in orientDb "+ex.getMessage());
-						ex.printStackTrace();
-					}
-				}
-			});*/
 		}catch(Exception e){
 			e.printStackTrace();
 			model.put("error", "exception");
@@ -177,7 +164,6 @@ public class CallbackController {
 		
 		/**save or update the user profile**/
 		Profile  profile = socialService.processUserProfile(accessToken,requestToken, providerService, oauthResponseUser);
-		profile.setCs(callSource);
 		profile.setCs(callSource);
 		profile.setApc(appCode);	
 		if(!SocialUtility.chkNull(loginId)){
