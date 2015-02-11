@@ -35,13 +35,13 @@ public class ReviewService implements IReviewService {
 		DBObject node=mongoDao.getContentByNid(nid);
 		if (node.containsField("review")&& node.get("review")!=null) {
 			DBObject review=(DBObject) node.get("review");
-			Integer count = (Integer) review.get("count");
-			Double ora = (Double) review.get("ora");
-			Double orb = (Double) review.get("orb");
-			Integer orc = (Integer) review.get("orc");
-			Double ord = (Double) review.get("ord");
-			Integer ore = (Integer) review.get("ore");
-			Double oar = (Double) review.get("oar");
+			Integer count = ((Number) review.get("count")).intValue();
+			Double ora = ((Number) review.get("ora")).doubleValue();
+			Double orb = ((Number) review.get("orb")).doubleValue();
+			Double orc = ((Number) review.get("orc")).doubleValue();
+			Double ord = ((Number) review.get("ord")).doubleValue();
+			Double ore = ((Number) review.get("ore")).doubleValue();
+			Double oar = ((Number) review.get("oar")).doubleValue();
 			Integer newcount = count + 1;
 			ora = (ora * count + reviews.getA()) / newcount;
 			orb = (orb * count + reviews.getB()) / newcount;
@@ -51,7 +51,7 @@ public class ReviewService implements IReviewService {
 			oar = (ora + orb + orc + ord + ore) / 5;
 			review.put("ora", ora);
 			review.put("orb", orb);
-			review.put("orb", orb);
+			review.put("orc", orc);
 			review.put("ord", ord);
 			review.put("ore", ore);
 			review.put("oar", oar);
@@ -70,7 +70,7 @@ public class ReviewService implements IReviewService {
 			review.put("_id", reviews.getNid());
 			review.put("ora", ora);
 			review.put("orb", orb);
-			review.put("orb", orb);
+			review.put("orc", orc);
 			review.put("ord", ord);
 			review.put("ore", ore);
 			review.put("oar", oar);

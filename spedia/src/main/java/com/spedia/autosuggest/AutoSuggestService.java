@@ -19,9 +19,10 @@ import org.apache.lucene.search.TopScoreDocCollector;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.QueryBuilder;
 import org.apache.lucene.util.Version;
+import org.springframework.stereotype.Component;
 
 import com.spedia.utils.SchoolsConstants;
-
+@Component
 public class AutoSuggestService {
 	private static IndexSearcher searcher;
 
@@ -32,7 +33,7 @@ public class AutoSuggestService {
 		return  new StandardAnalyzer(Version.LUCENE_4_10_3);
 	}
 
-	public static Set<Document> getDocument(Map<String,String> query, int hitCount) throws IOException {
+	public static Set<Map> getDocument(Map<String,String> query, int hitCount) throws IOException {
 		IndexReader reader = DirectoryReader.open(FSDirectory
 				.open(new File(SchoolsConstants.INDEX_PATH)));
 		searcher = new IndexSearcher(reader);
@@ -41,7 +42,7 @@ public class AutoSuggestService {
 		term = parseQueryString(term);
 		Query q = queryBuilder.createPhraseQuery("title", term);
 		System.out.println(q.toString());
-		Set<Document> result = new LinkedHashSet<Document>();
+		Set<Map> result = new LinkedHashSet<Map>();
 		TopScoreDocCollector collector = TopScoreDocCollector.create(hitCount,
 				true);
 		try {
@@ -49,9 +50,12 @@ public class AutoSuggestService {
 			ScoreDoc[] hits = collector.topDocs().scoreDocs;
 			System.out.println("Found " + hits.length + " hits.");
 			for (int i = 0; i < hits.length; ++i) {
+				Map schoolMap=new HashMap<String,Object>();
 				int docId = hits[i].doc;
 				Document d = searcher.doc(docId);
-				result.add(d);
+				schoolMap.put("title", d.get("title"));
+				schoolMap.put("id", d.get("id"));
+				result.add(schoolMap);
 				System.out.println((i + 1) + ". " + "\t" + d.get("title"));
 			}
 		} catch (IOException e) {
@@ -83,7 +87,7 @@ public class AutoSuggestService {
 
 	public static void main(String[] args) {
 		int hitCount = 10;
-		Set<Document> d = null;
+		Set<Map> d = null;
 		Map<String,String> query=new HashMap<String,String>();
 		try {
 			query.put("title", "bal");

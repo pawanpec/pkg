@@ -23,6 +23,7 @@ public class Reviews extends GenericObject {
 	private Integer nid;
 	private Integer uid;
 	private String city;
+	//location Id
 	private Integer lid;
 	private String review;
 	private Integer a;

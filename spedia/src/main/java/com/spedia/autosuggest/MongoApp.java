@@ -15,6 +15,8 @@ import com.mongodb.DBObject;
 import com.mongodb.Mongo;
 import com.mongodb.MongoException;
 import com.mongodb.WriteResult;
+import com.spedia.model.SchoolData;
+import com.spedia.utils.SchoolUtil;
 
 /**
  * Java MongoDB Example
@@ -70,7 +72,7 @@ public class MongoApp {
 			// create a document to store attributes
 			int i = 0;
 			BasicDBObject nodeQuery = new BasicDBObject();
-			nodeQuery.put("_id", 2300);
+			nodeQuery.put("_id", 24280);
 			//DBCursor dbuCursor = node.find();
 			DBCursor dbuCursor=getSchool();
 			while (dbuCursor.hasNext()) {
@@ -78,13 +80,14 @@ public class MongoApp {
 					if (nodeObject != null) {
 						Integer nid = (Integer) nodeObject.get("_id");
 						System.out.println("Nid "+ nid +" "+i++);
+						updateSchoolInfo(nodeObject, nid);
 							//updateRedirectURL(nodeObject, nid);
 							// updateNodeObject(db,node,nodeObject);
 							//updateLocation(nodeObject, nid);
 							//updateReview(nodeObject, nid);
 							//updateURL(nodeObject, nid);
 							//updateTags(nodeObject, nid);
-						updateSchoolSummary(nodeObject, nid);
+						//updateSchoolSummary(nodeObject, nid);
 					}
 
 			}
@@ -95,11 +98,26 @@ public class MongoApp {
 	}
 	public static DBCursor getSchool(){
 		BasicDBObject nodeQuery = new BasicDBObject();
-		//nodeQuery.put("_id", 2300);
+		nodeQuery.put("_id", 24280);
 		nodeQuery.put("type", "group");
 		DBCursor dbuCursor = node.find(nodeQuery);
 		return dbuCursor;
 	}
+	private static void updateSchoolInfo(DBObject nodeObject, Integer nid) {
+		try {
+			BasicDBObject nodeQuery = new BasicDBObject();
+			nodeQuery.put("_id", nid);
+			DBObject body= (DBObject) nodeObject.get("body");
+			String text=(String)body.get("value");
+			//System.out.println(text);
+			System.out.println("---------------------------------------------------");
+		   SchoolData schoolData=SchoolUtil.getData(text);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	private static void updateSchoolSummary(DBObject nodeObject, Integer nid) {
 		try {
 			BasicDBObject nodeQuery = new BasicDBObject();

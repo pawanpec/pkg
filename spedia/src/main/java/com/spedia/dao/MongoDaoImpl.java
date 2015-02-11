@@ -16,6 +16,7 @@ import com.mongodb.Mongo;
 import com.mongodb.WriteResult;
 import com.spedia.model.Connection;
 import com.spedia.model.Profile;
+import com.spedia.model.User;
 import com.spedia.utils.Constants;
 import com.spedia.utils.MongoConstants;
 import com.spedia.utils.SocialUtility;
@@ -351,6 +352,22 @@ public class MongoDaoImpl implements MongoDao {
 		nodeQuery.put("_id", node.get("_id"));
 		WriteResult c = nodeCollection.update(nodeQuery, node);
 		return c;
+	}
+	@Override
+	public WriteResult follow(Integer nid,User user,Boolean status) {
+		DBCollection nodeCollection = getMongoDatabase().getCollection(
+				"fields_current.node");
+		BasicDBObject nodeQuery = new BasicDBObject();
+		nodeQuery.put("_id", nid);
+		BasicDBObject followObject = new BasicDBObject();
+		Integer uid = user.getUid();
+		if (status) {
+			followObject.put("$addToSet", new BasicDBObject("f", uid));
+		}else{
+			followObject.put("$pull", new BasicDBObject("f", uid));
+		}
+		return nodeCollection.update(nodeQuery,followObject, true,
+				false);
 	}
 
 }

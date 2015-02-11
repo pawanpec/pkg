@@ -34,10 +34,9 @@
 			<nav class="main-mnu" id="navbar-collapse1">
 				<ul class="nav navbar-nav">
 					<li class="active home"><i class="top"></i><a href="/"><img src="<%=WebConstants.IMAGE_URL %>images/spacer.gif" /><span>home</span></a><i class="bot"></i></li>
-					<li class="discover"><i class="top"></i><a href="/discover/"><img src="<%=WebConstants.IMAGE_URL %>images/spacer.gif" /><span>discover</span></a><i class="bot"></i></li>
-					<li class="jobs"><i class="top"></i><a href="/jobs/all/"><img src="<%=WebConstants.IMAGE_URL %>images/spacer.gif" /><span>jobs</span></a><i class="bot"></i></li>
-					<li class="interview"><i class="top"></i><a href="/interview/"><img src="<%=WebConstants.IMAGE_URL %>images/spacer.gif" /><span>interviews</span></a><i class="bot"></i></li>
-					<li class="insights"><i class="top"></i><a href="/insight/all/"><img src="<%=WebConstants.IMAGE_URL %>images/spacer.gif" /><span>insights</span></a><i class="bot"></i></li>
+					<li class="discover"><i class="top"></i><a href="/discover/"><img src="<%=WebConstants.IMAGE_URL %>images/spacer.gif" /><span>Search School</span></a><i class="bot"></i></li>
+					<li class="jobs"><i class="top"></i><a href="/jobs/all/"><img src="<%=WebConstants.IMAGE_URL %>images/spacer.gif" /><span>School Jobs</span></a><i class="bot"></i></li>
+					<li class="interview"><i class="top"></i><a href="/interview/"><img src="<%=WebConstants.IMAGE_URL %>images/spacer.gif" /><span>Summer Camp</span></a><i class="bot"></i></li>
 					<li class="logosm visible-xs"><a href="/"><img src="<%=WebConstants.IMAGE_URL %>images/jobuzz_logo.png" alt="JobBuzz"></a></li>
 				</ul>
 				<div class="clearfix visible-sm"></div>
@@ -72,7 +71,6 @@
 					</ul>
 				<form class="search-input col-xs-9 visible-sm visible-md visible-lg" data-ng-init="scope = {isVisible: false, class:'', autocomplete:2}" action="/jobbuzz/search.html" id="searchForm" data-ng-class="isMobileSearch ? 'visible-xs' : 'f'" method="post" data-ng-click="$event.stopPropagation();" autocomplete="off">
 					<div class="input-group ng-hide" data-ng-show="search.searchBy==3 || search.searchBy==-1">
-					    <span class="input-group-addon jobs" title="jobs" data-ng-click="visibleOption(null); $event.stopPropagation();" id="basic-job"><img src="<%=WebConstants.IMAGE_URL %>images/spacer.gif" class="search companies" /> <span class="caret"></span></span>
 					    <input type="text"	id="jobsSearchText"	name="jobsSearchText" data-ng-model="search.jobsSearchText" maxlength="100" placeholder="E.g. Java Developer 3-5 years Pune" 
 					  			typeahead-on-select='onSelect($item, $model, $label)'
 					  			data-ng-pattern="/^[a-zA-Z0-9]/"
@@ -83,68 +81,6 @@
 					  		<img src="<%=WebConstants.IMAGE_URL %>images/spacer.gif" class="cus-icon cus-homesearch" />
 					  	</span>
 				    </div>
-					<div class="input-group ng-hide" data-ng-show="search.searchBy==1">
-					    <span class="input-group-addon interview" title="interviews" data-ng-click="visibleOption(null); $event.stopPropagation();" id="basic-interview"><img src="<%=WebConstants.IMAGE_URL %>images/spacer.gif" class="search interview" /><span class="caret"></span></span>
-					    <input type="text"	id="interviewSearchText" name="interviewSearchText" maxlength="100" data-ng-model="search.interviewSearchText"  placeholder="Enter Skill, Company or Role" 
-					  			typeahead-on-select='onSelect($item, $model, $label)'
-					  			typeahead="suggestion.skillName for suggestion in loadInterviews($viewValue) | limitTo:5"
-					  			data-ng-pattern="/^[a-zA-Z0-9]/"
-					  			typeahead-min-length="3" class="form-control" aria-describedby="basic-interview" 
-					  			data-ng-keyup="$event.keyCode == 13 || $event.keyCode == 186 ? headerSearchSubmitInterview(search.interviewSearchText) : null"/>
-					  	<span class="input-group-addon mobileserbtn mobileserbtnw"  data-ng-show="isMobileSearch" data-ng-click="headerSearchSubmitInterview(search.interviewSearchText)">
-					  		<img src="<%=WebConstants.IMAGE_URL %>images/spacer.gif" class="cus-icon cus-homesearch" />
-					  	</span>
-					</div>
-					<div class="input-group ng-hide" data-ng-show="search.searchBy==2">
-					    <span class="input-group-addon companies" title="companies" data-ng-click="visibleOption(null); $event.stopPropagation();" id="basic-companies"><img src="<%=WebConstants.IMAGE_URL %>images/spacer.gif" class="search jobs" /><span class="caret"></span></span>
-					    <input 	type="text"	id="compamySearchText"	name="compamySearchText" maxlength="100" data-ng-model="search.compamySearchText"  placeholder="Enter company name e.g. Google" 
-					  			typeahead-on-select='onSelect($item, $model, $label)' data-ng-pattern="/^[a-zA-Z0-9]/"  class="form-control"
-					  			typeahead="suggestion.companyName for suggestion in loadCompanies($viewValue) | limitTo:5" typeahead-min-length="3"
-					  			data-ng-keyup="$event.keyCode == 13 || $event.keyCode == 186 ? headerSearchSubmitCompany(search.compamySearchText) : null"  aria-describedby="basic-companies" />
-					  	<span class="input-group-addon mobileserbtn mobileserbtnw"  data-ng-show="isMobileSearch" data-ng-click="headerSearchSubmitCompany(search.compamySearchText)">
-					  		<img src="<%=WebConstants.IMAGE_URL %>images/spacer.gif" class="cus-icon cus-homesearch" />
-					  	</span>
-					</div>
-					
-					<div class="input-group ng-hide" data-ng-show="search.searchBy==4">
-					    <span class="input-group-addon {{scope.class}}" title="{{scope.class}}" data-ng-click="visibleOption(null); $event.stopPropagation();" id="basic-people"><img src="<%=WebConstants.IMAGE_URL %>images/spacer.gif" class="search compnies" /><span class="caret"></span></span>
-					  	<input 	type="text"	id="peopleSearchText"	name="peopleSearchText" maxlength="100" data-ng-model="search.peopleSearchText"  placeholder="{{scope.class}}" 
-					  			typeahead-on-select='onSelect($item, $model, $label)'
-					  			data-ng-pattern="/^[a-zA-Z0-9]/" typeahead-min-length="3" class="form-control"
-					  			data-ng-keyup="$event.keyCode == 13 || $event.keyCode == 186 ? submitform() : null" aria-describedby="basic-people" />
-					  	<span class="input-group-addon mobileserbtn mobileserbtnw"  data-ng-show="isMobileSearch" data-ng-click="submitform()">
-					  		<img src="<%=WebConstants.IMAGE_URL %>images/spacer.gif" class="cus-icon cus-homesearch" />
-					  	</span>
-					 </div>
-					 <div>
-					 	
-					 </div>
-					 	<ul class="dropdown-menu search-submenu" style="left: 14px; width:80px; padding: 0;" data-ng-class="scope.isVisible === true ? 'display-blk':'ng-hide'">
-							<li><!-- jobs -->
-								<a  data-ng-click="searchsubmenu('3','jobs',null);" href="javascript:void(0)">
-								  <img src="<%=WebConstants.IMAGE_URL %>images/spacer.gif" class="search companies" />
-								  <span >jobs</span>
-							  </a>
-							</li>
-							<li><!-- compnies -->
-								<a data-ng-click="searchsubmenu('2','companies',null);" href="javascript:void(0)">
-								  <img src="<%=WebConstants.IMAGE_URL %>images/spacer.gif" class="search jobs" />
-								  <span>companies</span>
-						  		</a>
-							</li>
-							<li><!-- interview -->
-								<a data-ng-click="searchsubmenu('1','interview',null);" href="javascript:void(0)">
-								  <img src="<%=WebConstants.IMAGE_URL %>images/spacer.gif" class="search interview" />
-								  <span >interview</span>
-								</a>
-							</li>
-						<!--<li> people 
-								<a  data-ng-click="searchsubmenu('4','people'); scope.isVisible = false;">
-								  <img src="<%=WebConstants.IMAGE_URL %>images/spacer.gif" class="search people" />
-								  <span >people</span>
-							  </a>
-							</li>-->
-						</ul>
 						<input style="visibility: visible;"	type="hidden"	id="searchBy"	name="searchBy"	value=""	data-ng-model="search.searchBy">
 						<input style="visibility: visible;"	type="hidden"	id="compId"	name="compId"	value=""	data-ng-model="search.compId">
 				</form>

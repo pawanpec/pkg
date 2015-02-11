@@ -23,7 +23,10 @@ import com.mongodb.DBObject;
 import com.spedia.dao.IReviewsDAO;
 import com.spedia.dao.MongoDao;
 import com.spedia.model.Reviews;
+import com.spedia.model.User;
+import com.spedia.service.follow.IFollowService;
 import com.spedia.utils.SEOURLUtils;
+import com.spedia.utils.SocialUtility;
 
 /**
  * @author pawan
@@ -37,6 +40,10 @@ public class ContentController {
 	private MongoDao mongoDao;
 	@Autowired
 	private IReviewsDAO reviewsDao;
+	
+	@Autowired
+	private IFollowService followService;
+	
 	@RequestMapping(value = { "/website.html" }, method = { RequestMethod.GET })
 	public ModelAndView schoolDetails(HttpServletRequest request, HttpServletResponse response) {
 		Map<String, Object> model=new HashMap<String, Object>();
@@ -113,6 +120,32 @@ public class ContentController {
     	model.put("contents", contents);
     	view.addAllObjects(model);
 		return view;
+		
+	}
+	@RequestMapping(value = { "/followSchool.html" }, method = { RequestMethod.GET })
+	public Integer followSchool(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			Integer nid=Integer.parseInt(request.getParameter("nid"));
+			Integer uid=Integer.parseInt(request.getParameter("uid"));
+			Integer status=Integer.parseInt(request.getParameter("status"));
+			if(SocialUtility.chkNull(uid)){
+				User user=new User();
+				user.setUid(uid);
+				if(status.equals(1)){
+					followService.follow(nid, user, true);
+				}
+				if(status.equals(0)){
+					followService.follow(nid, user, false);
+				}
+				
+			}
+			return 1;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return 0;
 		
 	}
 

@@ -11,12 +11,12 @@ public class ReviewTest extends TestCase {
 				.getBean("reviewService");
 		String reviewText="very good";
 		Long created=System.currentTimeMillis();
-		Reviews reviews=new Reviews(620,2,"rohini",125,reviewText,4,5,4,3,4,0,created.intValue());
+		Reviews reviews=new Reviews(600,2,"rohini",125,reviewText,4,5,4,3,4,0,created.intValue());
 		reviewService.writeReview(reviews);
 	}*/
 	public void testApproveReview() {
 		IReviewService reviewService = (IReviewService) BaseSpringTest.getInstance()
 				.getBean("reviewService");
-		reviewService.approveReview(1858);
+		reviewService.approveReview(1859);
 	}
 }

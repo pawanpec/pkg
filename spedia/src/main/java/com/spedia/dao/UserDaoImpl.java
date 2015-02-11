@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 import com.spedia.model.User;
 
 @Repository("userDao") 
-public class UserDaoImpl extends BaseDAOImpl<User, Long> implements UserDao{
+public class UserDaoImpl extends BaseDAOImpl<User, Integer> implements UserDao{
 
 
 	@SuppressWarnings("unchecked")

@@ -96,7 +96,7 @@ String defaultBGPath=WebConstants.IMAGE_URL+"images/bg_images/"+randBgImageIndex
 							</span>
 						
 							<%-- <a itemprop="votes pad_l15" href="/company/${fn:replace(companyViewBean.companyMast.companyName,' ','-')}/review&txtCompId=${companyViewBean.companyMast.companyId}"> --%> 
-							<a itemprop="votes pad_l15" href="<%=SEOURLUtils.getCompanyReviewSEOURL((String)pageContext.getAttribute("_compName"), (Long)pageContext.getAttribute("_compId")+"") %>"	target="_blank">
+							<a itemprop="votes pad_l15" href="${content.alias}#reviews"	target="_blank">
 							(<fmt:formatNumber	value="${countOfReviews}"	pattern="0"	/><c:if test="${isCountOfReviewsKPlus eq true}">K</c:if> Reviews )
 							</a>
 								
@@ -147,11 +147,11 @@ String defaultBGPath=WebConstants.IMAGE_URL+"images/bg_images/"+randBgImageIndex
 						
 						<ul class="followpos inlineul">
 							<!-- <li class="font24" data-ng-if="followData.followCount > 0"> -->
-							<li class="font24" >
-							<span data-ng-bind="followData.followCount"></span><span ng-show="followDataShowPlus>1">+</span></li>
 							<li>
 								<input data-ng-show="followData.followStatus==0" class="btn btn-primary btn-sm colorfff" data-ng-click="followCompanyWithFollowService(1)" value="FOLLOW" type="button" /> 
-								<input data-ng-show="followData.followStatus==1" class="btn btn-primary btn-sm colorfff" data-ng-click="followCompanyWithFollowService(0)" value="UNFOLLOW" type="button" />
+							</li>
+							<li>
+								<input class="btn btn-primary btn-sm colorfff" value="Write Review" type="button" /> 
 							</li>
 						</ul>
 			</div>

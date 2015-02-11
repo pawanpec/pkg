@@ -18,4 +18,11 @@ public class UserService implements IUserService {
 		return userDao.persist(user);
 	}
 
+	@Override
+	public User getUser(User user) {
+		// TODO Auto-generated method stub
+		Integer id=user.getUid();
+		return userDao.findById(id);
+	}
+
 }

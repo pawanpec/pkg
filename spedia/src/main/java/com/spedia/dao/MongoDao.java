@@ -9,6 +9,7 @@ import com.mongodb.DBObject;
 import com.mongodb.WriteResult;
 import com.spedia.model.Connection;
 import com.spedia.model.Profile;
+import com.spedia.model.User;
 
 
 
@@ -23,4 +24,5 @@ public interface MongoDao {
 	DBCursor getContent(BasicDBObject basicDBObject);
 	public WriteResult updateOverAllRating(DBObject review) ;
 	public DB getMongoDatabase();
+	public WriteResult follow(Integer nid,User user,Boolean status) ;
 }

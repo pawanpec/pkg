@@ -77,15 +77,15 @@ public class MongoDaoImplTest extends TestCase {
 				.getBean("userService");
 		assertNotNull("UserService is null.", userService);
 		User user=new User();
-		user.setUsername("pawan");
+		user.setUsername("admin");
 		String pass="123456";
 		user.setPassword(SocialUtility.getMD5(pass));
-		user.setMail("pawanpec@gmail.com");
+		user.setMail("admin@gmail.com");
 		user.setEnabled(true);
 		Set<UserRole> userRoleses=new HashSet<UserRole>();
 		UserRole userRole=new UserRole();
 		userRole.setUser(user);
-		userRole.setRole("ROLE_USER");
+		userRole.setRole("ROLE_ADMIN");
 		userRoleses.add(userRole);
 		user.setUserRoleses(userRoleses);
 		Long created=System.currentTimeMillis();
@@ -93,5 +93,16 @@ public class MongoDaoImplTest extends TestCase {
 		user.setUpdated(created.intValue());
 		userService.registerUser(user);
 	}*/
-	
+	public void testGetUser() {
+		IUserService userService = (IUserService) BaseSpringTest.getInstance()
+				.getBean("userService");
+		User user=new User();
+		user.setUid(4);
+		user=userService.getUser(user);
+		Set<UserRole> userRoleses = user.getUserRoleses();
+		for (UserRole userRole : userRoleses) {
+			System.out.println(userRole.getRole());
+		}
+		
+	}
 }
