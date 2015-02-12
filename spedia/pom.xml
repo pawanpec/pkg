@@ -61,6 +61,11 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
 
 		<!-- Spring + aspects -->
 		<dependency>
@@ -197,6 +202,12 @@
 			<artifactId>gson</artifactId>
 			<version>2.3.1</version>
 		</dependency>
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.5.2</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>

@@ -67,6 +67,9 @@
     <dependent-module archiveName="spring-web-4.0.6.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/springframework/spring-web/4.0.6.RELEASE/spring-web-4.0.6.RELEASE.jar">
       <dependency-type>uses</dependency-type>
     </dependent-module>
+    <dependent-module archiveName="spring-context-support-4.0.6.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/springframework/spring-context-support/4.0.6.RELEASE/spring-context-support-4.0.6.RELEASE.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
     <dependent-module archiveName="spring-aspects-4.0.6.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/springframework/spring-aspects/4.0.6.RELEASE/spring-aspects-4.0.6.RELEASE.jar">
       <dependency-type>uses</dependency-type>
     </dependent-module>
@@ -254,6 +257,12 @@
       <dependency-type>uses</dependency-type>
     </dependent-module>
     <dependent-module archiveName="gson-2.3.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/com/google/code/gson/gson/2.3.1/gson-2.3.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="javax.mail-1.5.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/com/sun/mail/javax.mail/1.5.2/javax.mail-1.5.2.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="activation-1.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/javax/activation/activation/1.1/activation-1.1.jar">
       <dependency-type>uses</dependency-type>
     </dependent-module>
     <wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/java"/>
