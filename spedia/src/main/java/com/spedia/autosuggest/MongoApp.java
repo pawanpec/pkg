@@ -1,10 +1,6 @@
 package com.spedia.autosuggest;
 
 import java.net.UnknownHostException;
-import java.util.Date;
-
-import org.bson.types.ObjectId;
-import org.springframework.jdbc.core.metadata.Db2CallMetaDataProvider;
 
 import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
@@ -15,8 +11,6 @@ import com.mongodb.DBObject;
 import com.mongodb.Mongo;
 import com.mongodb.MongoException;
 import com.mongodb.WriteResult;
-import com.spedia.model.SchoolData;
-import com.spedia.utils.SchoolUtil;
 
 /**
  * Java MongoDB Example
@@ -33,6 +27,7 @@ public class MongoApp {
 	public static DBCollection review;
 	public static DBCollection url;
 	public static DBCollection taxonomy_term_data;
+	public static DBCollection aff_1;
 	static{
 		
 		try {
@@ -43,6 +38,7 @@ public class MongoApp {
 			redirect = db.getCollection("fields_current.redirect");
 			location = sp_dev.getCollection("location_nid_table");
 			review = sp_dev.getCollection("reviews_count");
+			aff_1 = sp_dev.getCollection("aff_1");
 			url = sp_dev.getCollection("url_alias");
 			taxonomy_term_data = sp_dev.getCollection("taxonomy_term_data");
 		} catch (UnknownHostException e) {
@@ -72,15 +68,15 @@ public class MongoApp {
 			// create a document to store attributes
 			int i = 0;
 			BasicDBObject nodeQuery = new BasicDBObject();
-			nodeQuery.put("_id", 24280);
-			//DBCursor dbuCursor = node.find();
-			DBCursor dbuCursor=getSchool();
+			nodeQuery.put("_id", 240);
+			DBCursor dbuCursor = node.find();
+			//DBCursor dbuCursor=getSchool();
 			while (dbuCursor.hasNext()) {
 				DBObject nodeObject = dbuCursor.next();
 					if (nodeObject != null) {
 						Integer nid = (Integer) nodeObject.get("_id");
 						System.out.println("Nid "+ nid +" "+i++);
-						updateSchoolInfo(nodeObject, nid);
+						//updateSchoolInfo(nodeObject, nid);
 							//updateRedirectURL(nodeObject, nid);
 							// updateNodeObject(db,node,nodeObject);
 							//updateLocation(nodeObject, nid);
@@ -107,11 +103,12 @@ public class MongoApp {
 		try {
 			BasicDBObject nodeQuery = new BasicDBObject();
 			nodeQuery.put("_id", nid);
-			DBObject body= (DBObject) nodeObject.get("body");
-			String text=(String)body.get("value");
+			DBObject sdQuery=new BasicDBObject("entity_id",nid);
+			DBObject dbObject=aff_1.findOne(sdQuery);
+			nodeObject.put("sd",dbObject.get("sd"));
 			//System.out.println(text);
 			System.out.println("---------------------------------------------------");
-		   SchoolData schoolData=SchoolUtil.getData(text);
+			node.update(nodeQuery, nodeObject);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

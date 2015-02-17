@@ -10,7 +10,6 @@ import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.Mongo;
 import com.mongodb.MongoException;
-import com.spedia.dao.MongoDao;
 import com.spedia.model.SchoolData;
 import com.spedia.utils.SchoolUtil;
 
@@ -165,7 +164,7 @@ public class FetchData {
 		if(schoolData==null){
 			return;
 		}
-		schoolData.setSC(url);
+		schoolData.setSURL(url);
 		//System.out.println(schoolData);
 		Boolean isSave=false;
 		try {
