@@ -93,7 +93,7 @@ public class MongoDaoImplTest extends TestCase {
 		user.setUpdated(created.intValue());
 		userService.registerUser(user);
 	}*/
-	public void testGetUser() {
+	/*public void testGetUser() {
 		IUserService userService = (IUserService) BaseSpringTest.getInstance()
 				.getBean("userService");
 		User user=new User();
@@ -104,5 +104,17 @@ public class MongoDaoImplTest extends TestCase {
 			System.out.println(userRole.getRole());
 		}
 		
+	}*/
+	public void testGetSchoolDetails(){
+		MongoDao mongoDao=(MongoDao) BaseSpringTest.getInstance().getBean("mongoDao");
+		DBCollection node = mongoDao.getMongoDatabase().getCollection(
+				"fields_current.node");
+		assertNotNull(mongoDao);
+		/*String url="website/bal-bharti-pub-school-sector-14-rohini-delhi";
+		DBObject dbObject=mongoDao.getContentByURL(url);
+		BasicDBObject basicDBObject= (BasicDBObject) dbObject.get("schoolBean");
+		Gson gson=new Gson();
+		SchoolBean schoolBean= gson.fromJson(basicDBObject.toString(), SchoolBean.class);
+		System.out.println(schoolBean.getBackGroundImagePath());*/
 	}
 }

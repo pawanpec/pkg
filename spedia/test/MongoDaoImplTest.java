@@ -58,11 +58,11 @@ public class MongoDaoImplTest extends TestCase {
 		DBCollection node = mongoDao.getMongoDatabase().getCollection(
 				"fields_current.node");
 		assertNotNull(mongoDao);
-		String url="website/bal-bharti-pub-school-sector-14-rohini-delhi";
+		/*String url="website/bal-bharti-pub-school-sector-14-rohini-delhi";
 		DBObject dbObject=mongoDao.getContentByURL(url);
 		BasicDBObject basicDBObject= (BasicDBObject) dbObject.get("schoolBean");
 		Gson gson=new Gson();
 		SchoolBean schoolBean= gson.fromJson(basicDBObject.toString(), SchoolBean.class);
-		System.out.println(schoolBean.getBackGroundImagePath());
+		System.out.println(schoolBean.getBackGroundImagePath());*/
 	}
 }

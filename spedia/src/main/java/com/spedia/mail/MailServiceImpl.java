@@ -27,7 +27,6 @@ import com.spedia.utils.PropertyFileReader;
 import com.spedia.utils.VelocityConstraints;
 
 
-@Service("mailService")
 public class MailServiceImpl implements IMailService {
 
 	@Autowired

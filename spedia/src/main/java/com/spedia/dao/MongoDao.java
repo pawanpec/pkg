@@ -24,5 +24,6 @@ public interface MongoDao {
 	DBCursor getContent(BasicDBObject basicDBObject);
 	public WriteResult updateOverAllRating(DBObject review) ;
 	public DB getMongoDatabase();
+	public DB getMongoDatabase(String dbName) ;
 	public WriteResult follow(Integer nid,User user,Boolean status) ;
 }

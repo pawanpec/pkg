@@ -36,6 +36,9 @@ public class MongoDaoImpl implements MongoDao {
 	public DB getMongoDatabase() {
 		return mongo.getDB(MONGO_DB_NAME);
 	}
+	public DB getMongoDatabase(String dbName) {
+		return mongo.getDB(dbName);
+	}
 	@Override
 	public DBObject getContentByURL(String url) {
 		DBCollection node = getMongoDatabase().getCollection(

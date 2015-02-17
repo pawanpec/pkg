@@ -1,6 +1,8 @@
 package com.spedia.model;
 import java.util.Date;
 
+import com.mongodb.ReflectionDBObject;
+
 /**
  * 
  */
@@ -9,168 +11,223 @@ import java.util.Date;
  * @author pawan
  *
  */
-public class SchoolData {
+public class SchoolData extends ReflectionDBObject{
 	int id;
-	String school_name="";
-	String aff_no="";
-	String state="";
-	String district="";
-	String postal_address="";
-	String pin_code="";
-	String phone_no="";
-	String email="";
-	String website="";
-	String content="";
-	String school_info;
-	String school_code="";
-	String school_url="";
-	String city="";
-	String tags="";
-	String status="n";
-	Date createdOn;
-	int nid;
-	public Date getCreatedOn() {
-		return createdOn;
-	}
-	public void setCreatedOn(Date createdOn) {
-		this.createdOn = createdOn;
-	}
-	public SchoolData(String school_name, String aff_no, String state,
-			String district, String postal_address, String pin_code,
-			String phone_no, String email, String website) {
+	String SN="";
+	String AFF_NO="";
+	String STATE="";
+	String DISTRICT="";
+	String PA="";
+	String PIN="";
+	String PHONE_NO="";
+	//email
+	String E="";
+	//website
+	String W="";
+	String SC="";
+	String SURL="";
+	String CITY="";
+	String TAGS="";
+	String STATUS="n";
+	String YOF;
+	String PN;
+	String SOS;
+	String TN;
+	String COS;
+	public SchoolData(int id, String sN, String aFF_NO, String sTATE,
+			String dISTRICT, String pA, String pIN, String pHONE_NO, String e,
+			String w, String sC, String sURL, String cITY, String tAGS,
+			String sTATUS, String yOF, String pN, String sOS, String tN,
+			String cOS, String mOI, String tOS, Long cREATEDON, int nID) {
 		super();
-		this.school_name = school_name;
-		this.aff_no = aff_no;
-		this.state = state;
-		this.district = district;
-		this.postal_address = postal_address;
-		this.pin_code = pin_code;
-		this.phone_no = phone_no;
-		this.email = email;
-		this.website = website;
-	}
-	public String getSchool_name() {
-		return school_name;
-	}
-	public void setSchool_name(String school_name) {
-		this.school_name = school_name;
-	}
-	public String getAff_no() {
-		return aff_no;
-	}
-	public void setAff_no(String aff_no) {
-		this.aff_no = aff_no;
+		this.id = id;
+		SN = sN;
+		AFF_NO = aFF_NO;
+		STATE = sTATE;
+		DISTRICT = dISTRICT;
+		PA = pA;
+		PIN = pIN;
+		PHONE_NO = pHONE_NO;
+		E = e;
+		W = w;
+		SC = sC;
+		SURL = sURL;
+		CITY = cITY;
+		TAGS = tAGS;
+		STATUS = sTATUS;
+		YOF = yOF;
+		PN = pN;
+		SOS = sOS;
+		TN = tN;
+		COS = cOS;
+		MOI = mOI;
+		TOS = tOS;
+		CREATEDON = cREATEDON;
+		NID = nID;
 	}
 	public SchoolData() {
-		super();
+		// TODO Auto-generated constructor stub
 	}
-	public String getState() {
-		return state;
-	}
-	public void setState(String state) {
-		this.state = state;
-	}
-	public String getDistrict() {
-		return district;
-	}
-	public void setDistrict(String district) {
-		this.district = district;
-	}
-	public String getPostal_address() {
-		return postal_address;
-	}
-	public void setPostal_address(String postal_address) {
-		this.postal_address = postal_address;
-	}
-	public String getPin_code() {
-		return pin_code;
-	}
-	public void setPin_code(String pin_code) {
-		this.pin_code = pin_code;
-	}
-	public String getPhone_no() {
-		return phone_no;
-	}
-	public void setPhone_no(String phone_no) {
-		this.phone_no = phone_no;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getWebsite() {
-		return website;
-	}
-	public void setWebsite(String website) {
-		this.website = website;
-	}
-	
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
-	public String getSchool_info() {
-		return school_info;
-	}
-	public void setSchool_info(String school_info) {
-		this.school_info = school_info;
-	}
+	String MOI;
+	String TOS;
+	Long CREATEDON;
+	int NID;
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getSchool_code() {
-		return school_code;
+	public String getSN() {
+		return SN;
 	}
-	public void setSchool_code(String school_code) {
-		this.school_code = school_code;
+	public void setSN(String sN) {
+		SN = sN;
 	}
-	public String getSchool_url() {
-		return school_url;
+	public String getAFF_NO() {
+		return AFF_NO;
 	}
-	public void setSchool_url(String school_url) {
-		this.school_url = school_url;
+	public void setAFF_NO(String aFF_NO) {
+		AFF_NO = aFF_NO;
 	}
-	public String getCity() {
-		return city;
+	public String getSTATE() {
+		return STATE;
 	}
-	public void setCity(String city) {
-		this.city = city;
+	public void setSTATE(String sTATE) {
+		STATE = sTATE;
 	}
-	public int getNid() {
-		return nid;
+	public String getDISTRICT() {
+		return DISTRICT;
 	}
-	public void setNid(int nid) {
-		this.nid = nid;
+	public void setDISTRICT(String dISTRICT) {
+		DISTRICT = dISTRICT;
 	}
-	public String getTags() {
-		return tags;
+	public String getPA() {
+		return PA;
 	}
-	public void setTags(String tags) {
-		this.tags = tags;
+	public void setPA(String pA) {
+		PA = pA;
 	}
-	public String getStatus() {
-		return status;
+	public String getPIN() {
+		return PIN;
 	}
-	public void setStatus(String status) {
-		this.status = status;
+	public void setPIN(String pIN) {
+		PIN = pIN;
+	}
+	public String getPHONE_NO() {
+		return PHONE_NO;
+	}
+	public void setPHONE_NO(String pHONE_NO) {
+		PHONE_NO = pHONE_NO;
+	}
+	public String getE() {
+		return E;
+	}
+	public void setE(String e) {
+		E = e;
+	}
+	public String getW() {
+		return W;
+	}
+	public void setW(String w) {
+		W = w;
+	}
+	public String getSC() {
+		return SC;
+	}
+	public void setSC(String sC) {
+		SC = sC;
+	}
+	public String getSURL() {
+		return SURL;
+	}
+	public void setSURL(String sURL) {
+		SURL = sURL;
+	}
+	public String getCITY() {
+		return CITY;
+	}
+	public void setCITY(String cITY) {
+		CITY = cITY;
+	}
+	public String getTAGS() {
+		return TAGS;
+	}
+	public void setTAGS(String tAGS) {
+		TAGS = tAGS;
+	}
+	public String getSTATUS() {
+		return STATUS;
+	}
+	public void setSTATUS(String sTATUS) {
+		STATUS = sTATUS;
+	}
+	public String getYOF() {
+		return YOF;
+	}
+	public void setYOF(String yOF) {
+		YOF = yOF;
+	}
+	public String getPN() {
+		return PN;
+	}
+	public void setPN(String pN) {
+		PN = pN;
+	}
+	public String getSOS() {
+		return SOS;
+	}
+	public void setSOS(String sOS) {
+		SOS = sOS;
+	}
+	public String getTN() {
+		return TN;
+	}
+	public void setTN(String tN) {
+		TN = tN;
+	}
+	public String getCOS() {
+		return COS;
+	}
+	public void setCOS(String cOS) {
+		COS = cOS;
+	}
+	public String getMOI() {
+		return MOI;
+	}
+	public void setMOI(String mOI) {
+		MOI = mOI;
+	}
+	public String getTOS() {
+		return TOS;
+	}
+	public void setTOS(String tOS) {
+		TOS = tOS;
+	}
+	public Long getCREATEDON() {
+		return CREATEDON;
+	}
+	public void setCREATEDON(Long cREATEDON) {
+		CREATEDON = cREATEDON;
+	}
+	public int getNID() {
+		return NID;
+	}
+	public void setNID(int nID) {
+		NID = nID;
 	}
 	@Override
 	public String toString() {
-		return "SchoolData [id=" + id + ", school_name=" + school_name
-				+ ", aff_no=" + aff_no + ", state=" + state + ", district="
-				+ district + ", postal_address=" + postal_address
-				+ ", pin_code=" + pin_code + ", phone_no=" + phone_no
-				+ ", email=" + email + ", website=" + website + ", content="
-				+ content + ", school_info=" + school_info + ", school_code="
-				+ school_code + ", school_url=" + school_url + ", city=" + city
-				+ ", tags=" + tags + ", status=" + status + ", createdOn="
-				+ createdOn + ", nid=" + nid + "]";
+		return "SchoolData [id=" + id + ", SN=" + SN + ", AFF_NO=" + AFF_NO
+				+ ", STATE=" + STATE + ", DISTRICT=" + DISTRICT + ", PA=" + PA
+				+ ", PIN=" + PIN + ", PHONE_NO=" + PHONE_NO + ", E=" + E
+				+ ", W=" + W + ", SC=" + SC + ", SURL=" + SURL + ", CITY="
+				+ CITY + ", TAGS=" + TAGS + ", STATUS=" + STATUS + ", YOF="
+				+ YOF + ", PN=" + PN + ", SOS=" + SOS + ", TN=" + TN + ", COS="
+				+ COS + ", MOI=" + MOI + ", TOS=" + TOS + ", CREATEDON="
+				+ CREATEDON + ", NID=" + NID + "]";
 	}
+	
+	
+	
 }
