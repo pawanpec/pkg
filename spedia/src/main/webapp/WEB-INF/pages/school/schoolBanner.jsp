@@ -6,6 +6,19 @@
 int randBgImageIndex = 1 + (int)(Math.random()*8);
 String defaultBGPath=WebConstants.IMAGE_URL+"images/bg_images/"+randBgImageIndex+".jpg";
 %>
+<script>
+function follow(nid,uid,status) {
+	 var queryString="?nid="+nid+"&uid="+uid+"&status="+status;
+	 var followUrl="/spedia/followSchool.html"+queryString;
+	  $.ajax({url: followUrl, success: function(result){
+		  if(result=="1"){
+			  //change the value of follow button to following.
+			  $("#follow").html("following");
+		  }
+         
+      }});
+}
+</script>
 
 <c:set value="<%=SchoolsConstants.SOCIAL_URL_TWITTER_CODE%>"
 	var="SOCIAL_URL_TWITTER_CODE" />
@@ -148,7 +161,7 @@ String defaultBGPath=WebConstants.IMAGE_URL+"images/bg_images/"+randBgImageIndex
 						<ul class="followpos inlineul">
 							<!-- <li class="font24" data-ng-if="followData.followCount > 0"> -->
 							<li>
-								<input data-ng-show="followData.followStatus==0" class="btn btn-primary btn-sm colorfff" data-ng-click="followCompanyWithFollowService(1)" value="FOLLOW" type="button" /> 
+								<input id="follow"  class="btn btn-primary btn-sm colorfff" onclick="follow(${content.nid},2,1);" value="FOLLOW" type="button" /> 
 							</li>
 							<li>
 								<input class="btn btn-primary btn-sm colorfff" value="Write Review" type="button" /> 

@@ -37,22 +37,9 @@
 	
 
 	<script src="<%=WebConstants.JS_URL %>js/jquery-1.10.2.min.js" type="text/javascript"></script> 
-	<script src="<%=WebConstants.JS_URL %>js/bootstrap.js" type="text/javascript"></script>
-	<script src="<%=WebConstants.JS_URL %>js/angular.js" type="text/javascript"></script>
-	<script src="<%=WebConstants.JS_URL %>js/angular-cookies.js" type="text/javascript"></script>	
-	<script src="<%=WebConstants.JS_URL %>js/isotope.pkgd.min.js" type="text/javascript"></script>
-	<script src="<%=WebConstants.JS_URL %>js/globalJS.js" type="text/javascript"></script>
-	<script src="<%=WebConstants.JS_URL %>js/app/services/services.js" type="text/javascript"></script>
-	<script src="<%=WebConstants.JS_URL %>js/app/filters/filters.js" type="text/javascript"></script>
-	<script src="<%=WebConstants.JS_URL %>js/bootstrap-slider.js" type="text/javascript"></script>
-	<script src="<%=WebConstants.JS_URL %>js/utilityJS.js"></script>
-	<script src="<%=WebConstants.JS_URL %>js/underscore-min.js"></script>
-	<script src="<%=WebConstants.JS_URL%>js/star-rating.js" type="text/javascript"></script>		
-	<script src="<%=WebConstants.JS_URL%>js/dirPagination.js" type="text/javascript"></script>
-	<script src="<%=WebConstants.JS_URL %>js/fb-commenting.js" type="text/javascript"></script>
-	<script src="<%=WebConstants.JS_URL%>js/seo-details.js" type="text/javascript"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	
-	<script src="<%=WebConstants.JS_URL%>js/app/controllers/postInterview.js" type="text/javascript"></script>
+	
 <!-- css inludes -->
 	<link rel="stylesheet" type="text/css" href="<%=WebConstants.CSS_URL %>css/bootstrap.css" />
 	<link rel="stylesheet" type="text/css" href="<%=WebConstants.CSS_URL %>css/stylesheet.css" />

@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mongodb.BasicDBObject;
@@ -123,12 +124,12 @@ public class ContentController {
 		
 	}
 	@RequestMapping(value = { "/followSchool.html" }, method = { RequestMethod.GET })
-	public Integer followSchool(HttpServletRequest request, HttpServletResponse response) {
+	public @ResponseBody String followSchool(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			Integer nid=Integer.parseInt(request.getParameter("nid"));
 			Integer uid=Integer.parseInt(request.getParameter("uid"));
 			Integer status=Integer.parseInt(request.getParameter("status"));
-			if(SocialUtility.chkNull(uid)){
+			if(!SocialUtility.chkNull(uid)){
 				User user=new User();
 				user.setUid(uid);
 				if(status.equals(1)){
@@ -139,13 +140,13 @@ public class ContentController {
 				}
 				
 			}
-			return 1;
+			return "1";
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return 0;
+		return null;
 		
 	}
 
