@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.spedia.model.Reviews;
 import com.spedia.service.review.IReviewService;
 
-
+/*Pawan */
 @Controller
 public class ReviewController {
 	@Autowired
