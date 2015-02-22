@@ -1,5 +1,6 @@
 package com.spedia.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -55,6 +56,10 @@ public class ReviewController {
 	@RequestMapping(value = "/submitReview.html")
     public ModelAndView submit(@ModelAttribute("Reviews") Reviews reviews,BindingResult result) {
     	ModelAndView view = new ModelAndView("writeReview");
+    	reviews.setStatus(0);
+    	Date date=new Date();
+    	Long created=date.getTime();
+		reviews.setCreated(created.intValue());
     	reviewService.writeReview(reviews);
     	 if (result.hasErrors()) {
     	        return view;
