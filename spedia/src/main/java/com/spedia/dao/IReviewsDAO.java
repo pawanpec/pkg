@@ -16,5 +16,7 @@ import com.spedia.model.User;
 public interface IReviewsDAO extends BaseDao<Reviews, Integer>{
 	public List<Reviews> findByNid(Integer nid, int i);
 
+	public List<Reviews> getAllUnModeratedReviews();
+
 
 }

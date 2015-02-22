@@ -29,5 +29,11 @@ public class ReviewsDAO extends BaseDAOImpl<Reviews, Integer> implements IReview
 		return query.getResultList();
 	}
 
+	@Override
+	public List<Reviews> getAllUnModeratedReviews() {
+		TypedQuery<Reviews> query = getEntityManager().createQuery("from Reviews where status=0",Reviews.class);
+		return query.getResultList();
+	}
+
 	
 }

@@ -2,6 +2,8 @@ package com.spedia.service.review;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -25,7 +27,13 @@ public class ReviewService implements IReviewService {
 		reviews=reviewsDao.persist(reviews);
 		return reviews;
 	}
-
+	@Override
+	public Reviews rejectReview(Integer rid) {
+		Reviews reviews=reviewsDao.findById(rid);
+		reviews.setStatus(2);
+		reviewsDao.persist(reviews);
+		return reviews;
+	}
 	@Override
 	public Reviews approveReview(Integer rid) {
 		Reviews reviews=reviewsDao.findById(rid);
@@ -85,6 +93,12 @@ public class ReviewService implements IReviewService {
 	public List<Reviews> findByNid(Integer nid, int i) {
 		// TODO Auto-generated method stub
 		return reviewsDao.findByNid(nid, i);
+	}
+
+	@Override
+	public List<Reviews> getAllUnModeratedReviews() {
+		// TODO Auto-generated method stub
+		return reviewsDao.getAllUnModeratedReviews();
 	}
 
 }

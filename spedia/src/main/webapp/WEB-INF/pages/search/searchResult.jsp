@@ -2,7 +2,7 @@
 Search Result
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="col-sm-4 col-md-3 item account-card interview-card ng-hide">
-	<c:forEach items="${contents}" var="newsContent" begin="1" end="2">
+	<c:forEach items="${contents}" var="newsContent" begin="1" end="2" >
 		<div class="normal_listing" itemscope=""
 			itemtype="http://schema.org/LocalBusiness">
 			<div class="row rowpdng">

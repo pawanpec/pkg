@@ -28,7 +28,6 @@ import com.spedia.model.User;
 import com.spedia.service.follow.IFollowService;
 import com.spedia.utils.SEOURLUtils;
 import com.spedia.utils.SocialUtility;
-
 /**
  * @author pawan
  *
