@@ -1,4 +1,13 @@
 <%@ include file="include.jsp" %>
+
+<script type="text/javascript">
+var site_url='http://dev.timesjobs.com/';
+ function goToFacebook(){
+ 			var callBaclUrl=site_url+'spedia/userHome.html';
+			url=site_url+'spedia/social-connect.html?apc=sp&src=jbz_reg&pId=fb&cl='+callBaclUrl;
+			window.location = url ;
+ }
+</script>
 	<div class="navbar navbar-inverse hidden-xs topheader"> 
 	    <div class="container-fluid">
 			<!--Top Navigation-->
@@ -46,6 +55,7 @@
 				<ul class="notification xs-headerr ng-hide" data-ng-show="(isLoginInfo.loginId == null || isLoginInfo.loginId == '') && !isMobileSearch" data-ng-if="(isLoginInfo.loginId == null || isLoginInfo.loginId == '')">
 					<li><a href="javascript:openmodal('loginCtrl')" class="pageview" pageurl="login">Login</a></li>
 					<li><a href="javascript:openmodal('signUpctrl')" class="pageview" pageurl="register">Register</a></li>
+					 <div class="fl"><a href="javascript: goToFacebook();">connect with FB</a></div>
 				</ul>
 	
 				<ul class="notification xs-headerr ng-hide" data-ng-show="(isLoginInfo.loginId != null && isLoginInfo.loginId != '') && !isMobileSearch">

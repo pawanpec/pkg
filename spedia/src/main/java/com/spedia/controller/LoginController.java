@@ -17,13 +17,13 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginController {
 
-	@RequestMapping(value = { "/", "/welcome.html" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/", "/userHome.html" }, method = RequestMethod.GET)
 	public ModelAndView defaultPage() {
 
 		ModelAndView model = new ModelAndView();
 		model.addObject("title", "Spring Security + Hibernate Example");
 		model.addObject("message", "This is default page!");
-		model.setViewName("hello");
+		model.setViewName("userHome");
 		return model;
 
 	}

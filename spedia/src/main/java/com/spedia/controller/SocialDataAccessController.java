@@ -40,7 +40,7 @@ public class SocialDataAccessController{
 		 * storing the information in session, which will be used in callback
 		 * controller
 		 **/
-		//SocialUtility.storeDataInSession(request);
+		SocialUtility.storeDataInSession(request);
 
 		try {
 			/** creating the OAuthService object based on provider type **/

@@ -234,7 +234,10 @@ public class SocialUtility {
 				: request.getParameter("src");
 		String appCode = request.getParameter("apc");
 		String access_token = request.getParameter("access_token");
-		Token accessToken = new Token(access_token, "");
+		Token accessToken=null;
+		if (access_token!=null) {
+			accessToken = new Token(access_token, "");
+		}
 		/**
 		 * storing the information in session, which will be used in callback
 		 * controller
