@@ -148,5 +148,12 @@ public class ContentController {
 		return null;
 		
 	}
+	@RequestMapping(value = { "/index.html" }, method = { RequestMethod.GET })
+	public ModelAndView home(HttpServletRequest request, HttpServletResponse response) {
+		Map<String, Object> model=new HashMap<String, Object>();
+		ModelAndView view = new ModelAndView("home");
+		view.addAllObjects(model);
+		return view;
+	}
 
 }
