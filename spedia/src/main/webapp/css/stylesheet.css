@@ -979,3 +979,45 @@ h3 a:hover,h3 a:focus,h4 a:hover,h4 a:focus{text-decoration: none;}
 .notification li a.upvoted .upvote,.notification li a.upvoted:focus .upvote { background: #999; cursor: default; text-decoration: none;}
  .interviewviewuser{line-height: 30px; white-space: nowrap; float: right;}
  
+ 
+.search-home
+
+{
+
+	background:url(../images/bg/search-bg1.jpg) 0 31px repeat-x #e6f8fc;
+
+	float:left;
+
+	height:280px;
+
+	margin:0 4px 0 0;
+
+	width:322px;
+
+}
+
+.banner-home
+
+{
+
+	float:left;
+
+	height:280px;
+
+	position:relative;
+
+	width:640px;
+
+}
+
+
+
+.banner-home img
+
+{
+
+	height:280px;
+
+}
+
+ 

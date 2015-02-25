@@ -1,20 +1,9 @@
 <%@ page import="com.spedia.utils.WebConstants"%>
 <div>
-	<div>
-		<img src="images/cmpwho.jpg" class="cmpimg" />
-		<div class="cmpwhodetail">
-			<h3>WHO WE ARE</h3>
-			<p>
-				Computer Sciences Corporation is an American multinational
-				corporation that provides information technology services and
-				professional services. Its headquarters are located in Falls Church,
-				Virginia. CSC has 80,000 employees in over 70 countries. <a href="#">read
-					more</a>
-			</p>
-		</div>
-	</div>
-	<div class="cmpwho z2new">Search</div>
+	<%@include file="searchHome.jsp" %>
+	<%@include file="bannerHome.jsp" %>
 </div>
+<div class="clearfix"></div>
 <div class="homepage">
 	<!--******* Feature Screen *************-->
 	<div class="position">
