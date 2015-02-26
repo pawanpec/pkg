@@ -6,7 +6,7 @@
 	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
 	<!-- enable use-expressions -->
-	<http auto-config="true" use-expressions="true">
+	<http auto-config="true" use-expressions="true" authentication-manager-ref="authenticationManager">
 		<intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/get_all_unmoderated_review.html" access="hasRole('ROLE_ADMIN')" />
 
@@ -23,9 +23,13 @@
 		<csrf />
 	</http>
 
-	<authentication-manager>
+	<authentication-manager id="authenticationManager">
 		<authentication-provider user-service-ref="userDetailsService" >
 			<password-encoder hash="md5" />    
+		</authentication-provider>
+	</authentication-manager>
+	<authentication-manager id="authenticationManagerAutoLogin">
+		<authentication-provider user-service-ref="userDetailsService" >
 		</authentication-provider>
 	</authentication-manager>
 

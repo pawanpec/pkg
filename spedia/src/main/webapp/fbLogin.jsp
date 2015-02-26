@@ -9,12 +9,11 @@ function registerUser(data) {
 	 var queryString="?data="+data+"&socialType=fb";
 	 var aurl="/spedia/registerUser.html"+queryString;
 	  $.ajax({url: aurl, success: function(result){
-		  alert(result);
+		  console.log("after login "+result);
 		  if(result=="1"){
-			  //change the value of follow button to following.
-			 // $("#follow").html("following");
+			  window.location = "http://dev.timesjobs.com/spedia/userHome.html";
 		  }
-         
+		 
       }});
 }
 </script>

@@ -26,10 +26,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Transactional(readOnly = true)
 	@Override
+	/*
+	 * Email base Login
+	 */
 	public UserDetails loadUserByUsername(final String email)
 			throws UsernameNotFoundException {
 
-		com.spedia.model.User user = userDao.findByUserName(email);
+		com.spedia.model.User user = userDao.findByUserEmail(email);
 		List<GrantedAuthority> authorities = buildUserAuthority(user
 				.getUserRoleses());
 
@@ -41,7 +44,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	// org.springframework.security.core.userdetails.User
 	private User buildUserForAuthentication(com.spedia.model.User user,
 			List<GrantedAuthority> authorities) {
-		return new User(user.getUsername(), user.getPassword(),
+		/*
+		 * Email base Login
+		 */
+		return new User(user.getMail(), user.getPassword(),
 				user.getEnabled(), true, true, true, authorities);
 	}
 

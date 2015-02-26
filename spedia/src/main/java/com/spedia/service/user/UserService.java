@@ -14,7 +14,6 @@ public class UserService implements IUserService {
 
 	@Override
 	public User registerUser(User user) {
-		// TODO Auto-generated method stub
 		return userDao.persist(user);
 	}
 
@@ -23,6 +22,12 @@ public class UserService implements IUserService {
 		// TODO Auto-generated method stub
 		Integer id=user.getUid();
 		return userDao.findById(id);
+	}
+
+	@Override
+	public User findByUserEmail(String email) {
+		// TODO Auto-generated method stub
+		return userDao.findByUserEmail(email);
 	}
 
 }

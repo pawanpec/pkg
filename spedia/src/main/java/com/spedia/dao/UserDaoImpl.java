@@ -18,7 +18,7 @@ public class UserDaoImpl extends BaseDAOImpl<User, Integer> implements UserDao{
 
 
 	@SuppressWarnings("unchecked")
-	public User findByUserName(String email) {
+	public User findByUserEmail(String email) {
 
 		List<User> users = new ArrayList<User>();
 

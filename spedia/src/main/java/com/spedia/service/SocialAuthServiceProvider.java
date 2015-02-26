@@ -132,7 +132,7 @@ public class SocialAuthServiceProvider implements Serializable , MessageSourceAw
 	@Override
 	public void setMessageSource(MessageSource messageSource) {
 		this.messageSource = messageSource;
-		init();
+		//init();
 	}
 
 }
