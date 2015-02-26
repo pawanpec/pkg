@@ -1,7 +1,10 @@
 package com.spedia.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.LockedException;
@@ -14,9 +17,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mongodb.WriteResult;
+import com.spedia.dao.MongoDao;
+import com.spedia.model.User;
+import com.spedia.service.user.UserService;
+import com.spedia.utils.SocialUtility;
+
+
 @Controller
 public class LoginController {
-
+	@Autowired
+	@Qualifier("mongoDao")
+	private MongoDao mongoDao;
+	@Autowired
+	@Qualifier("userService")
+	private UserService userService;
 	@RequestMapping(value = { "/", "/userHome.html" }, method = RequestMethod.GET)
 	public ModelAndView defaultPage() {
 
@@ -26,6 +41,23 @@ public class LoginController {
 		model.setViewName("userHome");
 		return model;
 
+	}
+	@RequestMapping(value = { "/registerUser.html" }, method = { RequestMethod.GET })
+	public ModelAndView registerUser(HttpServletRequest request, HttpServletResponse response) {
+		String data=request.getParameter("data");
+		String socialType=request.getParameter("socialType");
+		User user=SocialUtility.getUserFromJson(data);
+		user.setSocialType(socialType);
+		user.setPassword(SocialUtility.getMD5(user.getSocialLoginId()));
+		user=userService.registerUser(user);
+		WriteResult writeResult=mongoDao.saveUserFbData(data);
+		System.out.println(writeResult.getUpsertedId());
+		ModelAndView model = new ModelAndView();
+		model.addObject("title", "Spring Security + Hibernate Example");
+		model.addObject("message", "This is default page!");
+		String redirectedUrl = "redirect:"+"/userHome.html";
+		model.setViewName(redirectedUrl);
+		return model;
 	}
 
 	@RequestMapping(value = "/admin.html", method = RequestMethod.GET)

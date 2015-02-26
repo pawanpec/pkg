@@ -18,12 +18,12 @@ public class UserDaoImpl extends BaseDAOImpl<User, Integer> implements UserDao{
 
 
 	@SuppressWarnings("unchecked")
-	public User findByUserName(String username) {
+	public User findByUserName(String email) {
 
 		List<User> users = new ArrayList<User>();
 
-		TypedQuery<User> query = getEntityManager().createQuery("from User where username=?",User.class).
-				setParameter(1, username);
+		TypedQuery<User> query = getEntityManager().createQuery("from User where mail=?",User.class).
+				setParameter(1, email);
 				users=query.getResultList();
 		if (users.size() > 0) {
 			return users.get(0);

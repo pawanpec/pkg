@@ -15,6 +15,7 @@ import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -32,6 +33,8 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 import com.mongodb.util.JSON;
 import com.spedia.model.Connection;
+import com.spedia.model.User;
+import com.spedia.model.UserRole;
 
 public class SocialUtility {
 
@@ -321,4 +324,26 @@ public class SocialUtility {
 		}
 		return stringBuffer.toString();
 	}
+	public static User getUserFromJson(String userJson){
+		if (!chkNull(userJson)) {
+			DBObject object = (DBObject) JSON.parse(userJson);
+			User user=new User();
+			String email=(String)object.get("email");
+			String name=(String)object.get("name");
+			String id=(String)object.get("id");
+			user.setMail(email);
+			user.setSocialLoginId(id);
+			user.setUsername(name);
+			Set<UserRole> userRoleses=new HashSet<UserRole>();
+			UserRole userRole=new UserRole();
+			userRole.setUser(user);
+			userRole.setRole("ROLE_USER");
+			userRoleses.add(userRole);
+			user.setUserRoleses(userRoleses);
+			return user;
+		}
+		return null;
+
+	}
+	
 }

@@ -1,5 +1,6 @@
 package com.spedia.model;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -29,10 +30,11 @@ public class User extends GenericObject {
 	private Integer uid;
 	private String password;
 	private String mail;
-	private Integer created;
-	private Integer updated;
+	private static Long time=(new Date()).getTime();
+	private Integer created=time.intValue();
+	private Integer updated=time.intValue();;
 	private Integer login;
-	private boolean enabled;
+	private boolean enabled=true;
 	private String socialLoginId;
 	private String socialType;
 	private Set<UserRole> userRoleses = new HashSet<UserRole>(0);

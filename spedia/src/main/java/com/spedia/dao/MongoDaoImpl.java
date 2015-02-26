@@ -14,6 +14,7 @@ import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.Mongo;
 import com.mongodb.WriteResult;
+import com.mongodb.util.JSON;
 import com.spedia.model.Connection;
 import com.spedia.model.Profile;
 import com.spedia.model.User;
@@ -371,6 +372,13 @@ public class MongoDaoImpl implements MongoDao {
 		}
 		return nodeCollection.update(nodeQuery,followObject, true,
 				false);
+	}
+	@Override
+	public WriteResult saveUserFbData(String jsonData) {
+		DBCollection col = getMongoDatabase().getCollection(
+				MongoConstants.MONGO_DB_USER_PROFILE_COLLECTION);
+		DBObject dbObject = (DBObject) JSON.parse(jsonData);
+		return col.save(dbObject);
 	}
 
 }

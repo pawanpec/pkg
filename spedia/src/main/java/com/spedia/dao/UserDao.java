@@ -5,6 +5,6 @@ import com.spedia.model.User;
 
 public interface UserDao extends BaseDao<User, Integer>  {
 
-	User findByUserName(String username);
+	User findByUserName(String email);
 
 }

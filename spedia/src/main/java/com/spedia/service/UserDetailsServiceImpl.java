@@ -26,10 +26,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Transactional(readOnly = true)
 	@Override
-	public UserDetails loadUserByUsername(final String username)
+	public UserDetails loadUserByUsername(final String email)
 			throws UsernameNotFoundException {
 
-		com.spedia.model.User user = userDao.findByUserName(username);
+		com.spedia.model.User user = userDao.findByUserName(email);
 		List<GrantedAuthority> authorities = buildUserAuthority(user
 				.getUserRoleses());
 
