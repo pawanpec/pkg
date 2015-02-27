@@ -1,7 +1,7 @@
 	<div class="container-fluid fearturelist">
 		<div class="margincenter col-sm-10 text-center">
 			<h2 class="robotolight font36">
-				<strong>FEATURED COMPANIES</strong>
+				<strong>FEATURED Schools In delhi</strong>
 			</h2>
 		</div>
 		<div class="margincenter col-sm-11"
