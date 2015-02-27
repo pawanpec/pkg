@@ -1,1 +1,2 @@
 mvn eclipse:eclipse -Dwtpversion=2.0
+mvn clean install -Dmaven.test.skip=true
