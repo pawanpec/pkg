@@ -27,4 +27,5 @@ public interface MongoDao {
 	public DB getMongoDatabase(String dbName) ;
 	public WriteResult follow(Integer nid,User user,Boolean status) ;
 	public WriteResult saveUserFbData(String jsonData) ;
+	List<DBObject> getTopReviewedSchool();
 }

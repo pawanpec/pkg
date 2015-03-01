@@ -28,5 +28,5 @@ public class WebConstants {
 	public static final int HALF_COOKIE_VALIDITY_SECONDS = 60*60*24*14; //  14 days validity in seconds i.e 60*60*24*14
 	
 	public static String SECURITY_TOKEN="changeThis";
-	public static String TJ_DOMAIN = ".timesjobs.com";
+	public static String SP_DOMAIN = ".timesjobs.com";
 }

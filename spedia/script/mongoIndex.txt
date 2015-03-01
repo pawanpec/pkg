@@ -4,3 +4,4 @@ db.fields_current.node.ensureIndex({"tags":1}, {background : true});
 db.fields_current.node.ensureIndex({"location.province":1}, {background : true});
 db.fields_current.node.ensureIndex({"location.city":1}, {background : true});
 db.fields_current.node.ensureIndex({"type":1}, {background : true});
+db.fields_current.node.ensureIndex({"review.count":1}, {background : true});

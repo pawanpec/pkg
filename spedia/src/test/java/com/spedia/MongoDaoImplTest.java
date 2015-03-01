@@ -1,28 +1,12 @@
 package com.spedia;
 
-import static org.junit.Assert.assertNotNull;
-
-import java.sql.Date;
-import java.util.HashSet;
-import java.util.Set;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
+import java.util.List;
 
 import junit.framework.TestCase;
 
-import com.google.gson.Gson;
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
 import com.mongodb.WriteResult;
 import com.spedia.dao.MongoDao;
-import com.spedia.model.SchoolBean;
-import com.spedia.model.User;
-import com.spedia.model.UserRole;
-import com.spedia.service.user.IUserService;
-import com.spedia.service.user.UserService;
-import com.spedia.utils.SocialUtility;
 
 public class MongoDaoImplTest extends TestCase {
 
@@ -118,10 +102,18 @@ public class MongoDaoImplTest extends TestCase {
 		SchoolBean schoolBean= gson.fromJson(basicDBObject.toString(), SchoolBean.class);
 		System.out.println(schoolBean.getBackGroundImagePath());
 	}*/
-	public void testsaveUserFbData(){
+	/*public void testsaveUserFbData(){
 		MongoDao mongoDao=(MongoDao) BaseSpringTest.getInstance().getBean("mongoDao");
 		String data="{'name':'mkyong', 'age':30}";
 		WriteResult writeResult=mongoDao.saveUserFbData(data);
 		System.out.println(writeResult.getLastError());
+	}*/
+	public void testTopSchool(){
+		MongoDao mongoDao=(MongoDao) BaseSpringTest.getInstance().getBean("mongoDao");
+		 List<DBObject> topReviewedSchool=mongoDao.getTopReviewedSchool();
+		 for (DBObject dbObject : topReviewedSchool) {
+			System.out.println(dbObject.get("title"));
+			System.out.println(dbObject.get("review"));
+		}
 	}
 }

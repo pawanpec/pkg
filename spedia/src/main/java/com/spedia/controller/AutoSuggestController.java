@@ -40,5 +40,4 @@ public class AutoSuggestController extends BaseWSController{
 		Set<Map> d =autoSuggestService.getDocument(query, hitCount);
 		return convertIntoJson(d);
 	}
-
 }

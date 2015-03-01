@@ -106,7 +106,7 @@ function registerUser(data) {
   the FB.login() function when clicked.
 -->
 
-<fb:login-button scope="username,public_profile,email,user_about_me,user_birthday,user_education_history,user_location,user_work_history,user_photos,friends_about_me,friends_birthday,friends_education_history,friends_location,friends_work_history,publish_stream" onlogin="checkLoginState();">
+<fb:login-button scope="username,public_profile,email,user_about_me,user_friends,user_birthday,user_education_history,user_location,user_work_history,user_photos,friends_about_me,friends_birthday,friends_education_history,friends_location,friends_work_history,publish_stream" onlogin="checkLoginState();">
 </fb:login-button>
 
 <div id="status">

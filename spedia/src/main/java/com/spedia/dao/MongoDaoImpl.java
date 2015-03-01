@@ -23,6 +23,7 @@ import com.spedia.utils.MongoConstants;
 import com.spedia.utils.SocialUtility;
 
 public class MongoDaoImpl implements MongoDao {
+	private static final String FIELDS_CURRENT_NODE = "fields_current.node";
 	private static final String MONGO_DB_NAME = "drupal";
 	/**
 	 * This will be called when the bean will get initialised, this will ensure
@@ -43,7 +44,7 @@ public class MongoDaoImpl implements MongoDao {
 	@Override
 	public DBObject getContentByURL(String url) {
 		DBCollection node = getMongoDatabase().getCollection(
-				"fields_current.node");
+				FIELDS_CURRENT_NODE);
 		DBObject cond = new BasicDBObject();
 		cond.put("alias", url);
 		return node.findOne(cond);
@@ -57,7 +58,7 @@ public class MongoDaoImpl implements MongoDao {
 	@Override
 	public DBObject getContentByNid(Integer nid) {
 		DBCollection node = getMongoDatabase().getCollection(
-				"fields_current.node");
+				FIELDS_CURRENT_NODE);
 		DBObject cond = new BasicDBObject();
 		cond.put("_id", nid);
 		return node.findOne(cond);
@@ -65,8 +66,20 @@ public class MongoDaoImpl implements MongoDao {
 	@Override
 	public DBCursor getContent(BasicDBObject basicDBObject) {
 		DBCollection node = getMongoDatabase().getCollection(
-				"fields_current.node");
+				FIELDS_CURRENT_NODE);
 		return node.find(basicDBObject);
+	}
+	@Override
+	public List<DBObject> getTopReviewedSchool() {
+		DBCollection node = getMongoDatabase().getCollection(
+				FIELDS_CURRENT_NODE);
+		DBObject cond = new BasicDBObject();
+		cond.put("type", "group");
+		cond.put("review.count", new BasicDBObject("$gt",2));
+		DBObject orderBy=new BasicDBObject("review.count",-1);
+		DBCursor cursor=node.find(cond).sort(orderBy).limit(10);
+		return cursor.toArray();
+		
 	}
 	@Override
 	public String saveProfile(Profile profile) {
@@ -351,7 +364,7 @@ public class MongoDaoImpl implements MongoDao {
 	@Override
 	public WriteResult updateOverAllRating(DBObject node) {
 		DBCollection nodeCollection = getMongoDatabase().getCollection(
-				"fields_current.node");
+				FIELDS_CURRENT_NODE);
 		BasicDBObject nodeQuery = new BasicDBObject();
 		nodeQuery.put("_id", node.get("_id"));
 		WriteResult c = nodeCollection.update(nodeQuery, node);
@@ -360,7 +373,7 @@ public class MongoDaoImpl implements MongoDao {
 	@Override
 	public WriteResult follow(Integer nid,User user,Boolean status) {
 		DBCollection nodeCollection = getMongoDatabase().getCollection(
-				"fields_current.node");
+				FIELDS_CURRENT_NODE);
 		BasicDBObject nodeQuery = new BasicDBObject();
 		nodeQuery.put("_id", nid);
 		BasicDBObject followObject = new BasicDBObject();

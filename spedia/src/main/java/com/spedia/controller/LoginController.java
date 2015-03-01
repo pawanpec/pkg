@@ -68,7 +68,10 @@ public class LoginController {
 			user = userService.registerUser(user);
 			WriteResult writeResult = mongoDao.saveUserFbData(data);
 			System.out.println(writeResult.getUpsertedId());
+			setUserDataInSession(response,user);
 			status="0";
+		}else{
+			setUserDataInSession(response,userExist);
 		}
 		UserDetails userDetails = userDetailsService.loadUserByUsername(email);
 		Boolean autoLogin=doAutoLogin(userDetails);
@@ -77,6 +80,12 @@ public class LoginController {
 			status="-1";
 		}
 		return status;
+	}
+	private void setUserDataInSession(HttpServletResponse response, User userExist) {
+		SocialUtility.addCookie("username", userExist.getUsername(), response);
+		SocialUtility.addCookie("email", userExist.getMail(), response);
+		SocialUtility.addCookie("uid", userExist.getUid()+"", response);
+		SocialUtility.addCookie("socialLoginId", userExist.getSocialLoginId(), response);
 	}
 	private Boolean doAutoLogin(UserDetails userDetails) {
 		// perform login authentication

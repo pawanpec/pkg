@@ -1,7 +1,7 @@
 <%@ page import="com.spedia.utils.WebConstants"%>
 <div>
 	<%@include file="searchHome.jsp" %>
-	<%@include file="bannerHome.jsp" %>
+	<%-- <%@include file="bannerHome.jsp" %> --%>
 </div>
 <div class="clearfix"></div>
 <div class="homepage">

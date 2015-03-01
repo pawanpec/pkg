@@ -169,9 +169,8 @@ public class SocialUtility {
 		Cookie cookie = null;
 		try {
 			cookie = new Cookie(key, value);
-			cookie.setPath("/harvest/");
-			cookie.setDomain(".timesjobs.com");
-			cookie.setMaxAge(5 * 60);
+			cookie.setDomain(WebConstants.SP_DOMAIN);
+			cookie.setMaxAge(30 * 60);
 			response.addCookie(cookie);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -329,11 +328,11 @@ public class SocialUtility {
 			DBObject object = (DBObject) JSON.parse(userJson);
 			User user=new User();
 			String email=(String)object.get("email");
-			String name=(String)object.get("name");
+			String username=(String)object.get("username");
 			String id=(String)object.get("id");
 			user.setMail(email);
 			user.setSocialLoginId(id);
-			user.setUsername(name);
+			user.setUsername(username);
 			Set<UserRole> userRoleses=new HashSet<UserRole>();
 			UserRole userRole=new UserRole();
 			userRole.setUser(user);
