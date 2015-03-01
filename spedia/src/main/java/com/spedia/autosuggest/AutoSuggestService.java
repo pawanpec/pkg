@@ -55,8 +55,9 @@ public class AutoSuggestService {
 				Document d = searcher.doc(docId);
 				schoolMap.put("title", d.get("title"));
 				schoolMap.put("id", d.get("id"));
+				schoolMap.put("province", d.get("province"));
 				result.add(schoolMap);
-				System.out.println((i + 1) + ". " + "\t" + d.get("title"));
+				//System.out.println((i + 1) + ". " + "\t" + d.get("title"));
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -98,6 +99,7 @@ public class AutoSuggestService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println(d);
 	}
 
 }

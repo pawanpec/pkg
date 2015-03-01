@@ -36,8 +36,9 @@
 	<meta name="language" content="english"/>
 	
 
-	<script src="<%=WebConstants.JS_URL %>js/jquery-1.10.2.min.js" type="text/javascript"></script> 
-	
+	 <script src="<%=WebConstants.JS_URL %>js/jquery-1.10.2.min.js" type="text/javascript"></script> 
+	 <script type="text/javascript" src="<%=WebConstants.JS_URL %>js/autosuggest2.js"></script>
+     <script type="text/javascript" src="<%=WebConstants.JS_URL %>js/suggestions2.js"></script>
 	
 <!-- css inludes -->
 	<link rel="stylesheet" type="text/css" href="<%=WebConstants.CSS_URL %>css/bootstrap.css" />
@@ -46,6 +47,7 @@
 	<link rel="stylesheet" type="text/css" href="<%=WebConstants.CSS_URL %>css/datepicker.css" />
 	<link rel="stylesheet" type="text/css" href="<%=WebConstants.CSS_URL %>fonts/font.css" />
 	<link rel="stylesheet" type="text/css" href="<%=WebConstants.CSS_URL%>css/star-rating.css" />
+	<link rel="stylesheet" type="text/css" href="<%=WebConstants.CSS_URL %>css/autosuggest.css" />
 		
 </head>
 

@@ -12,6 +12,15 @@ function registerUser(data) {
 		 
      }});
 }
+function submitForm(formName)
+{
+  document.forms[formName].submit() ;
+}
+</script>
+<script type="text/javascript">
+            window.onload = function () {
+                var oTextbox = new AutoSuggestControl(document.getElementById("txt1"), new StateSuggestions());        
+            }
 </script>
 <div id="fb-root"></div>
 <script>
@@ -157,33 +166,20 @@ function registerUser(data) {
 					src="<%=WebConstants.IMAGE_URL%>images/flogin.jpg" alt="FB Login"
 					style="cursor:pointer;" onclick="Login()" />
 			</div>
-			<form class="search-input col-xs-9 visible-sm visible-md visible-lg"
-				data-ng-init="scope = {isVisible: false, class:'', autocomplete:2}"
-				action="/jobbuzz/search.html" id="searchForm"
-				data-ng-class="isMobileSearch ? 'visible-xs' : 'f'" method="post"
-				data-ng-click="$event.stopPropagation();" autocomplete="off">
-				<div class="input-group ng-hide"
-					data-ng-show="search.searchBy==3 || search.searchBy==-1">
-					<input type="text" id="jobsSearchText" name="jobsSearchText"
-						data-ng-model="search.jobsSearchText" maxlength="100"
-						placeholder="E.g. Java Developer 3-5 years Pune"
-						typeahead-on-select='onSelect($item, $model, $label)'
-						data-ng-pattern="/^[a-zA-Z0-9]/"
-						typeahead="suggestion for suggestion in loadJobs($viewValue) | limitTo:5"
-						typeahead-min-length="3" class="form-control"
-						data-ng-keyup="$event.keyCode == 13 || $event.keyCode == 186 ? headerSearchSubmitJob(search.jobsSearchText) : null"
-						aria-describedby="basic-job" /> <span
-						class="input-group-addon mobileserbtn mobileserbtnw"
-						data-ng-show="isMobileSearch"
-						data-ng-click="headerSearchSubmitJob(search.jobsSearchText)">
-						<img src="<%=WebConstants.IMAGE_URL%>images/spacer.gif"
+			<form class="search-input col-xs-9 visible-sm visible-md visible-lg" name="searchSchool" method="post" autocomplete="off" action="/spedia/search.html">
+				<div class="input-group ng-hide">
+					  	<p><input type="text" id="txt1" /></p>
+						<img src="<%=WebConstants.IMAGE_URL%>images/spacer.gif" onclick="submitForm('searchSchool')"
 						class="cus-icon cus-homesearch" />
 					</span>
 				</div>
-				<input style="visibility: visible;" type="hidden" id="searchBy"
-					name="searchBy" value="" data-ng-model="search.searchBy"> <input
-					style="visibility: visible;" type="hidden" id="compId"
-					name="compId" value="" data-ng-model="search.compId">
+				<select name=slist id="stateList">
+						<option value="Delhi">Delhi</option>
+						<option value="Goa">Goa</option>
+				</select>
+			    <input
+					style="visibility: visible;" type="hidden" id="nid"
+					name="nid" value="">
 			</form>
 		</div>
 	</div>
