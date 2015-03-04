@@ -64,10 +64,11 @@ public class MongoDaoImpl implements MongoDao {
 		return node.findOne(cond);
 	}
 	@Override
-	public DBCursor getContent(BasicDBObject basicDBObject) {
+	public DBCursor getContent(DBObject basicDBObject) {
 		DBCollection node = getMongoDatabase().getCollection(
 				FIELDS_CURRENT_NODE);
-		return node.find(basicDBObject);
+		DBObject orderBy=new BasicDBObject("changed",-1);
+		return node.find(basicDBObject).sort(orderBy);
 	}
 	@Override
 	public List<DBObject> getTopReviewedSchool() {
@@ -77,7 +78,7 @@ public class MongoDaoImpl implements MongoDao {
 		cond.put("type", "group");
 		cond.put("review.count", new BasicDBObject("$gt",2));
 		DBObject orderBy=new BasicDBObject("review.count",-1);
-		DBCursor cursor=node.find(cond).sort(orderBy).limit(10);
+		DBCursor cursor=node.find(cond).sort(orderBy).limit(4);
 		return cursor.toArray();
 		
 	}

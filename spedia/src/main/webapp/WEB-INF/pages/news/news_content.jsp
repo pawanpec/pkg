@@ -1,4 +1,6 @@
 <%@ include file="/WEB-INF/pages/include.jsp"%>
+<title>${content.title}</title>
+<meta name="keywords" content="${content.title}" />
 <!--######## Main Container Start Here ###########-->
 	<div class="row innerWrap">
 	<div class="col-sm-12">
@@ -6,7 +8,7 @@
 			<div class="row">
 				<ol class="breadcrumb">
 					  <li><a href="/"><img src="<%=WebConstants.IMAGE_URL%>images/spacer.gif" class="cus-icon cus-home-small" alt="home" /></a></li>
-					  <li><a href="/insight/all/">${content.type}</a></li>
+					  <li><a href="/spedia/contentType.html?type=${content.type}">${fn:replace(content.type,'_',' ')}</a></li>
 					  <li class="active"><a href="${group.alias}">${group.title}</li>
 				</ol>
 			</div>
@@ -14,38 +16,17 @@
 				<section class="col-md-12">
 					<article class="newsheadingblk notifyRow">
 						<h2 class="size18"	style="text-transform: capitalize;">${content.title}</h1>
-						<div class="text-right">
+						<%-- <div class="text-right">
 								 <fmt:formatDate pattern="MMMM dd, yyyy" value="${insight.creationDate}" /> by ${insight.createdBy}
 						</div>
 						<div class="clearfix">
 						tags
-							<%-- <c:forEach	items="${insight.jbInsightTags}" var="insightTag">
-								 <c:if test="${not empty insightTag.tagName}"> 
-									<c:set	value="${insightTag.tagType}"	var="tagType"/>
-									<c:set	value="${insightTag.tagId}"	var="tagId"/>
-									<c:set	value="${insightTag.tagName}"	var="tagName"/>
-									<c:if test="${ insightTag.tagType eq INSIGHT_COMPANY_TYPE}">
-										<span class="label flcompany">${insightTag.tagName}</span>
-									</c:if>
-									<c:if test="${insightTag.tagType ne INSIGHT_COMPANY_TYPE}">
-										<span class="label flrole">${insightTag.tagName}</span>
-									</c:if>
-								 </c:if> 
-							</c:forEach> --%>
-						</div>
-						<div class="row notifyRow">
-							<!-- <div class="col-xs-6">
-								<ul class="notification">
-									<li><a href="#"><span class="upvote"><img src="http://53.jobbuzz.timesjobs.com/images/spacer.gif" class="cus-icon cus-plike-white">Upvote</span> <span class="likebtn">414</span></a></li>
-									<li><a href="#" class="likebtn"><img class="cus-icon cus-pshare-white" src="http://53.jobbuzz.timesjobs.com/images/spacer.gif"> <span>1.2k</span></a></li>							
-								</ul>
-							</div> -->
-						</div>
+						</div> --%>
 					</article>
 					
 					<div class="clearfix newscontent notifyRow">
 						<div class="newsflimg">
-							<img alt="" src="${insight.imageName}">
+							<img alt="content.imageName" src="${content.imageName}">
 						</div>
 						${content.body.value}
 					</div>

@@ -5,17 +5,7 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>${titleMetaValues.titleString }</title>
-	<meta name="keywords" content="${titleMetaValues.titleString }" />
 	<link rel="shortcut icon" type="image/ico" href="<%=WebConstants.IMAGE_URL%>images/favicon.ico"/>
-	<c:choose>
-		<c:when test="${not empty ogPageTitle}">
-			<meta property="og:title" content='${ogPageTitle}'/>
-		</c:when>
-		<c:otherwise>
-			<meta property="og:title" content={{pageTitle}}/> 
-		</c:otherwise>
-	</c:choose>
 	<meta property="og:description" content=''/>
 	<meta property="og:url" content=""/>
 	<meta property="og:image" content="jobuzz_logo.png"/>
@@ -39,7 +29,10 @@
 	 <script src="<%=WebConstants.JS_URL %>js/jquery-1.10.2.min.js" type="text/javascript"></script> 
 	 <script type="text/javascript" src="<%=WebConstants.JS_URL %>js/autosuggest2.js"></script>
      <script type="text/javascript" src="<%=WebConstants.JS_URL %>js/suggestions2.js"></script>
-	
+      <script type="text/javascript" src="<%=WebConstants.JS_URL %>js/fbutils.js"></script>
+	<script type="text/javascript">
+	 var random = shuffle([1,2,3,4,5,6,7,8,9,10,11,12,13,14]);
+	</script>
 <!-- css inludes -->
 	<link rel="stylesheet" type="text/css" href="<%=WebConstants.CSS_URL %>css/bootstrap.css" />
 	<link rel="stylesheet" type="text/css" href="<%=WebConstants.CSS_URL %>css/stylesheet.css" />
@@ -50,7 +43,7 @@
 	<link rel="stylesheet" type="text/css" href="<%=WebConstants.CSS_URL %>css/autosuggest.css" />
 		
 </head>
-
+<div id="fb-root"></div>
 <body data-ng-click="visibleOption(false); mobileSearchvisible(false)">
 	<noscript> <img src="http://b.scorecardresearch.com/p?c1=2&c2=6036484&c3=&c4=&c5=&c6=&c15=&cj=1" /> </noscript>
 	<!-- <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> -->

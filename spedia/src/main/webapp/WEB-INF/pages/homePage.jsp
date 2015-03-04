@@ -1,7 +1,7 @@
 <%@ page import="com.spedia.utils.WebConstants"%>
 <div>
 	<%@include file="searchHome.jsp" %>
-	<%-- <%@include file="bannerHome.jsp" %> --%>
+	<%@include file="bannerHome.jsp" %>
 </div>
 <div class="clearfix"></div>
 <div class="homepage">
@@ -46,13 +46,31 @@
 			<div class="row homepagetab hidden-xs">
 				<div class="col-sm-3 position">
 					<h3>
-						<i class="glyphicon glyphicon-search"></i> Search Jobs <img
+						<i class="glyphicon glyphicon-search"></i> Search Schools <img
 							src="<%=WebConstants.IMAGE_URL%>images/spacer.gif"
 							class="cus-icon cus-right-chevron" />
 					</h3>
-					<p>Find a job you'll love from over 300,000 open positions</p>
+					<p>Find school near to your home</p>
 					<a href="/jobbuzz/all-jobs.html?datacenter=7&amp;view=all"
 						class="overlayanchor" target="_blank"></a>
+				</div>
+				<div class="col-sm-3 position">
+					<h3>
+						<i class="glyphicon glyphicon-screenshot"></i> Follow School
+						<img src="<%=WebConstants.IMAGE_URL%>images/spacer.gif"
+							class="cus-icon cus-right-chevron" />
+					</h3>
+					<p>Follow School to get School Update in your Inbox</p>
+					<a href="/interview/" class="overlayanchor" target="_blank"></a>
+				</div>
+				<div class="col-sm-3 position">
+					<h3>
+						<i class="glyphicon glyphicon-tower"></i>Get Admission ALert <img
+							src="<%=WebConstants.IMAGE_URL%>images/spacer.gif"
+							class="cus-icon cus-right-chevron" />
+					</h3>
+					<p>Strategize! Improve your chances of landing your dream School</p>
+					<a href="/insight/" class="overlayanchor" target="_blank"></a>
 				</div>
 				<div class="col-sm-3 position">
 					<h3>
@@ -60,26 +78,8 @@
 							src="<%=WebConstants.IMAGE_URL%>images/spacer.gif"
 							class="cus-icon cus-right-chevron" />
 					</h3>
-					<p>Love it? / Hate it? - Find what employees are saying</p>
+					<p>Review/Rating - Find what Parents are saying</p>
 					<a href="/discover/" class="overlayanchor" target="_blank"></a>
-				</div>
-				<div class="col-sm-3 position">
-					<h3>
-						<i class="glyphicon glyphicon-screenshot"></i> Interview Questions
-						<img src="<%=WebConstants.IMAGE_URL%>images/spacer.gif"
-							class="cus-icon cus-right-chevron" />
-					</h3>
-					<p>Be a hunter. Prepare from over 55,000 Interview Questions</p>
-					<a href="/interview/" class="overlayanchor" target="_blank"></a>
-				</div>
-				<div class="col-sm-3 position">
-					<h3>
-						<i class="glyphicon glyphicon-tower"></i> Admission Insights <img
-							src="<%=WebConstants.IMAGE_URL%>images/spacer.gif"
-							class="cus-icon cus-right-chevron" />
-					</h3>
-					<p>Strategize! Improve your chances of landing your dream School</p>
-					<a href="/insight/" class="overlayanchor" target="_blank"></a>
 				</div>
 			</div>
 			<div class="overlayanchor homepattern"></div>

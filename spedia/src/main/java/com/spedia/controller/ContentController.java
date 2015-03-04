@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
@@ -69,15 +70,17 @@ public class ContentController {
 		String url=request.getParameter("url");
 		//String url="nursery-admission/heritage-school-vasant-kunj-nursery-admission-schedule-and-criteria-session-2013";
 		DBObject content=mongoDao.getContentByURL(url);
-		DBObject field_group=(DBObject) content.get("field_group");
-		if(field_group!=null){
-			Integer groupId=(Integer) field_group.get("target_id");
-			if(groupId!=null){
-				DBObject group=mongoDao.getContentByNid(groupId);
-				model.put("group", group);
+		if (content!=null&&content.containsField("field_group")) {
+			DBObject field_group = (DBObject) content.get("field_group");
+			if (field_group != null) {
+				Integer groupId = (Integer) field_group.get("target_id");
+				if (groupId != null) {
+					DBObject group = mongoDao.getContentByNid(groupId);
+					model.put("group", group);
+				}
 			}
 		}
-    	model.put("content", content);
+		model.put("content", content);
     	view.addAllObjects(model);
 		return view;
 		
@@ -93,6 +96,39 @@ public class ContentController {
 		basicDBObject.put("tags", url);
 		DBCursor contents=mongoDao.getContent(basicDBObject);
     	model.put("contents", contents);
+    	view.addAllObjects(model);
+		return view;
+		
+	}
+	@RequestMapping(value = { "/contentType.html" }, method = { RequestMethod.GET })
+	public ModelAndView getContentByType(HttpServletRequest request, HttpServletResponse response) {
+		Map<String, Object> model=new HashMap<String, Object>();
+		ModelAndView view = new ModelAndView("searchResult");
+		String type=request.getParameter("type");
+		String pageNumber=request.getParameter("pageNumber");
+		Integer p=0;
+		if(!SocialUtility.chkNull(pageNumber)){
+			p=Integer.parseInt(pageNumber);
+		}
+		//String url="nursery-admission/heritage-school-vasant-kunj-nursery-admission-schedule-and-criteria-session-2013";
+		DBObject query=new BasicDBObject();
+		if(!SocialUtility.chkNull(type)&&type.contains("nursery")){
+			DBObject clause1 = new BasicDBObject("type", "nursery_admission");  
+			DBObject clause2 = new BasicDBObject("type", "nursery_admission_news"); 
+			BasicDBList or = new BasicDBList();
+			or.add(clause1);
+			or.add(clause2);
+			query = new BasicDBObject("$or", or);
+		}else{
+			query.put("type", type);
+		}
+		Integer rowPerPage=10;
+		DBCursor contents=mongoDao.getContent(query);
+		Integer totalCount= contents.size();
+		System.out.println("totalCount "+totalCount);
+    	model.put("contents", contents.skip(p*rowPerPage).limit(rowPerPage));
+    	model.put("totalCount", totalCount);
+    	model.put("rowsPerPage", rowPerPage);
     	view.addAllObjects(model);
 		return view;
 		
@@ -151,6 +187,8 @@ public class ContentController {
 	@RequestMapping(value = { "/index.html" }, method = { RequestMethod.GET })
 	public ModelAndView home(HttpServletRequest request, HttpServletResponse response) {
 		Map<String, Object> model=new HashMap<String, Object>();
+		List<DBObject> topSchools=mongoDao.getTopReviewedSchool();
+		model.put("topSchools", topSchools);
 		ModelAndView view = new ModelAndView("home");
 		view.addAllObjects(model);
 		return view;

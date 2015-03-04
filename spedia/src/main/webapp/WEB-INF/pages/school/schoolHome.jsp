@@ -1,4 +1,5 @@
 <%@ include file="/WEB-INF/pages/include.jsp"%>
+<title>${content.title}</title>
 	<div itemscope itemtype="http://data-vocabulary.org/Product" 
 		style="position: absolute; font-size:0px; left:0; height:0; width:0; line-height: 0; top:0; overflow: hidden;" >
 		<span itemprop="name">${content.title}</span>

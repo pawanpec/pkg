@@ -157,7 +157,6 @@ AutoSuggestControl.prototype.handleKeyDown = function (oEvent /*:Event*/) {
  * @param oEvent The event object for the keyup event.
  */
 AutoSuggestControl.prototype.handleKeyUp = function (oEvent /*:Event*/) {
-
     var iKeyCode = oEvent.keyCode;
 
     //for backspace (8) and delete (46), shows suggestions without typeahead
@@ -178,6 +177,7 @@ AutoSuggestControl.prototype.handleKeyUp = function (oEvent /*:Event*/) {
  * @scope private
  */
 AutoSuggestControl.prototype.hideSuggestions = function () {
+	//document.forms[formName].submit('searchSchool') ;
     this.layer.style.visibility = "hidden";
 };
 

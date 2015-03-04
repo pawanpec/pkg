@@ -21,7 +21,7 @@ public interface MongoDao {
 	public void saveConnections(Profile profile, List<Connection> connections);
 	DBObject getContentByURL(String url);
 	DBObject getContentByNid(Integer nid);
-	DBCursor getContent(BasicDBObject basicDBObject);
+	DBCursor getContent(DBObject basicDBObject);
 	public WriteResult updateOverAllRating(DBObject review) ;
 	public DB getMongoDatabase();
 	public DB getMongoDatabase(String dbName) ;

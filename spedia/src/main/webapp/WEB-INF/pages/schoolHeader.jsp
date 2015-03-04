@@ -19,85 +19,8 @@ function submitForm(formName)
 </script>
 <script type="text/javascript">
             window.onload = function () {
-                var oTextbox = new AutoSuggestControl(document.getElementById("txt1"), new StateSuggestions());        
+                var oTextbox = new AutoSuggestControl(document.getElementById("schoolSearchBox"), new StateSuggestions());        
             }
-</script>
-<div id="fb-root"></div>
-<script>
-	window.fbAsyncInit = function() {
-		FB.init({
-			appId : '888488191171642', // Set YOUR APP ID
-			// channelUrl : 'http://hayageek.com/examples/oauth/facebook/oauth-javascript/channel.html', // Channel File
-			status : true, // check login status
-			cookie : true, // enable cookies to allow the server to access the session
-			xfbml : true
-		// parse XFBML
-		});
-
-		FB.Event
-				.subscribe(
-						'auth.authResponseChange',
-						function(response) {
-							if (response.status === 'connected') {
-								//SUCCESS
-								getUserInfo();
-
-							} else if (response.status === 'not_authorized') {
-								document.getElementById("status").innerHTML += "<br>Connected to Facebook";
-
-								//FAILED
-							} else {
-								document.getElementById("status").innerHTML += "<br>Logged Out";
-
-								//UNKNOWN ERROR
-							}
-						});
-
-	};
-
-	function Login() {
-
-		FB.login(
-						function(response) {
-							if (response.authResponse) {
-								getUserInfo();
-							} else {
-								console
-										.log('User cancelled login or did not fully authorize.');
-							}
-						}, {
-							scope : 'email,read_friendlists'
-						});
-
-	}
-
-	function getUserInfo(status) {
-		FB.api('/me', function(response) {
-			console.log(JSON.stringify(response));
-			registerUser(JSON.stringify(response));
-			var str='Hi, ' + response.name + '!';
-			str += "<input type='button' value='Logout' onclick='Logout();'/>";
-			document.getElementById("status").innerHTML = str;
-
-		});
-	}
-	function Logout() {
-		FB.logout(function() {
-			document.location.reload();
-		});
-	}
-	// Load the SDK asynchronously
-	(function(d) {
-		var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-		if (d.getElementById(id)) {
-			return;
-		}
-		js = d.createElement('script');
-		js.id = id;
-		js.async = true;
-		js.src = "//connect.facebook.net/en_US/all.js";
-		ref.parentNode.insertBefore(js, ref);
-	}(document));
 </script>
 <div class="navbar navbar-inverse hidden-xs topheader">
 	<div class="container-fluid">
@@ -148,10 +71,9 @@ function submitForm(formName)
 				<li class="discover"><i class="top"></i><a href="/discover/"><img
 						src="<%=WebConstants.IMAGE_URL%>images/spacer.gif" /><span>Search
 							School</span></a><i class="bot"></i></li>
-				<li class="jobs"><i class="top"></i><a href="/jobs/all/"><img
-						src="<%=WebConstants.IMAGE_URL%>images/spacer.gif" /><span>School
-							Jobs</span></a><i class="bot"></i></li>
-				<li class="interview"><i class="top"></i><a href="/interview/"><img
+				<li class="jobs"><i class="top"></i><a href="/spedia/contentType.html?type=nursery_admission"><img
+						src="<%=WebConstants.IMAGE_URL%>images/spacer.gif" /><span>Nursery Admission</span></a><i class="bot"></i></li>
+				<li class="interview"><i class="top"></i><a href="/spedia/contentType.html?type=summer_camp"><img
 						src="<%=WebConstants.IMAGE_URL%>images/spacer.gif" /><span>Summer
 							Camp</span></a><i class="bot"></i></li>
 				<li class="logosm visible-xs"><a href="/"><img
@@ -168,7 +90,7 @@ function submitForm(formName)
 			</div>
 			<form class="search-input col-xs-9 visible-sm visible-md visible-lg" name="searchSchool" method="post" autocomplete="off" action="/spedia/search.html">
 				<div class="input-group ng-hide">
-					  	<p><input type="text" id="txt1" /></p>
+					  	<p><input type="text" id="schoolSearchBox" /></p>
 						<img src="<%=WebConstants.IMAGE_URL%>images/spacer.gif" onclick="submitForm('searchSchool')"
 						class="cus-icon cus-homesearch" />
 					</span>
