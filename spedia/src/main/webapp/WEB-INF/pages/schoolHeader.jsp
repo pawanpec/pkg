@@ -68,12 +68,12 @@ function submitForm(formName)
 				<li class="active home"><i class="top"></i><a href="/"><img
 						src="<%=WebConstants.IMAGE_URL%>images/spacer.gif" /><span>home</span></a><i
 					class="bot"></i></li>
-				<li class="discover"><i class="top"></i><a href="/spedia/searchSchool.html"><img
+				<li class="discover"><i class="top"></i><a href="<%=contextPath%>/searchSchool.html"><img
 						src="<%=WebConstants.IMAGE_URL%>images/spacer.gif" /><span>Search
 							School</span></a><i class="bot"></i></li>
-				<li class="jobs"><i class="top"></i><a href="/spedia/contentType.html?type=nursery_admission"><img
+				<li class="jobs"><i class="top"></i><a href="<%=contextPath%>/contentType.html?type=nursery_admission"><img
 						src="<%=WebConstants.IMAGE_URL%>images/spacer.gif" /><span>Nursery Admission</span></a><i class="bot"></i></li>
-				<li class="interview"><i class="top"></i><a href="/spedia/contentType.html?type=summer_camp"><img
+				<li class="interview"><i class="top"></i><a href="<%=contextPath%>/contentType.html?type=summer_camp"><img
 						src="<%=WebConstants.IMAGE_URL%>images/spacer.gif" /><span>Summer
 							Camp</span></a><i class="bot"></i></li>
 				<li class="logosm visible-xs"><a href="/"><img
