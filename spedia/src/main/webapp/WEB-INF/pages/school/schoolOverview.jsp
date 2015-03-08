@@ -21,7 +21,32 @@
 					</c:if>
 					
 				</div>
-			${content.body.value}
+				<c:if test="${content.type eq 'group'}">
+					<p><strong>Name of School</strong>: <span	style="text-transform: capitalize">
+					${content.sd.SN}</span></p>
+					<p><strong>Year of Foundation</strong>: <span	style="text-transform: capitalize">
+					${content.sd.YOF}</span></p>
+					<p><strong>Affiliation Number</strong>: <span	style="text-transform: capitalize">
+					${content.sd.AFF_NO}</span></p>
+					<p><strong>Status of The School</strong>: <span	style="text-transform: capitalize">
+					${content.sd.SOS}</span></p>
+					<p><strong>Name of Trust/ Society/ Managing Committee</strong>: <span	style="text-transform: capitalize">
+					${content.sd.TN}</span></p>
+					<p><strong>Email</strong>: <span	style="text-transform: capitalize">
+					${content.sd.E}</span></p>
+					<p><strong>Website</strong>: <span	style="text-transform: capitalize">
+					${content.sd.W}</span></p>
+					<p><strong>Postal Address</strong>: <span	style="text-transform: capitalize">
+					${content.sd.PA}</span></p>
+					<p><strong>Phone No.</strong>: <span	style="text-transform: capitalize">
+					${content.sd.PHONE_NO}</span></p>
+					<p><strong>Pin Code</strong>: <span	style="text-transform: capitalize">
+					${content.sd.PIN}</span></p>
+				</c:if>
+				<c:if test="${content.type ne 'group'}">
+					${content.body.value}
+				</c:if>
+			
 			</div>
 		</div>
 	</div>

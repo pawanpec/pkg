@@ -35,6 +35,7 @@ import com.spedia.utils.SocialUtility;
  */
 @Controller
 public class ContentController {
+	private static Integer rowPerPage=10;
 	
 	@Autowired
 	@Qualifier("mongoDao")
@@ -52,14 +53,17 @@ public class ContentController {
 		String url=request.getParameter("url");
 		//String url="website/bal-bharti-pub-school-sector-14-rohini-delhi";
 		DBObject content=mongoDao.getContentByURL(url);
-		Integer nid=(Integer) content.get("nid");
-		List<Reviews> reviews=reviewsDao.findByNid(nid, 10);
-		BasicDBObject basicDBObject=new BasicDBObject("field_group.target_id", nid);
-		DBCursor news=mongoDao.getContent(basicDBObject);
-    	model.put("content", content);
-    	model.put("reviews", reviews);
-    	model.put("news", news);
-    	view.addAllObjects(model);
+		if (content!=null) {
+			Integer nid = (Integer) content.get("nid");
+			List<Reviews> reviews = reviewsDao.findByNid(nid, 10);
+			BasicDBObject basicDBObject = new BasicDBObject(
+					"field_group.target_id", nid);
+			DBCursor news = mongoDao.getContent(basicDBObject);
+			model.put("content", content);
+			model.put("reviews", reviews);
+			model.put("news", news);
+		}
+		view.addAllObjects(model);
 		return view;
 		
 	}
@@ -90,12 +94,22 @@ public class ContentController {
 		Map<String, Object> model=new HashMap<String, Object>();
 		ModelAndView view = new ModelAndView("searchResult");
 		String url=request.getParameter("url");
+		String pageNumber=request.getParameter("pageNumber");
+		Integer p=0;
+		if(!SocialUtility.chkNull(pageNumber)){
+			p=Integer.parseInt(pageNumber);
+		}
 		url=url.replace("-", " ");
 		//String url="nursery-admission/heritage-school-vasant-kunj-nursery-admission-schedule-and-criteria-session-2013";
 		BasicDBObject basicDBObject=new BasicDBObject();
 		basicDBObject.put("tags", url);
 		DBCursor contents=mongoDao.getContent(basicDBObject);
     	model.put("contents", contents);
+    	Integer totalCount= contents.size();
+		System.out.println("totalCount "+totalCount);
+    	model.put("contents", contents.skip(p*rowPerPage).limit(rowPerPage));
+    	model.put("totalCount", totalCount);
+    	model.put("rowsPerPage", rowPerPage);
     	view.addAllObjects(model);
 		return view;
 		
@@ -122,7 +136,6 @@ public class ContentController {
 		}else{
 			query.put("type", type);
 		}
-		Integer rowPerPage=10;
 		DBCursor contents=mongoDao.getContent(query);
 		Integer totalCount= contents.size();
 		System.out.println("totalCount "+totalCount);
@@ -141,6 +154,11 @@ public class ContentController {
 		String city=request.getParameter("city");
 		String postal_code=request.getParameter("postal_code");
 		//String url="nursery-admission/heritage-school-vasant-kunj-nursery-admission-schedule-and-criteria-session-2013";
+		String pageNumber=request.getParameter("pageNumber");
+		Integer p=0;
+		if(!SocialUtility.chkNull(pageNumber)){
+			p=Integer.parseInt(pageNumber);
+		}
 		BasicDBObject basicDBObject=new BasicDBObject();
 		basicDBObject.put("type", "group");
 		if(SEOURLUtils.chkNull(province)){
@@ -154,6 +172,11 @@ public class ContentController {
 		}
 		DBCursor contents=mongoDao.getContent(basicDBObject);
     	model.put("contents", contents);
+    	Integer totalCount= contents.size();
+		System.out.println("totalCount "+totalCount);
+    	model.put("contents", contents.skip(p*rowPerPage).limit(rowPerPage));
+    	model.put("totalCount", totalCount);
+    	model.put("rowsPerPage", rowPerPage);
     	view.addAllObjects(model);
 		return view;
 		

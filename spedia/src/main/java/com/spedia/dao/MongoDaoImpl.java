@@ -45,9 +45,14 @@ public class MongoDaoImpl implements MongoDao {
 	public DBObject getContentByURL(String url) {
 		DBCollection node = getMongoDatabase().getCollection(
 				FIELDS_CURRENT_NODE);
-		DBObject cond = new BasicDBObject();
-		cond.put("alias", url);
-		return node.findOne(cond);
+		DBObject query=new BasicDBObject("alias", url);
+		DBObject content=node.findOne(query);
+		if(content==null){
+			query= new BasicDBObject("url", url); 
+			content=node.findOne(query);
+		}
+		
+		return content;
 	}
 	public Mongo getMongo() {
 		return mongo;
