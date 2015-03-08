@@ -10,20 +10,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mongodb.DBObject;
+import com.spedia.dao.MongoDao;
 import com.spedia.model.Reviews;
 import com.spedia.service.review.IReviewService;
+import com.spedia.utils.WebConstants;
 
 /*Pawan */
 @Controller
 public class ReviewController {
 	@Autowired
 	private IReviewService reviewService;
+	@Autowired
+	@Qualifier("mongoDao")
+	private MongoDao mongoDao;
 
 	@RequestMapping(value = "/get_all_unmoderated_review.html")
 	public ModelAndView reviewModerat(HttpServletRequest request,
@@ -59,8 +66,12 @@ public class ReviewController {
 	public ModelAndView writeReview(HttpServletRequest request,
 			HttpServletResponse response) {
 		Map<String, Object> model = new HashMap<String, Object>();
+		Reviews reviews = new Reviews();
+		String nidS=request.getParameter("nid");
+		Integer nid=Integer.parseInt(nidS);
+		reviews.setNid(nid);
 		ModelAndView view = new ModelAndView("writeReview", "reviews",
-				new Reviews());
+				reviews);
 		Map<Integer, String> ratingOption = new HashMap<Integer, String>();
 		ratingOption.put(1,"poor");
 		ratingOption.put(2,"Average");
@@ -85,6 +96,12 @@ public class ReviewController {
 		if (result.hasErrors()) {
 			return view;
 		}
+		DBObject content=mongoDao.getContentByNid(reviews.getNid());
+		String url=(String)content.get("alias");
+		String redirectedUrl="redirect:"+WebConstants.APPLICATION_URL+url;
+		String msg="Thanks For Writing Review";
+		redirectedUrl+="?msg="+msg;
+		view.setViewName(redirectedUrl);
 		return view;
 	}
 

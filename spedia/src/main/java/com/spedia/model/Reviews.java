@@ -114,7 +114,7 @@ public class Reviews extends GenericObject {
 		this.city = city;
 	}
 
-	@Column(name = "lid", nullable = false)
+	@Column(name = "lid", nullable = true)
 	public Integer getLid() {
 		return this.lid;
 	}

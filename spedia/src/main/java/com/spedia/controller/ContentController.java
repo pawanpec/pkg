@@ -51,6 +51,7 @@ public class ContentController {
 		Map<String, Object> model=new HashMap<String, Object>();
 		ModelAndView view = new ModelAndView("schoolHome");
 		String url=request.getParameter("url");
+		String msg=request.getParameter("msg");
 		//String url="website/bal-bharti-pub-school-sector-14-rohini-delhi";
 		DBObject content=mongoDao.getContentByURL(url);
 		if (content!=null) {
@@ -62,6 +63,7 @@ public class ContentController {
 			model.put("content", content);
 			model.put("reviews", reviews);
 			model.put("news", news);
+			model.put("msg", msg);
 		}
 		view.addAllObjects(model);
 		return view;

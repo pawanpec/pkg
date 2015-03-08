@@ -32,7 +32,7 @@
 					<%@include file="schoolBanner.jsp"%>
 					<!--########### Company Banner with logo Container Ends Here ###########-->
 
-
+				
 					<div class="col-sm-12 m_t10">
 						<div class="row" id="companypage">
 							<div class="col-sm-3 columnsize">

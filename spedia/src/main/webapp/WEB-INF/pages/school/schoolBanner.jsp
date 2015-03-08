@@ -42,7 +42,10 @@ function follow(nid,uid,status) {
 <c:set var="_compName" 	value="${content.title}"/>
 <c:set var="_compId" 	value="${companyViewBean.companyMast.companyId}"/>
 <!--########### Company Details with logo Start Here ###########-->
-------${totalReviewCount}------
+<c:if test="${not empty msg}">
+						${msg }
+						
+</c:if>
 
 <c:set var="countOfReviews" value="${content.review.count}" />
 <c:set var="isCountOfReviewsKPlus" value="false" />
@@ -164,8 +167,9 @@ function follow(nid,uid,status) {
 								<input id="follow"  class="btn btn-primary btn-sm colorfff" onclick="follow(${content.nid},2,1);" value="FOLLOW" type="button" /> 
 							</li>
 							<li>
-								<input class="btn btn-primary btn-sm colorfff" value="Write Review" type="button" /> 
+								<a href="/spedia/writeReview.html?nid=${content.nid}">Write Review</a>
 							</li>
+							
 						</ul>
 			</div>
 		</div>
