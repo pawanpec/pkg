@@ -1,7 +1,5 @@
-<%@ include file="include.jsp" %>
-<!DOCTYPE html>
-<html data-ng-controller="parentctrl" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml" lang="en"  data-ng-app="JobBuzz">
-
+<%@ include file="/WEB-INF/pages/include.jsp"%>
+<html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

@@ -69,6 +69,7 @@ public class ReviewController {
 		Reviews reviews = new Reviews();
 		String nidS=request.getParameter("nid");
 		Integer nid=Integer.parseInt(nidS);
+		DBObject content=mongoDao.getContentByNid(nid);
 		reviews.setNid(nid);
 		ModelAndView view = new ModelAndView("writeReview", "reviews",
 				reviews);
@@ -79,6 +80,7 @@ public class ReviewController {
 		ratingOption.put(4,"very Good");
 		ratingOption.put(5,"Excellent");
 		model.put("ratingOption", ratingOption);
+		model.put("content", content);
 		view.addAllObjects(model);
 		return view;
 

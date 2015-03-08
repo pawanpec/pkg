@@ -1,10 +1,11 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ include file="/WEB-INF/pages/include.jsp"%>
 <html>
 <head>
 </head>
 <body>
 	<center>
-		<h3>Welcome, Enter The Employee Details</h3>
+		<h3>Please Write the Review for ${content.title}</h3>
 		<form:form method="POST" action="submitReview.html"
 			modelAttribute="reviews">
 
@@ -28,7 +29,7 @@
 			</br>
 			<form:radiobuttons path="e" items="${ratingOption}" />
 			</br>
-			<form:hidden path="uid" value="3" />
+			<form:hidden path="uid" value="<%=uid %>" />
 			<form:hidden path="nid" value="${nid}" />
 			<label for="edit-a">Your Reviews</label>
 			</br>

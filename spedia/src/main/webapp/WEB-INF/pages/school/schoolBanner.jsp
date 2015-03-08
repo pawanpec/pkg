@@ -1,4 +1,5 @@
 
+<%@page import="com.spedia.utils.SocialUtility"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@page import="java.lang.Math"%>
 
@@ -41,7 +42,6 @@ function follow(nid,uid,status) {
 	
 <c:set var="_compName" 	value="${content.title}"/>
 <c:set var="_compId" 	value="${companyViewBean.companyMast.companyId}"/>
-<!--########### Company Details with logo Start Here ###########-->
 <c:if test="${not empty msg}">
 						${msg }
 						
