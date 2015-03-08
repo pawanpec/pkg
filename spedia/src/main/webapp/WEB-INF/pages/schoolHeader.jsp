@@ -68,7 +68,7 @@ function submitForm(formName)
 				<li class="active home"><i class="top"></i><a href="/"><img
 						src="<%=WebConstants.IMAGE_URL%>images/spacer.gif" /><span>home</span></a><i
 					class="bot"></i></li>
-				<li class="discover"><i class="top"></i><a href="/discover/"><img
+				<li class="discover"><i class="top"></i><a href="/spedia/searchSchool.html"><img
 						src="<%=WebConstants.IMAGE_URL%>images/spacer.gif" /><span>Search
 							School</span></a><i class="bot"></i></li>
 				<li class="jobs"><i class="top"></i><a href="/spedia/contentType.html?type=nursery_admission"><img

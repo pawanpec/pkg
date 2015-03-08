@@ -161,13 +161,13 @@ public class ContentController {
 		}
 		BasicDBObject basicDBObject=new BasicDBObject();
 		basicDBObject.put("type", "group");
-		if(SEOURLUtils.chkNull(province)){
+		if(!SEOURLUtils.chkNull(province)){
 			basicDBObject.put("location.province", province);
 		}
-		if(SEOURLUtils.chkNull(city)){
+		if(!SEOURLUtils.chkNull(city)){
 			basicDBObject.put("location.city", city);
 		}
-		if(SEOURLUtils.chkNull(city)){
+		if(!SEOURLUtils.chkNull(postal_code)){
 			basicDBObject.put("location.postal_code", postal_code);
 		}
 		DBCursor contents=mongoDao.getContent(basicDBObject);

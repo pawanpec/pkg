@@ -1,4 +1,4 @@
-<%@ page language="java" pageEncoding="UTF-8" session="false"%>
+<%@ page language="java" pageEncoding="UTF-8" session="true"%>
 <%@ page import="com.spedia.utils.WebConstants"%>
 <%@ page import="com.spedia.utils.SEOURLUtils"%>
 <%@ page import="com.spedia.utils.SchoolsConstants"%>

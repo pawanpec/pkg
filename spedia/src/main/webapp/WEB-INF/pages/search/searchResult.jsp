@@ -1,8 +1,12 @@
 <!--########### School REVIEW WEDGIT STARTS HERE ###########-->
 Search Result
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="../include.jsp"%>
+<c:set var="orgURL" value="${requestScope['javax.servlet.forward.request_uri']}"  scope="session"/>
+<c:if test="${not fn:containsIgnoreCase(requestScope['javax.servlet.forward.query_string'], 'pageNumber')}">
+<c:set var="orgParam" value="${requestScope['javax.servlet.forward.query_string']}"  scope="session"/>
+</c:if>
 <c:set var="currentURL"
-	value="/spedia/contentType.html?type=nursery_admission_news" />
+	value="${sessionScope.orgURL}?${sessionScope.orgParam}" />
 <div class="col-sm-4 col-md-3 item account-card interview-card ng-hide">
 	<c:forEach items="${contents}" var="newsContent">
 		<c:if test="${newsContent.type eq 'group'}">
