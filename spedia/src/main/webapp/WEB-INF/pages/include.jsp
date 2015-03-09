@@ -3,6 +3,7 @@
 <%@ page import="com.spedia.utils.SEOURLUtils"%>
 <%@ page import="com.spedia.utils.SchoolsConstants"%>
 <%@ page import="com.spedia.utils.SocialUtility"%>
+<%@page import="java.lang.Math"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="c" 		uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" 	uri="http://www.springframework.org/tags/form"%>

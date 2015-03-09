@@ -38,10 +38,10 @@
 					${content.sd.W}</span></p>
 					<p><strong>Postal Address</strong>: <span	style="text-transform: capitalize">
 					${content.sd.PA}</span></p>
-					<p><strong>Phone No.</strong>: <span	style="text-transform: capitalize">
-					${content.sd.PHONE_NO}</span></p>
 					<p><strong>Pin Code</strong>: <span	style="text-transform: capitalize">
 					${content.sd.PIN}</span></p>
+					<p><strong>Phone No.</strong>: <span	style="text-transform: capitalize">
+					${content.sd.PHONE_NO}</span></p>
 				</c:if>
 				<c:if test="${content.type ne 'group'}">
 					${content.body.value}

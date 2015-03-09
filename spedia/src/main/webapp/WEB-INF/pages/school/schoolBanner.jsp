@@ -1,8 +1,4 @@
 
-<%@page import="com.spedia.utils.SocialUtility"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@page import="java.lang.Math"%>
-
 <%	
 int randBgImageIndex = 1 + (int)(Math.random()*8);
 String defaultBGPath=WebConstants.IMAGE_URL+"images/bg_images/"+randBgImageIndex+".jpg";
@@ -63,34 +59,6 @@ function follow(nid,uid,status) {
 	<c:set var="bgpath" value="<%=defaultBGPath%>" />
 </c:if>
 	<div class="row z2new company-details m_b10" style='background-image: url("${bgpath}")'>
-		<div class="col-sm-12 position cmpoverlay">
-			<div class="col-sm-12">
-				<ul class="pull-right cmpshare">
-					<c:forEach var="url" items="${socialUrls}">
-						<c:if
-							test="${url.urlTypeId ne null && not empty url.url && url.urlTypeId eq SOCIAL_URL_TWITTER_CODE}">
-							<li><a href="${url.url}"	target="_blank" ><img
-									src="<%=WebConstants.IMAGE_URL %>images/tw.png" alt="twitter"/></a></li>
-						</c:if>
-						<c:if
-							test="${url.urlTypeId ne null && not empty url.url && url.urlTypeId eq SOCIAL_URL_FACEBOOK_CODE}">
-							<li><a href="${url.url}"	target="_blank" ><img
-									src="<%=WebConstants.IMAGE_URL %>images/FB.png" alt="facebook"/></a></li>
-						</c:if>
-						<c:if
-							test="${url.urlTypeId ne null && not empty url.url && url.urlTypeId eq SOCIAL_URL_GOOGLE_PLUS_CODE}">
-							<li><a href="${url.url}"	target="_blank" ><img
-									src="<%=WebConstants.IMAGE_URL %>images/GMAIL.png" alt="gplus"/></a></li>
-						</c:if>
-						<c:if
-							test="${url.urlTypeId ne null && not empty url.url && url.urlTypeId eq SOCIAL_URL_LINKEDIN_CODE}">
-							<li><a href="${url.url}"	target="_blank" ><img
-									src="<%=WebConstants.IMAGE_URL %>images/lk.png" alt="linkedin"/></a></li>
-						</c:if>
-					</c:forEach>
-
-				</ul>
-			</div>
 			<div class="col-sm-10 position companyinfo">
 				<h1>
 					<c:if test="${not empty companyLogoImage}">
