@@ -1,12 +1,20 @@
 <script>
 function initialize() {
+	var myLatlng = { lat: ${content.location.latitude}, lng: ${content.location.longitude}};
   var mapOptions = {
-     center: { lat: ${content.location.latitude}, lng: ${content.location.longitude}},
-          zoom: 8
+     center: myLatlng,
+     zoom: 16
   };
 
   var map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
+  var image = 'http://www.weaponize.com/Jpgs/Icons/School-Icon.png';
+  var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      icon: image,
+      title: '${content.title}'
+  });
 }
 
 function loadScript() {
