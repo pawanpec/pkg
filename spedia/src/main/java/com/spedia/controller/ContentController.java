@@ -218,5 +218,13 @@ public class ContentController {
 		view.addAllObjects(model);
 		return view;
 	}
+	@RequestMapping(value="/savefbgroupdata.html")
+	public @ResponseBody String saveFbGroupData(HttpServletRequest request, HttpServletResponse response) {
+		String jsonData=request.getParameter("data");
+		if(jsonData!=null){
+			mongoDao.saveFBGroupData(jsonData);
+		}
+		return "done";
+	}
 
 }

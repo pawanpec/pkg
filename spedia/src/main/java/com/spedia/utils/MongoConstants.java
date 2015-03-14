@@ -5,6 +5,7 @@ public class MongoConstants {
 	public static final String MONGO_DB_NAME = "drupal";
 	
 	public static final String MONGO_DB_USER_PROFILE_COLLECTION = "profile";
+	public static final String MONGO_DB_FB_GROUP_COLLECTION = "fb_group";
 
 	public static final String MONGO_DB_USER_CONNECTION_COLLECTION = "connections";
 	public static final String MONGO_COLLECTION_PROFILEID = "pid";

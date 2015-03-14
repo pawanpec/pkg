@@ -11,7 +11,7 @@ function registerUser(data) {
 	  $.ajax({url: aurl, success: function(result){
 		  console.log("after login "+result);
 		  if(result=="1"){
-			//  window.location = "http://dev.timesjobs.com/spedia/userHome.html";
+			//  window.location = "http://test.schoolspedia.com/spedia/userHome.html";
 		  }
 		 
       }});

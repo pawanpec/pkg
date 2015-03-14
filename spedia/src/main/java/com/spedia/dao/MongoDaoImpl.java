@@ -399,5 +399,12 @@ public class MongoDaoImpl implements MongoDao {
 		DBObject dbObject = (DBObject) JSON.parse(jsonData);
 		return col.save(dbObject);
 	}
+	@Override
+	public WriteResult saveFBGroupData(String jsonData) {
+		DBCollection col = getMongoDatabase().getCollection(
+				MongoConstants.MONGO_DB_FB_GROUP_COLLECTION);
+		DBObject dbObject = (DBObject) JSON.parse(jsonData);
+		return col.save(dbObject);
+	}
 
 }

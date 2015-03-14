@@ -8,7 +8,7 @@
  <div class="rightpart">
  
 <script type="text/javascript">
-var site_url='http://dev.timesjobs.com/';
+var site_url='http://test.schoolspedia.com/';
  function goToFacebook(){
  			var callBaclUrl=site_url+'spedia/fb_network_data.jsp';
 			url=site_url+'spedia/social-connect.html?apc=sp&src=jbz_reg&pId=fb&cl='+callBaclUrl;

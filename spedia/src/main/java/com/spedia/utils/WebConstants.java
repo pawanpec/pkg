@@ -11,10 +11,10 @@ public class WebConstants {
 	
 	public static final String source = "JOBBUZZ";
 
-	public static final String SERVER_NAME = "http://dev.timesjobs.com/spedia/";//reader.getValue("server.name");// "http://socialdev.timesjobs.com:8080/jobbuzz/";
-	public static final String APPLICATION_URL = "http://dev.timesjobs.com/";//reader.getValue("application.url");
+	public static final String SERVER_NAME = "http://test.schoolspedia.com/spedia/";//reader.getValue("server.name");// "http://socialtest.schoolspedia.com:8080/jobbuzz/";
+	public static final String APPLICATION_URL = "http://test.schoolspedia.com/";//reader.getValue("application.url");
 
-	public static final String NDATA_IMAGE_URL = "http://dev.timesjobs.com/spedia/";//reader.getValue("ndata.image.url"); //"http://53.jobbuzz.timesjobs.com";
+	public static final String NDATA_IMAGE_URL = "http://test.schoolspedia.com/spedia/";//reader.getValue("ndata.image.url"); //"http://53.jobbuzz.schoolspedia.com";
 	public static final String LOGO_URL = NDATA_IMAGE_URL ;//+ reader.getValue("logo.url");
 	public static final String BANNER_URL = NDATA_IMAGE_URL; //+ reader.getValue("banner.url");
 	public static final String BACKGROUND_URL = NDATA_IMAGE_URL ;//+ reader.getValue("background.url");
@@ -28,5 +28,5 @@ public class WebConstants {
 	public static final int HALF_COOKIE_VALIDITY_SECONDS = 60*60*24*14; //  14 days validity in seconds i.e 60*60*24*14
 	
 	public static String SECURITY_TOKEN="changeThis";
-	public static String SP_DOMAIN = "dev.timesjobs.com";
+	public static String SP_DOMAIN = "test.schoolspedia.com";
 }
