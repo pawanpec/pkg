@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -87,17 +88,29 @@ public class ReviewController {
 	}
 
 	@RequestMapping(value = "/submitReview.html")
-	public ModelAndView submit(@ModelAttribute("Reviews") Reviews reviews,
+	public ModelAndView submit(@Valid @ModelAttribute("Reviews") Reviews reviews,
 			BindingResult result) {
+		Map<String, Object> model = new HashMap<String, Object>();
 		ModelAndView view = new ModelAndView("writeReview");
+		if (result.hasErrors()) {
+			Map<Integer, String> ratingOption = new HashMap<Integer, String>();
+			ratingOption.put(1,"poor");
+			ratingOption.put(2,"Average");
+			ratingOption.put(3,"Good");
+			ratingOption.put(4,"very Good");
+			ratingOption.put(5,"Excellent");
+			model.put("ratingOption", ratingOption);
+			view=new ModelAndView("writeReview", "reviews",
+					reviews);
+			view.addAllObjects(model);
+			return view; 
+		}
 		reviews.setStatus(0);
 		Date date = new Date();
 		Long created = date.getTime();
 		reviews.setCreated(created.intValue());
 		reviewService.writeReview(reviews);
-		if (result.hasErrors()) {
-			return view;
-		}
+		
 		DBObject content=mongoDao.getContentByNid(reviews.getNid());
 		String url=(String)content.get("alias");
 		String redirectedUrl="redirect:"+WebConstants.APPLICATION_URL+url;
