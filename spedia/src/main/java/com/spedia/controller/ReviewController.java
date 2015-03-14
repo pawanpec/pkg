@@ -91,7 +91,8 @@ public class ReviewController {
 	public ModelAndView submit(@Valid @ModelAttribute("Reviews") Reviews reviews,
 			BindingResult result) {
 		Map<String, Object> model = new HashMap<String, Object>();
-		ModelAndView view = new ModelAndView("writeReview");
+		ModelAndView view = new ModelAndView("writeReview","reviews",
+				reviews);
 		if (result.hasErrors()) {
 			Map<Integer, String> ratingOption = new HashMap<Integer, String>();
 			ratingOption.put(1,"poor");
@@ -100,8 +101,6 @@ public class ReviewController {
 			ratingOption.put(4,"very Good");
 			ratingOption.put(5,"Excellent");
 			model.put("ratingOption", ratingOption);
-			view=new ModelAndView("writeReview", "reviews",
-					reviews);
 			view.addAllObjects(model);
 			return view; 
 		}

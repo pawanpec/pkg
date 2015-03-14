@@ -1,13 +1,23 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ include file="/WEB-INF/pages/include.jsp"%>
-<html>
-<head>
-</head>
+<script>
+function validateForm() {
+    var x = document.forms["reviewForm"]["review"].value;
+    if (x == null || x == "") {
+        alert("Review must be filled out");
+        return false;
+    }
+    if (x.length <10) {
+        alert("Review must have at least 10 char");
+        return false;
+    }
+}
+</script>
 <body>
 	<center>
 		<h3>Please Write the Review for ${content.title}</h3>
-		<form:form method="POST" action="submitReview.html"
-			modelAttribute="reviews">
+		<form:form method="POST" action="submitReview.html" name="reviewForm"
+			modelAttribute="reviews" onsubmit="return validateForm()">
 
 			<label for="edit-a">1. Academic Result </label>
 			</br>
@@ -34,10 +44,8 @@
 			<label for="edit-a">Your Reviews</label>
 			</br>
 			<form:textarea path="review" />
-			<form:errors   path="review" />
+			<form:errors   path="review"  />
 			</td>
 			<input type="submit" value="SubmitReview">
 		</form:form>
 	</center>
-</body>
-</html>

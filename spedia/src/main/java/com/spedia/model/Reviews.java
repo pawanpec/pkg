@@ -8,6 +8,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -27,14 +28,15 @@ public class Reviews extends GenericObject {
 	private String city;
 	//location Id
 	private Integer lid;
+	@NotNull (message="Not Null")
     @NotEmpty(message="Not Blank")
 	private String review;
 
-	private Integer a;
-	private Integer b;
-	private Integer c;
-	private Integer d;
-	private Integer e;
+	private Integer a=3;
+	private Integer b=3;
+	private Integer c=3;
+	private Integer d=3;
+	private Integer e=3;
 	private Integer status;
 	private Integer created;
 
