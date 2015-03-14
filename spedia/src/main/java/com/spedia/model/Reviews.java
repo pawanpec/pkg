@@ -9,6 +9,8 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 
 /**
  * Reviews entity. @author MyEclipse Persistence Tools
@@ -25,7 +27,9 @@ public class Reviews extends GenericObject {
 	private String city;
 	//location Id
 	private Integer lid;
+    @NotEmpty(message="Not Blank")
 	private String review;
+
 	private Integer a;
 	private Integer b;
 	private Integer c;
