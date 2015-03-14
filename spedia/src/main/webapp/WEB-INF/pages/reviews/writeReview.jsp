@@ -11,7 +11,7 @@
 
 			<label for="edit-a">1. Academic Result </label>
 			</br>
-			<form:radiobuttons path="a" items="${ratingOption}" />
+			<form:radiobuttons path="a" items="${ratingOption}"/>
 			</br>
 			<label for="edit-b">2. Infrastructure and facilities </label>
 			</br>
@@ -34,6 +34,8 @@
 			<label for="edit-a">Your Reviews</label>
 			</br>
 			<form:textarea path="review" />
+			<form:errors   path="review" />
+			</td>
 			<input type="submit" value="SubmitReview">
 		</form:form>
 	</center>
