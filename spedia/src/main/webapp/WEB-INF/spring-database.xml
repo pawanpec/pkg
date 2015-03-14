@@ -1,10 +1,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:task="http://www.springframework.org/schema/task"
-	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:cache="http://www.springframework.org/schema/cache"
 	default-autowire="byName"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
@@ -14,45 +12,54 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 http://www.springframework.org/schema/task  http://www.springframework.org/schema/task/spring-task-3.2.xsd
 http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
 
-<context:annotation-config>
+	<context:annotation-config>
 
-</context:annotation-config>
+	</context:annotation-config>
 
-<context:component-scan base-package="com.spedia.*"></context:component-scan>
- <bean id="mongo" class="com.mongodb.Mongo">
+	<context:component-scan base-package="com.spedia.*"></context:component-scan>
+	<bean id="mongo" class="com.mongodb.Mongo">
 		<constructor-arg value="127.0.0.1:27017" />
 	</bean>
-	<bean id="mongoDao" class="com.spedia.dao.MongoDaoImpl" init-method="init">
-		<property name="mongo" ref="mongo"/>
+	<!-- Define the MongoTemplate which handles connectivity with MongoDB -->
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<constructor-arg name="mongo" ref="mongo" />
+		<constructor-arg name="databaseName" value="drupal" />
 	</bean>
-<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<bean id="mongoDao" class="com.spedia.dao.MongoDaoImpl"
+		init-method="init">
+		<property name="mongo" ref="mongo" />
+	</bean>
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/sp_new" />
 		<property name="username" value="root" />
-		 <property name="password" value="root" /> 
+		<property name="password" value="root" />
 	</bean>
- 
- 	<bean id="jpaDialect"	class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"></bean>
- 	
- 	 <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-        <property name="showSql" value="true"/>
-        <property name="database" value="MYSQL"/>
-        <property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect" />
-    </bean>
-    
-    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
-        <property name="packagesToScan" value="com.spedia.model" />
-        <property name="jpaDialect"	ref="jpaDialect"/>
-    </bean>
-   
- 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-	 		<property name="entityManagerFactory"	ref="entityManagerFactory"/>
- 	</bean>
- 		<!-- FOR PROGRAMATTIC TRANSACTION MANAGER -->
- 	<tx:annotation-driven transaction-manager="transactionManager" />
- 	
+
+	<bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"></bean>
+
+	<bean id="jpaVendorAdapter"
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="showSql" value="true" />
+		<property name="database" value="MYSQL" />
+		<property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect" />
+	</bean>
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+		<property name="packagesToScan" value="com.spedia.model" />
+		<property name="jpaDialect" ref="jpaDialect" />
+	</bean>
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	<!-- FOR PROGRAMATTIC TRANSACTION MANAGER -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 			<tx:method name="get*" read-only="true" />

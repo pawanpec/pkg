@@ -20,11 +20,12 @@ import com.spedia.model.Profile;
 import com.spedia.model.User;
 import com.spedia.utils.Constants;
 import com.spedia.utils.MongoConstants;
+
+import static com.spedia.utils.MongoConstants.*;
+
 import com.spedia.utils.SocialUtility;
 
 public class MongoDaoImpl implements MongoDao {
-	private static final String FIELDS_CURRENT_NODE = "fields_current.node";
-	private static final String MONGO_DB_NAME = "drupal";
 	/**
 	 * This will be called when the bean will get initialised, this will ensure
 	 * that the index on the fields are properly created
