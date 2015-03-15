@@ -5,12 +5,12 @@
 </head>
 <script>
 function saveFbGroupData(d) {
-	 var queryString="?data="+d;
+	// var queryString="?data="+d;
 	 var aurl="/spedia/savefbgroupdata.html";
 	 $.ajax({
 		    url : aurl,
 		    method : 'post',
-		    data:'data=d',
+		    data:'data='+escape(d),
 		    success : function(data) {
 		        console.log(data);
 
@@ -25,7 +25,7 @@ function saveFbGroupData(d) {
 	<div id="fb-root"></div>
 	<script>
 $iLimit = 99;
-$appId = '888488191171642';
+$appId = '191358334217968';
   window.fbAsyncInit = function() {
     FB.init({
       appId      : $appId, // Set YOUR APP ID
@@ -97,8 +97,8 @@ $appId = '888488191171642';
     }
   function getGroupData() {
       FB.api('/1506585852913224/feed', function(response) {
-        // console.log("group data----"+JSON.stringify(response));
-         saveFbGroupData(JSON.stringify(response));
+         console.log("group data----"+JSON.stringify(response.data));
+         saveFbGroupData(JSON.stringify(response.data));
       });
   }
 

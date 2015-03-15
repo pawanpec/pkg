@@ -20,7 +20,7 @@
 			password-parameter="password" />
 		<logout logout-success-url="/login.html?logout" />
 		<!-- enable csrf protection -->
-		<csrf />
+		<!-- <csrf /> -->
 	</http>
 
 	<authentication-manager id="authenticationManager">

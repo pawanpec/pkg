@@ -1,5 +1,8 @@
 package com.spedia.dao;
 
+import static com.spedia.utils.MongoConstants.FIELDS_CURRENT_NODE;
+import static com.spedia.utils.MongoConstants.MONGO_DB_NAME;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -20,9 +23,6 @@ import com.spedia.model.Profile;
 import com.spedia.model.User;
 import com.spedia.utils.Constants;
 import com.spedia.utils.MongoConstants;
-
-import static com.spedia.utils.MongoConstants.*;
-
 import com.spedia.utils.SocialUtility;
 
 public class MongoDaoImpl implements MongoDao {
@@ -404,8 +404,17 @@ public class MongoDaoImpl implements MongoDao {
 	public WriteResult saveFBGroupData(String jsonData) {
 		DBCollection col = getMongoDatabase().getCollection(
 				MongoConstants.MONGO_DB_FB_GROUP_COLLECTION);
+		BasicDBObject basicDBObject=new BasicDBObject();
+		basicDBObject.put("data", jsonData);
+		//Gson gson=new Gson();
+		/*Gson gson = new GsonBuilder().registerTypeAdapter(DBObject.class, new InterfaceAdapter<DBObject>()).create();
+		DBObject dbObject = gson.fromJson(jsonData, DBObject.class);*/
+		
 		DBObject dbObject = (DBObject) JSON.parse(jsonData);
-		return col.save(dbObject);
+		Set<String> keys=dbObject.keySet();
+		for (String key : keys) {
+			col.save((BasicDBObject)dbObject.get(key));
+		}
+		return null;
 	}
-
 }
