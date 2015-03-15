@@ -49,7 +49,7 @@ AutoSuggestControl.prototype.autosuggest = function (aSuggestions /*:Array*/,
     //make sure there's at least one suggestion
     if (aSuggestions.length > 0) {
         if (bTypeAhead) {
-           this.typeAhead(aSuggestions[0]);
+           this.typeAhead(aSuggestions[0].value);
         }
         
         this.showSuggestions(aSuggestions);
@@ -177,7 +177,6 @@ AutoSuggestControl.prototype.handleKeyUp = function (oEvent /*:Event*/) {
  * @scope private
  */
 AutoSuggestControl.prototype.hideSuggestions = function () {
-	//document.forms[formName].submit('searchSchool') ;
     this.layer.style.visibility = "hidden";
 };
 
@@ -308,7 +307,7 @@ AutoSuggestControl.prototype.showSuggestions = function (aSuggestions /*:Array*/
     
     for (var i=0; i < aSuggestions.length; i++) {
         oDiv = document.createElement("div");
-        oDiv.appendChild(document.createTextNode(aSuggestions[i]));
+        oDiv.appendChild(document.createTextNode(aSuggestions[i].value));
         this.layer.appendChild(oDiv);
     }
     

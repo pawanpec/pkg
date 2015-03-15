@@ -12,9 +12,14 @@ function registerUser(data) {
 		 
      }});
 }
-function submitForm(formName)
+function setSchoolId(formName)
 {
-  document.forms[formName].submit() ;
+	document.forms[formName]["nid"].value=200;
+	
+}
+function submitForm(formName,event)
+{
+    document.forms[formName].submit() ;
 }
 </script>
 <script type="text/javascript">
@@ -88,20 +93,19 @@ function submitForm(formName)
 					src="<%=WebConstants.IMAGE_URL%>images/flogin.jpg" alt="FB Login"
 					style="cursor:pointer;" onclick="Login()" />
 			</div>
-			<form class="search-input col-xs-9 visible-sm visible-md visible-lg" name="searchSchool" method="post" autocomplete="off" action="/spedia/search.html">
+			<form class="search-input col-xs-9 visible-sm visible-md visible-lg" name="searchSchool"
+			 autocomplete="off" action="/spedia/search.html">
 				<div class="input-group ng-hide">
-					  	<p><input type="text" id="schoolSearchBox" /></p>
+					  	<p><input type="text" id="schoolSearchBox" name="schoolName" value=""  onchange="setSchoolId('searchSchool')" /></p>
 						<img src="<%=WebConstants.IMAGE_URL%>images/spacer.gif" onclick="submitForm('searchSchool')"
 						class="cus-icon cus-homesearch" />
 					</span>
 				</div>
-				<select name=slist id="stateList">
+				<select name=state id="stateList">
 						<option value="Delhi">Delhi</option>
 						<option value="Goa">Goa</option>
 				</select>
-			    <input
-					style="visibility: visible;" type="hidden" id="nid"
-					name="nid" value="">
+				<input name="nid" type="hidden">
 			</form>
 		</div>
 	</div>

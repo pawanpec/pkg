@@ -34,7 +34,7 @@ StateSuggestions.prototype.requestSuggestions = function (oAutoSuggestControl /*
    	 		//search for matching states
    	 	  var data = JSON.parse(JSON.stringify(result));
           for (var i=0; i < data.length; i++) { 
-                  aSuggestions.push(data[i].title);
+                  aSuggestions.push({key:data[i].id,value:data[i].title});
           }
         //provide suggestions to the control
           oAutoSuggestControl.autosuggest(aSuggestions, bTypeAhead);
