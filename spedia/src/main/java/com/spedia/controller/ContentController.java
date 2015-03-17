@@ -3,32 +3,42 @@
  */
 package com.spedia.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
+import com.spedia.dao.ContentDao;
 import com.spedia.dao.IReviewsDAO;
 import com.spedia.dao.MongoDao;
+import com.spedia.model.Content;
 import com.spedia.model.Reviews;
 import com.spedia.model.User;
 import com.spedia.service.follow.IFollowService;
 import com.spedia.utils.SEOURLUtils;
 import com.spedia.utils.SocialUtility;
+import com.spedia.utils.WebConstants;
 /**
  * @author pawan
  *
@@ -45,6 +55,9 @@ public class ContentController {
 	
 	@Autowired
 	private IFollowService followService;
+	@Autowired
+	@Qualifier("contentDao")
+	private ContentDao contentDao;
 	
 	@RequestMapping(value = { "/website.html" }, method = { RequestMethod.GET })
 	public ModelAndView schoolDetails(HttpServletRequest request, HttpServletResponse response) {
@@ -225,6 +238,43 @@ public class ContentController {
 			mongoDao.saveFBGroupData(jsonData);
 		}
 		return "done";
+	}
+	@RequestMapping(value = { "/addNews.html" }, method = { RequestMethod.GET })
+	public ModelAndView addNews(HttpServletRequest request,
+			HttpServletResponse response) {
+		Map<String, Object> model = new HashMap<String, Object>();
+		// Content content=new Content();
+		ModelAndView view = new ModelAndView("addNews", "content",
+				new Content());
+		return view;
+	}
+
+	@RequestMapping(value = "/submitNews.html")
+	public ModelAndView submit(
+			@Valid @ModelAttribute("content") Content content,
+			/* HttpServletRequest request */BindingResult result) {
+		ModelAndView view = new ModelAndView("addNews");
+		FileOutputStream outputStream = null;
+		MultipartFile imageFile = content.getImageFile();
+		if (imageFile!=null) {
+			String filePath = WebConstants.imageDirectory
+					+ imageFile.getOriginalFilename();
+			content.setImagePath(filePath);
+			// String path =
+			// request.getSession().getServletContext().getContextPath();
+			System.out.println(filePath);
+			try {
+				outputStream = new FileOutputStream(new File(filePath));
+				FileCopyUtils.copy(imageFile.getInputStream(), outputStream);
+				outputStream.close();
+			} catch (Exception e) {
+				System.out.println("not written");
+			}
+		}
+		String[] tags = content.getTags();
+		System.out.println(tags);
+		contentDao.saveContent(content);
+		return view;
 	}
 
 }

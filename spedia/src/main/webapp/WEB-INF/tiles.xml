@@ -30,5 +30,8 @@
 	<definition name="login" template="/WEB-INF/pages/login.jsp"/>	
 	<definition name="admin" template="/WEB-INF/pages/admin.jsp"/>	
 	<definition name="userHome" template="/WEB-INF/pages/userHome.jsp"/>	
-	<definition name="403" template="/WEB-INF/pages/403.jsp"/>			
+	<definition name="403" template="/WEB-INF/pages/403.jsp"/>
+	<definition name="addNews" extends="mainTemplate">
+		<put-attribute name="body" value="/WEB-INF/pages/news/news.jsp" />
+	</definition>			
 </tiles-definitions>

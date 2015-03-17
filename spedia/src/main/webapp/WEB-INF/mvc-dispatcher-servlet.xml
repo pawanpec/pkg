@@ -43,6 +43,10 @@
 		<property name="cacheSeconds" value="60"/>
 		<property name="useCodeAsDefaultMessage" value="true"/>
 	</bean> 
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <!-- one of the properties available; the maximum file size in bytes -->
+    <property name="maxUploadSize" value="500000"/>
+	</bean>
 	<!-- Static Pages -->
 		<mvc:view-controller path="/termsofuse.html" view-name="termsofuse"/>
 		<mvc:view-controller path="/privacypolicy.html" view-name="privacypolicy"/>

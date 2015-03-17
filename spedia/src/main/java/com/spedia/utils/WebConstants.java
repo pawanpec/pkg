@@ -29,4 +29,6 @@ public class WebConstants {
 	
 	public static String SECURITY_TOKEN="changeThis";
 	public static String SP_DOMAIN = "test.schoolspedia.com";
+
+	public static final String imageDirectory="/home/pawan/git/";
 }
