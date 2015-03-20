@@ -1,4 +1,9 @@
 <!--########### School REVIEW WEDGIT STARTS HERE ###########-->
+<div class="col-sm-3 item account-card interview-card" >
+
+		<div class="story-wrap z2new">
+			<div class="row">
+				<div class="text-left notifyRow">
 School Reviews
 <div class="col-sm-4 col-md-3 item account-card interview-card ng-hide">
 Overall Rating
@@ -10,4 +15,9 @@ Overall Rating
  
  
  </c:forEach>			
-</div>						<!-- ==================== -->
+</div>	
+
+
+			</div>
+		</div>
+	</div>					<!-- ==================== -->

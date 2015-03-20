@@ -16,7 +16,7 @@
 	<div class="container-fluid offsetWrap" id="navbar-collapse1Wrap">
 		<div class="row innerWrap">
 			<!--######## Main Container Start Here ###########-->
-			<div class="row">
+			<div class="row" style="padding-left:2%;">
 				<div class="col-sm-12">
 				<div class="row">
 					<div class="col-sm-12">	
@@ -35,8 +35,7 @@
 				
 					<div class="col-sm-12 m_t10">
 						<div class="row" id="companypage">
-							<div class="col-sm-3 columnsize">
-							</div>
+							
 							<!--########### Work for US Start Here ###########-->
 								<%@include file="schoolTabs.jsp"%>
 							<!--########### Work for US Ends Here ###########-->

@@ -4,7 +4,7 @@ int random=(int)Math.floor((Math.random()*10+1));
 String defaultPath1=WebConstants.IMAGE_URL+"images/static/"+random+".jpg";
 %>
 
-<div class="col-sm-6 item" >
+<div class="col-sm-9 item" style="padding-left:2%;" >
 <div class="clearfix card-heading">
 				<ul class="commands-btn">
 					<li><a data-original-title="Help" href="javascript:void(0)"
@@ -34,7 +34,7 @@ String defaultPath1=WebConstants.IMAGE_URL+"images/static/"+random+".jpg";
 					</div>
 				</div>
 				<!--########### School Map Start Herr ###########-->
-					<%-- <%@include file="schoolmap.jsp"%> --%>
+					<%@include file="schoolmap.jsp"%>
 				<!--########### School Map Ends Here ###########-->
 			</div>
 		

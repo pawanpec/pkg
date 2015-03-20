@@ -1,5 +1,5 @@
 <!--########### COMPANY OVERVIEW WITH LOGO ENDS HERE ###########-->
-<div class="col-sm-3 item account-card interview-card" >
+<div class="col-sm-9 item account-card interview-card" >
 <div class="clearfix card-heading">
 				<ul class="commands-btn">
 					<li><a data-original-title="Help" href="javascript:void(0)"

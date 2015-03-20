@@ -85,10 +85,10 @@ function follow(nid,uid,status) {
 							</a>
 								
 						</span>
-					
+					</span>
 				</div>
 				<div class="col-sm-3 text-center colorfff companyrating">
-					<div class="row">
+					<div class="row" style="border:1px solid #ff0000">
 						<div class="col-xs-3" style="background:#1c817e;">
 							<div class="cmpratinginfo row">
 								<strong>
@@ -117,7 +117,7 @@ function follow(nid,uid,status) {
 								</strong><br/> Co-curricular activities
 							</div>
 						</div>
-						<div class="col-xs-3" style="background:#c1494b;">
+						<div class="col-xs-3" style="background:#565a9d;">
 							<div class="cmpratinginfo row">
 								<strong>
 							<fmt:formatNumber value="${content.review.ore}" pattern="0.0"  />/5
@@ -135,7 +135,7 @@ function follow(nid,uid,status) {
 								<input id="follow"  class="btn btn-primary btn-sm colorfff" onclick="follow(${content.nid},2,1);" value="FOLLOW" type="button" /> 
 							</li>
 							<li>
-								<a href="/spedia/writeReview.html?nid=${content.nid}">Write Review</a>
+								<a href="/spedia/writeReview.html?nid=${content.nid}" class="btn btn-primary btn-sm colorfff"><span class="colorfff">WRITE REVIEW</span></a>
 							</li>
 							
 						</ul>
