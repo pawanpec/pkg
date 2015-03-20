@@ -1,7 +1,6 @@
-	<div class="normal_listing" itemscope=""
-			itemtype="http://schema.org/LocalBusiness">
+	<div class="normal_listing" itemscope="" itemtype="http://schema.org/LocalBusiness"  style="border:1px solid #000; width:70%;">
 			<div class="row rowpdng">
-				<div class="col-lg-2 hidden-xs" style="padding:0;">
+				<div class="col-lg-1 hidden-xs" style="padding:0;">
 					<a
 						href="/${newsContent.alias }"><img
 						src="images/static/1.jpg" alt="${newsContent.title }"
@@ -22,14 +21,14 @@
 								src="images/star5.png"
 								title="Poor">
 						</div>
-						<div class="col-lg-4" style="padding:0;">
+						<div class="col-lg-4 _listResult" style="padding:0;">
 								<li class=""><a rel="nofollow"
 									href="javascript:openAjaxPopup('favourite/getfavusers/53251/business/1')"
 									title="Follow ${newsContent.title }"
-									class="link1">${newsContent.f.size} Follow </a></li>
+									class="link1 btn btn-primary btn-sm colorfff">${newsContent.f.size} Follow </a></li>
 								<li class="last"><a
 									href="/${newsContent.alias }/review-rating"
-									title="Read reviews of ${newsContent.title }" class="link1">${newsContent.review.count }
+									title="Read reviews of ${newsContent.title }" class="link1 btn btn-primary btn-sm colorfff">${newsContent.review.count }
 										Review </a></li>
 						</div>
 						
