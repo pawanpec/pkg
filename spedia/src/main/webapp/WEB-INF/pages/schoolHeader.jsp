@@ -7,20 +7,14 @@ function registerUser(data) {
 	  $.ajax({url: aurl, success: function(result){
 		  console.log("after login "+result);
 		  if(result=="1"){
-			//  window.location = "http://test.schoolspedia.com/spedia/userHome.html";
+			//  window.location = "http://dev.timesjobs.com/spedia/userHome.html";
 		  }
 		 
      }});
 }
-function setSchoolId()
+function submitForm(formName)
 {
-	//alert(this);
-	//document.forms[formName]["nid"].value=200;
-	
-}
-function submitForm(formName,event)
-{
-    document.forms[formName].submit() ;
+  document.forms[formName].submit() ;
 }
 </script>
 <script type="text/javascript">
@@ -65,8 +59,8 @@ function submitForm(formName,event)
 			</button>
 			<h1 class="logo">
 				<a href="/"><img
-					src="<%=WebConstants.IMAGE_URL%>images/jobuzz_logo.png"
-					alt="JobBuzz"></a>
+					src="<%=WebConstants.IMAGE_URL%>images/logo.png"
+					alt="Schoolspedia"></a>
 			</h1>
 		</div>
 		<nav class="main-mnu" id="navbar-collapse1">
@@ -94,19 +88,21 @@ function submitForm(formName,event)
 					src="<%=WebConstants.IMAGE_URL%>images/flogin.jpg" alt="FB Login"
 					style="cursor:pointer;" onclick="Login()" />
 			</div>
-			<form class="search-input col-xs-9 visible-sm visible-md visible-lg" name="searchSchool"
-			 autocomplete="off" action="/spedia/search.html">
-				<div class="input-group ng-hide">
-					  	<p><input type="text" id="schoolSearchBox" name="schoolName" value="" /></p>
+			<form class="search-input col-xs-9 visible-sm visible-md visible-lg" name="searchSchool" method="post" autocomplete="off" action="/spedia/search.html">
+            <select name=slist id="stateList" style="float:right">
+						<option value="Delhi">Delhi</option>
+						<option value="Goa">Goa</option>
+				</select>
+				<div class="input-group ng-hide" style="width: 200px; display: inline-flex; float:right">
+					  	<p><input type="text" id="schoolSearchBox" /></p>
 						<img src="<%=WebConstants.IMAGE_URL%>images/spacer.gif" onclick="submitForm('searchSchool')"
 						class="cus-icon cus-homesearch" />
 					</span>
 				</div>
-				<select name=state id="stateList">
-						<option value="Delhi">Delhi</option>
-						<option value="Goa">Goa</option>
-				</select>
-				<input name="nid" type="hidden">
+				
+			    <input
+					style="visibility: visible;" type="hidden" id="nid"
+					name="nid" value="">
 			</form>
 		</div>
 	</div>
