@@ -270,7 +270,7 @@ div.slider-handle span{background: transparent;}
 
 
 
-.story-wrap{margin-bottom:30px; border:solid 1px #e3e3e3; border-radius:3px; padding: 15px 30px 5px; text-align:center; position:relative; min-height:270px; color:#666666; background:#fff; }
+.story-wrap{margin-bottom:30px; border:solid 1px #e3e3e3; border-radius:3px; padding: 15px 30px 5px; /*text-align:center;*/ position:relative; min-height:270px; color:#666666; background:#fff; }
 .story-wrap p{text-align:left;}
 .card-heading{padding:10px 0 5px;}
 .card-heading h2{float:left; font-family:"robotolight",arial; margin:0; font-size:24px; line-height:20px;}
@@ -1020,4 +1020,9 @@ h3 a:hover,h3 a:focus,h4 a:hover,h4 a:focus{text-decoration: none;}
 
 }
 
+ #status{display:inline-block}
  
+ 
+ .cmpwhodetail p{ text-align:left!important}
+ ._listResult{ list-style:none; display:inline-flex}
+ ._listResult a{ display:inline-block; margin:0 10px 0 0;}

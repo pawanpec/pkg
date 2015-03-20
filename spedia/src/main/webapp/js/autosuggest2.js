@@ -307,6 +307,7 @@ AutoSuggestControl.prototype.showSuggestions = function (aSuggestions /*:Array*/
     
     for (var i=0; i < aSuggestions.length; i++) {
         oDiv = document.createElement("div");
+        oDiv.setAttribute("id", aSuggestions[i].key);
         oDiv.appendChild(document.createTextNode(aSuggestions[i].value));
         this.layer.appendChild(oDiv);
     }

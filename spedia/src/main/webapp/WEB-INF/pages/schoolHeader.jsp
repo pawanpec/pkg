@@ -12,9 +12,10 @@ function registerUser(data) {
 		 
      }});
 }
-function setSchoolId(formName)
+function setSchoolId()
 {
-	document.forms[formName]["nid"].value=200;
+	//alert(this);
+	//document.forms[formName]["nid"].value=200;
 	
 }
 function submitForm(formName,event)
@@ -96,7 +97,7 @@ function submitForm(formName,event)
 			<form class="search-input col-xs-9 visible-sm visible-md visible-lg" name="searchSchool"
 			 autocomplete="off" action="/spedia/search.html">
 				<div class="input-group ng-hide">
-					  	<p><input type="text" id="schoolSearchBox" name="schoolName" value=""  onchange="setSchoolId('searchSchool')" /></p>
+					  	<p><input type="text" id="schoolSearchBox" name="schoolName" value="" /></p>
 						<img src="<%=WebConstants.IMAGE_URL%>images/spacer.gif" onclick="submitForm('searchSchool')"
 						class="cus-icon cus-homesearch" />
 					</span>
