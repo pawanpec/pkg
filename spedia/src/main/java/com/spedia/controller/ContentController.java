@@ -271,9 +271,9 @@ public class ContentController {
 				System.out.println("not written");
 			}
 		}else{
-			content.setImageFile(null);
 			content.setImagePath(null);
 		}
+		content.setImageFile(null);
 		String[] tags = content.getTags();
 		String seourl = SEOURLUtils.getSEOURL(content.getType(), content.getTitle());
 		content.setAlias(seourl);
