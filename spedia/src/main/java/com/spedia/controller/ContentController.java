@@ -256,7 +256,7 @@ public class ContentController {
 		ModelAndView view = new ModelAndView("addNews");
 		FileOutputStream outputStream = null;
 		MultipartFile imageFile = content.getImageFile();
-		if (imageFile!=null) {
+		if (imageFile!=null&&!imageFile.isEmpty()) {
 			String filePath = WebConstants.imageDirectory
 					+ imageFile.getOriginalFilename();
 			content.setImagePath(filePath);
@@ -270,10 +270,14 @@ public class ContentController {
 			} catch (Exception e) {
 				System.out.println("not written");
 			}
+		}else{
+			content.setImagePath(null);
 		}
+		content.setImageFile(null);
 		String[] tags = content.getTags();
-		content.setAlias(SEOURLUtils.getSEOURL(content.getType(), content.getTitle()));
-		System.out.println(tags);
+		String seourl = SEOURLUtils.getSEOURL(content.getType(), content.getTitle());
+		content.setAlias(seourl);
+		System.out.println(seourl);
 		contentDao.saveContent(content);
 		return view;
 	}

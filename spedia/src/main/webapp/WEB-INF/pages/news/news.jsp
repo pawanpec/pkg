@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ include file="/WEB-INF/pages/include.jsp"%>
+<script type="text/javascript" src="<%=WebConstants.JS_URL %>js/ckeditor/ckeditor.js"></script>
 <html>
 <head>
 </head>
@@ -12,21 +13,17 @@
 			<form:input path="title" />
 			<br />
 			<label>Body</label>
-			<form:textarea path="body" />
+			<form:textarea cssClass="ckeditor" path="body" />
 			<br />
 			<label>Tags</label>
 			<form:input path="tags" />
 			<br />
 			Load image <form:input type="file" path="imageFile" />
 			<label>News type</label>
-			
+			<form:hidden path="sid" value="${param.sId}" />
 			<form:select path="type">
-				<form:option value="Political"></form:option>
-				<form:option value="Bollywood Hangama"></form:option>
-
-				<form:option value="Hollywood Hangama"></form:option>
-				<form:option value="Cricket"></form:option>
-
+				<form:option value="schools_news">Schools News</form:option>
+				<form:option value="nursery_admission_news">Nursery Admission News</form:option>
 			</form:select>
 			<br />
 			<input type="submit" value="Submit" />
