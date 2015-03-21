@@ -20,14 +20,10 @@
 			<br />
 			Load image <form:input type="file" path="imageFile" />
 			<label>News type</label>
-			
+			<form:hidden path="sid" value="${param.sId}" />
 			<form:select path="type">
-				<form:option value="Political"></form:option>
-				<form:option value="Bollywood Hangama"></form:option>
-
-				<form:option value="Hollywood Hangama"></form:option>
-				<form:option value="Cricket"></form:option>
-
+				<form:option value="schools_news">Schools News</form:option>
+				<form:option value="nursery_admission_news">Nursery Admission News</form:option>
 			</form:select>
 			<br />
 			<input type="submit" value="Submit" />

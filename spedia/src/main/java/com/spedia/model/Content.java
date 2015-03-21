@@ -1,6 +1,5 @@
 package com.spedia.model;
 
-import java.io.File;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -12,6 +11,7 @@ public class Content {
 	private MultipartFile imageFile;
 	private String imagePath;
 	private String alias;
+	private String sid;
 
 	public String getImagePath() {
 		return imagePath;
@@ -67,6 +67,14 @@ public class Content {
 
 	public void setAlias(String alias) {
 		this.alias = alias;
+	}
+
+	public String getSid() {
+		return sid;
+	}
+
+	public void setSid(String sid) {
+		this.sid = sid;
 	}
 
 }
