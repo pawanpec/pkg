@@ -272,6 +272,7 @@ public class ContentController {
 			}
 		}
 		String[] tags = content.getTags();
+		content.setAlias(SEOURLUtils.getSEOURL(content.getType(), content.getTitle()));
 		System.out.println(tags);
 		contentDao.saveContent(content);
 		return view;

@@ -1,77 +1,33 @@
 package com.spedia.utils;
 
-import java.util.List;
-import java.util.Map;
 
 public class SEOURLUtils {
-	private static final String DISCOVER = "/discover/";
-	private static final String INSIGHT = "/insight";
-	private static final String NEWS = "/news";
+	private static final int TITLE_IN_URL_MAX_LENGTH = 100;
 
-	
-
-	public static String getCompanySEOURL(String companyName, String companyId) {
-		String url = DISCOVER + "company/";
-		if (companyId != null) {
-			url += companyId;
+	public static String getSEOURL(String type, String title) {
+		// build the title that appears in the URL when accessing a podcast from
+		// the main application
+		String titleInUrl = title.trim()
+				.replaceAll("[^a-zA-Z0-9\\-\\s\\.]", "");
+		titleInUrl = removeSplChar(titleInUrl);
+		type=removeSplChar(type);
+		titleInUrl=type+"/"+titleInUrl;
+		if (titleInUrl.length() > TITLE_IN_URL_MAX_LENGTH) {
+			titleInUrl = titleInUrl.substring(0, TITLE_IN_URL_MAX_LENGTH);
 		}
-		if (companyName != null) {
-			url += "/" + removeSplChar(companyName).toLowerCase();
-		}
-		return url;
+		return titleInUrl.toLowerCase();
 
 	}
-
-	public static String getCompanyJobSEOURL(String companyName, String companyId) {
-		String url = "/jobs/";
-		if (companyId != null) {
-			url += companyId;
-		}
-		if (companyName != null) {
-			url += "/" + removeSplChar(companyName).toLowerCase();
-		}
-		return url;
-
-	}
-
-	public static String getCompanyReviewSEOURL(String companyName, String companyId) {
-		StringBuffer reviewListURL = new StringBuffer("");
-		StringBuffer queryStr = new StringBuffer("?");
-		if (companyId != null) {
-			queryStr.append("compids=");
-			queryStr.append(companyId);
-			reviewListURL.append(removeSplChar(companyName));
-			reviewListURL.append("/");
-		}
-		String reviewListURLs = reviewListURL.toString().toLowerCase();
-		reviewListURLs = reviewListURLs.replaceAll("-/", "/");
-		reviewListURLs = reviewListURLs + queryStr.toString();
-		return reviewListURLs;
-	}
-
-	public static String getCompanyInterviewSEOURL(String companyName, String companyId) {
-		StringBuffer interviewListURL = new StringBuffer("");
-		StringBuffer queryStr = new StringBuffer("?");
-		if (companyId != null) {
-			queryStr.append("compids=");
-			queryStr.append(companyId);
-			interviewListURL.append(removeSplChar(companyName));
-			interviewListURL.append("/");
-		}
-		String interviewListURLs = interviewListURL.toString().toLowerCase();
-		interviewListURLs = interviewListURLs.replaceAll("-/", "/");
-		interviewListURLs = interviewListURLs + queryStr.toString();
-		return interviewListURLs;
-	}
-	
 	private static String removeSplChar(String str) {
-			if(chkNull(str)){
-				return "";
-			}
+		if (!chkNull(str)) {
 			str = str.replaceAll("[^A-Za-z0-9]", " ");
 			str = str.replaceAll("\\s+", "-");
 			str = str.replaceAll("--", "-");
+			str = str.replaceAll("[\\-| |\\.]+", "-");
 			return str.trim();
+		} else {
+			return "";
+		}
 	}
 	public static boolean chkNull(Object value) {
 		String strValue = null;
@@ -92,4 +48,6 @@ public class SEOURLUtils {
 		else
 			return false;
 	}
+
+
 }

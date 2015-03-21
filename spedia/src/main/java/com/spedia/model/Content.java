@@ -11,6 +11,7 @@ public class Content {
 	private String[] tags;
 	private MultipartFile imageFile;
 	private String imagePath;
+	private String alias;
 
 	public String getImagePath() {
 		return imagePath;
@@ -58,6 +59,14 @@ public class Content {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public String getAlias() {
+		return alias;
+	}
+
+	public void setAlias(String alias) {
+		this.alias = alias;
 	}
 
 }
