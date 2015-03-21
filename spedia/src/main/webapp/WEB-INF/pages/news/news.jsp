@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ include file="/WEB-INF/pages/include.jsp"%>
+<script type="text/javascript" src="<%=WebConstants.JS_URL %>js/ckeditor/ckeditor.js"></script>
 <html>
 <head>
 </head>
@@ -12,7 +13,7 @@
 			<form:input path="title" />
 			<br />
 			<label>Body</label>
-			<form:textarea path="body" />
+			<form:textarea cssClass="ckeditor" path="body" />
 			<br />
 			<label>Tags</label>
 			<form:input path="tags" />
