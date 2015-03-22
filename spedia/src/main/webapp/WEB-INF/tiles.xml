@@ -5,33 +5,43 @@
 		<put-attribute name="title" value="" />
 		<put-attribute name="header" value="/WEB-INF/pages/schoolHeader.jsp" />
 		<put-attribute name="body" value="" />
-		<!-- <put-attribute name="footer" value="/WEB-INF/pages/schoolFooter.jsp" /> -->
+		<!-- <put-attribute name="footer" value="/WEB-INF/pages/schoolFooter.jsp" 
+			/> -->
 	</definition>
-	<!--  COMPANY RELATED PAGES  --> 
-    <definition name="schoolHome" extends="mainTemplate">
-		<put-attribute name="body" value="/WEB-INF/pages/school/schoolHome.jsp" />
+	<!-- COMPANY RELATED PAGES -->
+	<definition name="schoolHome" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/pages/school/schoolHome.jsp" />
 	</definition>
-	 <definition name="news" extends="mainTemplate">
-		<put-attribute name="body" value="/WEB-INF/pages/news/news_content.jsp" />
+	<definition name="news" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/pages/news/news_content.jsp" />
 	</definition>
 	<definition name="review_moderation" extends="mainTemplate">
-		<put-attribute name="body" value="/WEB-INF/pages/reviews/review_moderation.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/pages/reviews/review_moderation.jsp" />
 	</definition>
 	<definition name="writeReview" extends="mainTemplate">
-		<put-attribute name="body" value="/WEB-INF/pages/reviews/writeReview.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/pages/reviews/writeReview.jsp" />
 	</definition>
-	 <definition name="searchResult" extends="mainTemplate">
-		<put-attribute name="body" value="/WEB-INF/pages/search/searchResult.jsp" />
+	<definition name="searchResult" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/pages/search/searchResult.jsp" />
 	</definition>
 	<definition name="home" extends="mainTemplate">
 		<put-attribute name="body" value="/WEB-INF/pages/homePage.jsp" />
 	</definition>
-	<definition name="notfound" template="/WEB-INF/pages/404.jsp"/>	
-	<definition name="login" template="/WEB-INF/pages/login.jsp"/>	
-	<definition name="admin" template="/WEB-INF/pages/admin.jsp"/>	
-	<definition name="userHome" template="/WEB-INF/pages/userHome.jsp"/>	
-	<definition name="403" template="/WEB-INF/pages/403.jsp"/>
+	<definition name="notfound" template="/WEB-INF/pages/404.jsp" />
+	<definition name="login" template="/WEB-INF/pages/login.jsp" />
+	<definition name="admin" template="/WEB-INF/pages/admin.jsp" />
+	<definition name="userHome" template="/WEB-INF/pages/userHome.jsp" />
+	<definition name="403" template="/WEB-INF/pages/403.jsp" />
 	<definition name="addNews" extends="mainTemplate">
 		<put-attribute name="body" value="/WEB-INF/pages/news/news.jsp" />
-	</definition>			
+	</definition>
+	<definition name="editSchoolInfo" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/pages/school/editSchoolInfo.jsp" />
+	</definition>
 </tiles-definitions>
