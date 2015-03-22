@@ -5,6 +5,7 @@ package com.spedia.controller;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -269,6 +270,7 @@ public class ContentController {
 				outputStream.close();
 			} catch (Exception e) {
 				System.out.println("not written");
+				//e.printStackTrace();
 			}
 		}else{
 			content.setImagePath(null);
@@ -278,6 +280,12 @@ public class ContentController {
 		String seourl = SEOURLUtils.getSEOURL(content.getType(), content.getTitle());
 		content.setAlias(seourl);
 		System.out.println(seourl);
+		
+		Long time = new Date().getTime();
+		content.setCreated(time);
+		if(content.getStatus() == 0){
+			content.setChanged(time);
+		}
 		contentDao.saveContent(content);
 		return view;
 	}

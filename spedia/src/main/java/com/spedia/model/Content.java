@@ -1,9 +1,56 @@
 package com.spedia.model;
 
-
 import org.springframework.web.multipart.MultipartFile;
 
 public class Content {
+	private Long created;
+	private Long changed;
+	private String uid;
+	private String updatedBy;
+	private int status = 0;
+
+	
+
+	public Long getCreated() {
+		return created;
+	}
+
+	public void setCreated(Long created) {
+		this.created = created;
+	}
+
+	public Long getChanged() {
+		return changed;
+	}
+
+	public void setChanged(Long changed) {
+		this.changed = changed;
+	}
+
+	public String getUid() {
+		return uid;
+	}
+
+	public void setUid(String uid) {
+		this.uid = uid;
+	}
+
+	public String getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
 	private String title;
 	private String body;
 	private String type;

@@ -28,7 +28,7 @@
 						<div class="newsflimg">
 							<img alt="content.imageName" src="${content.imageName}">
 						</div>
-						${content.body.value}
+						${content.body}
 					</div>
 				</section> 
 				<aside class="col-md-3" style="display: none;">
