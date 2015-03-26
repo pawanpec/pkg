@@ -10,7 +10,7 @@ import com.spedia.model.GenericObject;
 
 
 
-public interface BaseDao<T extends GenericObject, ID extends Serializable> {
+public interface BaseDao<T, ID extends Serializable> {
 
     /**
      * Find By Id

@@ -33,7 +33,7 @@ import com.spedia.model.GenericObject;
  */
 
 
-public abstract class BaseDAOImpl<T extends GenericObject, ID extends Serializable> implements BaseDao<T, ID> {
+public abstract class BaseDAOImpl<T, ID extends Serializable> implements BaseDao<T, ID> {
 	private static final Log logger = LogFactory.getLog(BaseDAOImpl.class);
 	private Class<T> entityBeanType;
 	

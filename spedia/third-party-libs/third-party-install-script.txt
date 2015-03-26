@@ -1,1 +1,2 @@
 mvn install:install-file -DgroupId=com.mongodb -DartifactId=mongo -Dversion=2.9.1 -Dfile=mongo-2.9.1.jar -Dpackaging=jar -DgeneratePom=true
+mvn install:install-file -DgroupId=org.json -DartifactId=json -Dversion=json -Dfile=json-tj_1.0.jar -Dpackaging=jar -DgeneratePom=true
