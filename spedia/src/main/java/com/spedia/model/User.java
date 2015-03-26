@@ -15,6 +15,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.spedia.forum.model.AbstractDocument;
+
 /**
  * User entity. @author MyEclipse Persistence Tools
  */
@@ -22,7 +26,8 @@ import javax.persistence.UniqueConstraint;
 @Table(name = "users", catalog = "sp_new", uniqueConstraints = {
 		@UniqueConstraint(columnNames = "uid"),
 		@UniqueConstraint(columnNames = "mail") })
-public class User extends GenericObject {
+@Document
+public class User extends AbstractDocument {
 
 	// Fields
 

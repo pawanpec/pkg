@@ -20,6 +20,7 @@ public class MongoApp {
 	public static final String mongoHost = "127.0.0.1";// for qc
 	public static Mongo mongo;
 	public static DB db;
+	public static DB drupal;
 	public static DB sp_dev;
 	public static DBCollection node;
 	public static DBCollection redirect;
@@ -28,13 +29,16 @@ public class MongoApp {
 	public static DBCollection url;
 	public static DBCollection taxonomy_term_data;
 	public static DBCollection aff_1;
+	public static DBCollection node_drupal;
 	static{
 		
 		try {
 			mongo = new Mongo(mongoHost, 27017);
-			db = mongo.getDB("drupal");
-			sp_dev = mongo.getDB("sp_dev");
+			db = mongo.getDB("spedia");
+			drupal = mongo.getDB("drupal");
+			sp_dev = mongo.getDB("sp_dev_live");
 			node = db.getCollection("fields_current.node");
+			node_drupal = drupal.getCollection("fields_current.node");
 			redirect = db.getCollection("fields_current.redirect");
 			location = sp_dev.getCollection("location_nid_table");
 			review = sp_dev.getCollection("reviews_count");
@@ -68,7 +72,7 @@ public class MongoApp {
 			// create a document to store attributes
 			int i = 0;
 			BasicDBObject nodeQuery = new BasicDBObject();
-			nodeQuery.put("_id", 240);
+			nodeQuery.put("_id", 2300);
 			DBCursor dbuCursor = node.find();
 			//DBCursor dbuCursor=getSchool();
 			while (dbuCursor.hasNext()) {
@@ -76,14 +80,14 @@ public class MongoApp {
 					if (nodeObject != null) {
 						Integer nid = (Integer) nodeObject.get("_id");
 						System.out.println("Nid "+ nid +" "+i++);
-						//updateSchoolInfo(nodeObject, nid);
-							//updateRedirectURL(nodeObject, nid);
+							// updateSchoolInfo(nodeObject, nid);--done
+							//	updateRedirectURL(nodeObject, nid);--done
 							// updateNodeObject(db,node,nodeObject);
-							//updateLocation(nodeObject, nid);
-							//updateReview(nodeObject, nid);
-							//updateURL(nodeObject, nid);
-							//updateTags(nodeObject, nid);
-						//updateSchoolSummary(nodeObject, nid);
+							//updateLocation(nodeObject, nid);--done
+							//  updateReview(nodeObject, nid);--done
+							//updateURL(nodeObject, nid);--done
+							//	updateTags(nodeObject, nid);--done
+							//updateSchoolSummary(nodeObject, nid);--done
 					}
 
 			}
@@ -103,12 +107,15 @@ public class MongoApp {
 		try {
 			BasicDBObject nodeQuery = new BasicDBObject();
 			nodeQuery.put("_id", nid);
-			DBObject sdQuery=new BasicDBObject("entity_id",nid);
-			DBObject dbObject=aff_1.findOne(sdQuery);
-			nodeObject.put("sd",dbObject.get("sd"));
-			//System.out.println(text);
-			System.out.println("---------------------------------------------------");
-			node.update(nodeQuery, nodeObject);
+			DBObject dbObject=node_drupal.findOne(nodeQuery);
+			Object v = dbObject.get("sd");
+			if (v!=null) {
+				nodeObject.put("sd", v);
+				//System.out.println(text);
+				System.out
+						.println("---------------------------------------------------");
+				node.update(nodeQuery, nodeObject);
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -160,11 +167,27 @@ public class MongoApp {
 			BasicDBObject nodeQuery = new BasicDBObject();
 			nodeQuery.put("_id", nid);
 			BasicDBList tagsA=new BasicDBList();
-			
+			BasicDBList nursery_admission_tags=new BasicDBList();
 			BasicDBList tags=(BasicDBList) nodeObject.get("taxonomyextra");
 			BasicDBList taxonomy_vocabulary_15=(BasicDBList) nodeObject.get("taxonomy_vocabulary_15");
 			BasicDBList career_tags=(BasicDBList) nodeObject.get("taxonomy_vocabulary_11");
-			//BasicDBList tags=(BasicDBList) nodeObject.get("taxonomy_vocabulary_9");
+			BasicDBList field_nursery_admission_tags=(BasicDBList) nodeObject.get("field_nursery_admission_tags");
+			if (field_nursery_admission_tags!=null) {
+				for (Object object : field_nursery_admission_tags) {
+					DBObject o = (DBObject) object;
+					Integer tid = (Integer) o.get("tid");
+					BasicDBObject tagQuery = new BasicDBObject();
+					tagQuery.put("tid", tid);
+					DBObject tag = taxonomy_term_data.findOne(tagQuery);
+					if (tag != null) {
+						String tagName = (String) tag.get("name");
+						if (tagName!=null) {
+							nursery_admission_tags.add(tagName.toLowerCase());
+						}
+					}
+
+				}
+			}
 			if (tags!=null) {
 				for (Object object : tags) {
 					DBObject o = (DBObject) object;
@@ -215,6 +238,7 @@ public class MongoApp {
 			}
 			System.out.println(tagsA);
 			nodeObject.put("tags", tagsA);
+			nodeObject.put("nursery_admission_tags", nursery_admission_tags);
 			WriteResult c = node.update(nodeQuery, nodeObject);
 			
 		} catch (Exception e) {
@@ -266,11 +290,12 @@ public class MongoApp {
 			query.put("redirect", "node/" + nid);
 			DBObject redirectObject = redirect.findOne(query);
 			String url = (String) redirectObject.get("source");
-			nodeObject.put("url", url);
-			System.out.println("updating nid " + nid + " with URL"
-					+ url);
-			WriteResult c = node.update(nodeQuery, nodeObject);
-			System.out.println(c.getN());
+			if (url!=null) {
+				nodeObject.put("url", url);
+				System.out.println("updating nid " + nid + " with URL " + url);
+				WriteResult c = node.update(nodeQuery, nodeObject);
+				System.out.println(c.getN());
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
