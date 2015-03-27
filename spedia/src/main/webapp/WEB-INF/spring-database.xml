@@ -17,12 +17,12 @@ http://www.springframework.org/schema/cache http://www.springframework.org/schem
 	</context:annotation-config>
 	<context:component-scan base-package="com.spedia.*" />
 	<bean id="mongo" class="com.mongodb.Mongo">
-		<constructor-arg value="127.0.0.1:27017" />
+		<constructor-arg value="localhost:27017" />
 	</bean>
 	<!-- Define the MongoTemplate which handles connectivity with MongoDB -->
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg name="mongo" ref="mongo" />
-		<constructor-arg name="databaseName" value="spedia" />
+		<constructor-arg name="databaseName" value="drupal" />
 	</bean>
 	<bean id="mongoDao" class="com.spedia.dao.MongoDaoImpl"
 		init-method="init">

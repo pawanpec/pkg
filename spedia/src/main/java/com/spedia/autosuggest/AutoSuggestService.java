@@ -12,9 +12,15 @@ import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
+import org.apache.lucene.index.Term;
+import org.apache.lucene.queryparser.classic.ParseException;
+import org.apache.lucene.queryparser.classic.QueryParser;
+import org.apache.lucene.search.BooleanClause;
+import org.apache.lucene.search.BooleanQuery;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
+import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.search.TopScoreDocCollector;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.QueryBuilder;
@@ -22,6 +28,7 @@ import org.apache.lucene.util.Version;
 import org.springframework.stereotype.Component;
 
 import com.spedia.utils.SchoolsConstants;
+import com.spedia.utils.SocialUtility;
 @Component
 public class AutoSuggestService {
 	private static IndexSearcher searcher;
@@ -33,20 +40,35 @@ public class AutoSuggestService {
 		return  new StandardAnalyzer(Version.LUCENE_4_10_3);
 	}
 
-	public static Set<Map> getDocument(Map<String,String> query, int hitCount) throws IOException {
+	public static Set<Map> getDocument(Map<String,String> query, int hitCount) throws IOException, ParseException {
 		IndexReader reader = DirectoryReader.open(FSDirectory
 				.open(new File(SchoolsConstants.INDEX_PATH)));
 		searcher = new IndexSearcher(reader);
 		QueryBuilder queryBuilder = new QueryBuilder(getAnalyzer());
+		BooleanQuery booleanQuery = new BooleanQuery();
 		String term =query.get("title");
-		term = parseQueryString(term);
-		Query q = queryBuilder.createPhraseQuery("title", term);
-		System.out.println(q.toString());
+		Query q1=null;
+		if (!SocialUtility.chkNull(term)) {
+			term = parseQueryString(term);
+			q1 = new QueryParser(Version.LUCENE_CURRENT,"title", getAnalyzer()).parse(term);
+			booleanQuery.add(q1, BooleanClause.Occur.MUST);
+		}
+		String state = query.get("state");
+		if (!SocialUtility.chkNull(state)) {
+			Query q2 = queryBuilder.createBooleanQuery("province", state);
+			booleanQuery.add(q2, BooleanClause.Occur.MUST);
+		}
+		String city =query.get("city");
+		if (!SocialUtility.chkNull(city)) {
+			Query q3 = queryBuilder.createBooleanQuery("city", city);
+			booleanQuery.add(q3, BooleanClause.Occur.MUST);
+		}
+		System.out.println(booleanQuery.toString());
 		Set<Map> result = new LinkedHashSet<Map>();
 		TopScoreDocCollector collector = TopScoreDocCollector.create(hitCount,
 				true);
 		try {
-			searcher.search(q, collector);
+			searcher.search(booleanQuery, collector);
 			ScoreDoc[] hits = collector.topDocs().scoreDocs;
 			System.out.println("Found " + hits.length + " hits.");
 			for (int i = 0; i < hits.length; ++i) {
@@ -96,6 +118,9 @@ public class AutoSuggestService {
 			query.put("state", "delhi");
 			d = getDocument(query, hitCount);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

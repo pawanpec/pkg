@@ -76,29 +76,35 @@ public class SchoolIndex {
 		String title = (String) dbObject.get("title");
 		System.out.println("indexing "+title);
 		Integer id = (Integer) dbObject.get("_id");
-		String province = (String) dbObject.get("location.province");
-		String city = (String) dbObject.get("location.city");
-		String postal_code = (String) dbObject.get("location.postal_code");
-
+		DBObject location=(DBObject) dbObject.get("location");
 		Document doc = new Document();
 		if(title!=null){
 			doc.add(new TextField("title", title.trim().toLowerCase(), Field.Store.YES));
 		}
 		doc.add(new IntField("id", id, Field.Store.YES));
-		if(province!=null){
-			doc.add(new StringField("province", province, Field.Store.YES));
-		}else{
-			doc.add(new StringField("province", "", Field.Store.YES));
-		}
-		if (city!=null) {
-			doc.add(new StringField("city", city, Field.Store.YES));
-		}else{
-			doc.add(new StringField("city", "", Field.Store.YES));
-		}
-		if (postal_code!=null) {
-			doc.add(new StringField("postal_code", postal_code, Field.Store.YES));
-		}else{
-			doc.add(new StringField("postal_code", "", Field.Store.YES));
+		if (location!=null) {
+			String province = (String) location.get("province");
+			String city = (String) location.get("city");
+			String postal_code = (String) location.get("postal_code");
+			System.out.println(province);
+			System.out.println(city);
+			System.out.println(postal_code);
+			if (province != null) {
+				doc.add(new StringField("province", province, Field.Store.YES));
+			} else {
+				doc.add(new StringField("province", "", Field.Store.YES));
+			}
+			if (city != null) {
+				doc.add(new StringField("city", city, Field.Store.YES));
+			} else {
+				doc.add(new StringField("city", "", Field.Store.YES));
+			}
+			if (postal_code != null) {
+				doc.add(new StringField("postal_code", postal_code,
+						Field.Store.YES));
+			} else {
+				doc.add(new StringField("postal_code", "", Field.Store.YES));
+			}
 		}
 		doc.add(new StringField("type", "group", Field.Store.YES));
 

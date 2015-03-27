@@ -98,7 +98,7 @@ public class MongoApp {
 	}
 	public static DBCursor getSchool(){
 		BasicDBObject nodeQuery = new BasicDBObject();
-		nodeQuery.put("_id", 24280);
+		//nodeQuery.put("_id", 24280);
 		nodeQuery.put("type", "group");
 		DBCursor dbuCursor = node.find(nodeQuery);
 		return dbuCursor;

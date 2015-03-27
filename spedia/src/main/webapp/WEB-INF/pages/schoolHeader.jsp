@@ -16,6 +16,11 @@ function submitForm(formName)
 {
   document.forms[formName].submit() ;
 }
+function onSelect()
+{
+  alert(this.id);
+  alert(this.value);
+}
 </script>
 <script type="text/javascript">
             window.onload = function () {
@@ -88,13 +93,14 @@ function submitForm(formName)
 					src="<%=WebConstants.IMAGE_URL%>images/flogin.jpg" alt="FB Login"
 					style="cursor:pointer;" onclick="Login()" />
 			</div>
-			<form class="search-input col-xs-9 visible-sm visible-md visible-lg" name="searchSchool" method="post" autocomplete="off" action="/spedia/search.html">
+			<form class="search-input col-xs-9 visible-sm visible-md visible-lg" name="searchSchool" method="post"
+			 autocomplete="off" action="/spedia/search.html">
             <select name=slist id="stateList" style="float:right">
 						<option value="Delhi">Delhi</option>
 						<option value="Goa">Goa</option>
 				</select>
 				<div class="input-group ng-hide" style="width: 200px; display: inline-flex; float:right">
-					  	<p><input type="text" id="schoolSearchBox" /></p>
+					  	<p><input type="text" id="schoolSearchBox"/></p>
 						<img src="<%=WebConstants.IMAGE_URL%>images/spacer.gif" onclick="submitForm('searchSchool')"
 						class="cus-icon cus-homesearch" />
 					</span>
