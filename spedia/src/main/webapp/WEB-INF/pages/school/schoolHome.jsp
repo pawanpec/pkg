@@ -36,19 +36,21 @@
 					<div class="col-sm-12 m_t10">
 						<div class="row" id="companypage">
 							
-							<!--########### Work for US Start Here ###########-->
+						<!--########### Work for US Start Here ###########-->
 								<%@include file="schoolTabs.jsp"%>
-							<!--########### Work for US Ends Here ###########-->
-							<!--########### Company OverView with logo Start Here ###########-->
+						<!--########### Work for US Ends Here ###########-->
+						<!--########### Company OverView with logo Start Here ###########-->
 								<%@include file="schoolOverview.jsp"%>
-							<!--########### Company OverView with logo Start Here ###########-->
-						
-						
+						<!--########### Company OverView with logo Start Here ###########-->
 						<!--########### SCHOOL REVIEW WEDGIT HERE ###########-->
-						<%@include file="schoolReviewWidget.jsp"%>
+						<c:if test="${not empty reviews}">
+							<%@include file="schoolReviewWidget.jsp"%>
+						</c:if>
 						<!--########### SCHOOL REVIEW WEDGIT HERE ###########-->
 						<!--########### SCHOOL News WEDGIT Start HERE ###########-->
-						<%@include file="schoolNews.jsp"%>
+						<c:if test="${newsCount>0}">
+							<%@include file="schoolNews.jsp"%>
+						</c:if>
 						<!--########### SCHOOL News WEDGIT END HERE ###########-->
 						<!--########### Company Gallery START HERE ###########-->
 						<%-- 	<%@include file="schoolGallery.jsp"%> --%>

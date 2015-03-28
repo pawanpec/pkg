@@ -21,7 +21,10 @@
 					</c:if>
 					
 				</div>
-				<c:if test="${content.type eq 'group'}">
+				<c:if test="${content.type eq 'group' and empty content.sd}">
+					${content.body.value}
+				</c:if>
+				<c:if test="${content.type eq 'group' and not empty content.sd}">
 					<p><strong>Name of School</strong>: <span	style="text-transform: capitalize">
 					${content.sd.SN}</span></p>
 					<p><strong>Year of Foundation</strong>: <span	style="text-transform: capitalize">
@@ -46,8 +49,12 @@
 				<c:if test="${content.type ne 'group'}">
 					${content.body.value}
 				</c:if>
-			
+				
 			</div>
+				
 		</div>
+		<!--########### School Map Start Herr ###########-->
+			<%-- <%@include file="schoolmap.jsp"%> --%>
+		<!--########### School Map Ends Here ###########-->
 	</div>
 <!--########### COMPANY OVERVIEW WITH LOGO ENDS HERE ###########-->

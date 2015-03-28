@@ -77,6 +77,7 @@ public class ContentController {
 			model.put("content", content);
 			model.put("reviews", reviews);
 			model.put("news", news);
+			model.put("newsCount", news.size());
 			model.put("msg", msg);
 		}
 		view.addAllObjects(model);
