@@ -14,17 +14,14 @@ function registerUser(data) {
 }
 function submitForm(formName)
 {
+ var value= document.getElementById("schoolSearchBox").value;
+ var nid= document.getElementById("nid").value;
   document.forms[formName].submit() ;
-}
-function onSelect()
-{
-  alert(this.id);
-  alert(this.value);
 }
 </script>
 <script type="text/javascript">
             window.onload = function () {
-                var oTextbox = new AutoSuggestControl(document.getElementById("schoolSearchBox"), new StateSuggestions());        
+                var oTextbox = new AutoSuggestControl(document.getElementById("schoolSearchBox"),document.getElementById("nid"), new StateSuggestions());        
             }
 </script>
 <div class="navbar navbar-inverse hidden-xs topheader">
@@ -100,15 +97,13 @@ function onSelect()
 						<option value="Goa">Goa</option>
 				</select>
 				<div class="input-group ng-hide" style="width: 200px; display: inline-flex; float:right">
-					  	<p><input type="text" id="schoolSearchBox"/></p>
-						<img src="<%=WebConstants.IMAGE_URL%>images/spacer.gif" onclick="submitForm('searchSchool')"
-						class="cus-icon cus-homesearch" />
-					</span>
-				</div>
-				
-			    <input
+					  	<p><input type="text" id="schoolSearchBox" onselect="submitForm('searchSchool')"/></p>
+					  		    <input
 					style="visibility: visible;" type="hidden" id="nid"
 					name="nid" value="">
+				</div>
+				
+		
 			</form>
 		</div>
 	</div>

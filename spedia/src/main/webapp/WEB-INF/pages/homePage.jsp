@@ -1,7 +1,6 @@
-<%@ page import="com.spedia.utils.WebConstants"%>
 <div>
-	<%@include file="searchHome.jsp" %>
-	<%@include file="bannerHome.jsp" %>
+	<%-- <%@include file="searchHome.jsp"%>
+	<%@include file="bannerHome.jsp"%> --%>
 </div>
 <div class="clearfix"></div>
 <div class="homepage">
@@ -16,28 +15,21 @@
 				<div class="row text-center">
 					<div class="col-xs-12 col-sm-9 margincenter position">
 						<form
-							data-ng-click="homesearch.autocomplete == 2 ? homesearch.autocomplete = 0 : null "
-							data-ng-init="homesearch = {isDisabled: false, class:'', autocomplete:2}"
-							action="/jobbuzz/search.html" id="mainSearchForm" method="post"
-							autocomplete="off">
-							<tabset class="homepage-tabs"> <tab heading="Companies"
-								class="ser-tabs"
-								data-ng-click="mainSearchsubmenu('2','companies');">
-							<div class="position">
-								<img src="<%=WebConstants.IMAGE_URL%>images/spacer.gif"
-									class="cus-icon cus-homesearch" /> <input
-									class="form-control serachctrl" type="text"
-									id="compamySearchTextH" name="compamySearchTextH"
-									data-ng-model="search.compamySearchTextH"
-									placeholder="Enter School name e.g. Dps"
-									typeahead-on-select='onSelectMainSearch($item, $model, $label)'
-									data-ng-pattern="/^[a-zA-Z0-9]/" maxlength="100"
-									typeahead="suggestion.companyName for suggestion in loadCompanies($viewValue) | limitTo:5"
-									typeahead-min-length="3" class="form-control"
-									aria-describedby="basic-companies"
-									data-ng-keyup="$event.keyCode == 13 || $event.keyCode == 186 ? mainSearchSubmitCompany(search.compamySearchTextH) : null" />
+							class="search-input col-xs-9 visible-sm visible-md visible-lg"
+							name="searchSchool" method="post" autocomplete="off"
+							action="/spedia/search.html">
+							<select name=slist id="stateList" style="float:right">
+								<option value="Delhi">Delhi</option>
+								<option value="Goa">Goa</option>
+							</select>
+							<div class="input-group"
+								style="width: 200px; display: inline-flex; float:right">
+								<p>
+									<input type="text" id="schoolSearchBox" />
+								</p>
 							</div>
-							</tab> </tabset>
+							<input style="visibility: visible;" type="hidden" id="nid"
+								name="nid" value="">
 						</form>
 					</div>
 				</div>
@@ -51,17 +43,16 @@
 							class="cus-icon cus-right-chevron" />
 					</h3>
 					<p>Find school near to your home</p>
-					<a href="/jobbuzz/all-jobs.html?datacenter=7&amp;view=all"
+					<a href="searchSchool.html"
 						class="overlayanchor" target="_blank"></a>
 				</div>
 				<div class="col-sm-3 position">
 					<h3>
-						<i class="glyphicon glyphicon-screenshot"></i> Follow School
-						<img src="<%=WebConstants.IMAGE_URL%>images/spacer.gif"
+						<i class="glyphicon glyphicon-screenshot"></i> Follow School <img
+							src="<%=WebConstants.IMAGE_URL%>images/spacer.gif"
 							class="cus-icon cus-right-chevron" />
 					</h3>
 					<p>Follow School to get School Update in your Inbox</p>
-					<a href="/interview/" class="overlayanchor" target="_blank"></a>
 				</div>
 				<div class="col-sm-3 position">
 					<h3>
@@ -69,8 +60,9 @@
 							src="<%=WebConstants.IMAGE_URL%>images/spacer.gif"
 							class="cus-icon cus-right-chevron" />
 					</h3>
-					<p>Strategize! Improve your chances of landing your dream School</p>
-					<a href="/insight/" class="overlayanchor" target="_blank"></a>
+					<p>Strategize! Improve your chances of landing your dream
+						School</p>
+					<a href="contentType.html?type=nursery_admission" class="overlayanchor" target="_blank"></a>
 				</div>
 				<div class="col-sm-3 position">
 					<h3>
@@ -79,7 +71,6 @@
 							class="cus-icon cus-right-chevron" />
 					</h3>
 					<p>Review/Rating - Find what Parents are saying</p>
-					<a href="/discover/" class="overlayanchor" target="_blank"></a>
 				</div>
 			</div>
 			<div class="overlayanchor homepattern"></div>
@@ -89,8 +80,8 @@
 			</div>
 		</div>
 	</div>
-	
-	<%@include file="featuredSchool.jsp" %>
+
+	<%@include file="featuredSchool.jsp"%>
 	<%-- <%@include file="whySp.jsp" %> --%>
 
 	<div class="row hidden-xs">
@@ -100,6 +91,6 @@
 			</h1>
 		</div>
 	</div>
-	<%-- <%@include file="testimony.jsp" %> --%>
+	<%--  <%@include file="testimony.jsp" %> --%>
 	<div class="row fearturelist"></div>
 </div>

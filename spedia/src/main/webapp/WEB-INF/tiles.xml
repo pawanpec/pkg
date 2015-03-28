@@ -5,8 +5,7 @@
 		<put-attribute name="title" value="" />
 		<put-attribute name="header" value="/WEB-INF/pages/schoolHeader.jsp" />
 		<put-attribute name="body" value="" />
-		<!-- <put-attribute name="footer" value="/WEB-INF/pages/schoolFooter.jsp" 
-			/> -->
+		<put-attribute name="footer" value="/WEB-INF/pages/schoolFooter.jsp" />
 	</definition>
 	<!-- COMPANY RELATED PAGES -->
 	<definition name="schoolHome" extends="mainTemplate">

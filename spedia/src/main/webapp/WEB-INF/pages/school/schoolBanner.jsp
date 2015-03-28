@@ -40,7 +40,7 @@ function follow(nid,uid,status) {
 							</span>
 						
 							<%-- <a itemprop="votes pad_l15" href="/company/${fn:replace(companyViewBean.companyMast.companyName,' ','-')}/review&txtCompId=${companyViewBean.companyMast.companyId}"> --%> 
-							<a itemprop="votes pad_l15" href="${content.alias}#reviews"	target="_blank">
+							<a itemprop="votes pad_l15" href="#reviews">
 							(<fmt:formatNumber	value="${countOfReviews}"	pattern="0"	/><c:if test="${isCountOfReviewsKPlus eq true}">K</c:if> Reviews )
 							</a>
 								

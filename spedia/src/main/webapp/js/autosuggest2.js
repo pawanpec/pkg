@@ -4,7 +4,7 @@
  * @class
  * @scope public
  */
-function AutoSuggestControl(oTextbox /*:HTMLInputElement*/, 
+function AutoSuggestControl(oTextbox /*:HTMLInputElement*/, oTextValue /*:HTMLInputValue*/,
                             oProvider /*:SuggestionProvider*/) {
     
     /**
@@ -30,6 +30,8 @@ function AutoSuggestControl(oTextbox /*:HTMLInputElement*/,
      * @scope private
      */
     this.textbox /*:HTMLInputElement*/ = oTextbox;
+    //key of the suggest fields
+    this.textValue=oTextValue;
     
     //initialize the control
     this.init();
@@ -49,7 +51,7 @@ AutoSuggestControl.prototype.autosuggest = function (aSuggestions /*:Array*/,
     //make sure there's at least one suggestion
     if (aSuggestions.length > 0) {
         if (bTypeAhead) {
-           this.typeAhead(aSuggestions[0].value);
+           this.typeAhead(aSuggestions);
         }
         
         this.showSuggestions(aSuggestions);
@@ -329,8 +331,9 @@ AutoSuggestControl.prototype.typeAhead = function (sSuggestion /*:String*/) {
     //check for support of typeahead functionality
     if (this.textbox.createTextRange || this.textbox.setSelectionRange){
         var iLen = this.textbox.value.length; 
-        this.textbox.value = sSuggestion; 
-        this.selectRange(iLen, sSuggestion.length);
+        this.textbox.value = sSuggestion[0].value; 
+        this.textValue.value = sSuggestion[0].key; 
+        this.selectRange(iLen, this.textbox.value.length);
     }
 };
 
