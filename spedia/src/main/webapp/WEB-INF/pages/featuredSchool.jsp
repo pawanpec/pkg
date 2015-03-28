@@ -22,7 +22,7 @@ int i=1;
 							<div class="media">
 								<div class="media-body">
 									<h5 class="media-heading ellipsesingle redcolor nobotmargin">
-										<a href="${school.alias}" target="_blank"
+										<a href="/${school.alias}" target="_blank"
 											title="${school.title}">${school.title} </a>
 									</h5>
 									<div>
