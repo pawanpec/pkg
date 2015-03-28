@@ -25,7 +25,7 @@
 								<li class=""><a rel="nofollow"
 									href="javascript:openAjaxPopup('favourite/getfavusers/53251/business/1')"
 									title="Follow ${newsContent.title }"
-									class="link1 btn btn-primary btn-sm colorfff">${newsContent.f.size} Follow </a></li>
+									class="link1 btn btn-primary btn-sm colorfff">${newsContent.f} Follow </a></li>
 								<li class="last"><a
 									href="/${newsContent.alias }/review-rating"
 									title="Read reviews of ${newsContent.title }" class="link1 btn btn-primary btn-sm colorfff">${newsContent.review.count }
