@@ -30,7 +30,7 @@ public class BaseSpringTest  {
  
     public void initialise() {
     	String[] paths = { 
-		"src/main/webapp/WEB-INF/spring-database.xml"
+		"src/main/webapp/WEB-INF/test_spring-database.xml"
 		};
     	context = new FileSystemXmlApplicationContext(paths);
     }

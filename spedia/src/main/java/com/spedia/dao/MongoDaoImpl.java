@@ -425,6 +425,6 @@ public class MongoDaoImpl implements MongoDao {
 		BasicDBObject nodeQuery = new BasicDBObject();
 		nodeQuery.put("_id", 24280);
 		WriteResult c = nodeCollection.update(nodeQuery, schoolData);
-		return c.getUpsertedId().toString();
+		return c.toString();
 	}
 }
