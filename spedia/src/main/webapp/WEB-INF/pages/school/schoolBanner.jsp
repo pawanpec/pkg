@@ -16,33 +16,6 @@ function follow(nid,uid,status) {
       }});
 }
 </script>
-
-<c:set value="<%=SchoolsConstants.SOCIAL_URL_TWITTER_CODE%>"
-	var="SOCIAL_URL_TWITTER_CODE" />
-<c:set value="<%=SchoolsConstants.SOCIAL_URL_FACEBOOK_CODE%>"
-	var="SOCIAL_URL_FACEBOOK_CODE" />
-<c:set value="<%=SchoolsConstants.SOCIAL_URL_LINKEDIN_CODE%>"
-	var="SOCIAL_URL_LINKEDIN_CODE" />
-<c:set value="<%=SchoolsConstants.SOCIAL_URL_GOOGLE_PLUS_CODE%>"
-	var="SOCIAL_URL_GOOGLE_PLUS_CODE" />
-<c:set value="<%=SchoolsConstants.JB_RATING_SALARY%>"
-	var="JB_RATING_SALARY" />
-<c:set value="<%=SchoolsConstants.JB_RATING_WORK_LIFE_BAL%>"
-	var="JB_RATING_WORK_LIFE_BAL" />
-<c:set value="<%=SchoolsConstants.JB_COMPANY_CULTURE%>"
-	var="JB_COMPANY_CULTURE" />
-<c:set value="<%=SchoolsConstants.JB_CAREER_GROWTH%>"
-	var="JB_CAREER_GROWTH" />
-<c:set value="<%=SchoolsConstants.COMPANY_CARD_LIST_SIZE%>"
-	var="COMPANY_CARD_LIST_SIZE" />
-	
-<c:set var="_compName" 	value="${content.title}"/>
-<c:set var="_compId" 	value="${companyViewBean.companyMast.companyId}"/>
-<c:if test="${not empty msg}">
-						${msg }
-						
-</c:if>
-
 <c:set var="countOfReviews" value="${content.review.count}" />
 <c:set var="isCountOfReviewsKPlus" value="false" />
 <c:if test="${countOfReviews > 999}">
@@ -50,26 +23,13 @@ function follow(nid,uid,status) {
 	<c:set var="countOfReviews" value="${ countOfReviews + ( 1 - ( countOfReviews %1 ) ) % 1 }"/>
 	<c:set var="isCountOfReviewsKPlus" value="true" />
 </c:if>
-
-<c:if test="${not empty companyBannerImage}">
-	<c:set var="prepathValue" value="<%=WebConstants.BANNER_URL %>" />
-	<c:set var="bgpath" value="${prepathValue}${companyBannerImage}" />
-</c:if>
-<c:if test="${empty companyBannerImage}">
-	<c:set var="bgpath" value="<%=defaultBGPath%>" />
-</c:if>
 	<div class="row z2new company-details m_b10" style='background-image: url("${bgpath}")'>
 			<div class="col-sm-10 position companyinfo">
 				<h1>
-					<c:if test="${not empty companyLogoImage}">
-					<img class="companypagelogo" src="<%=WebConstants.LOGO_URL %>${companyLogoImage}" data-errsrc="round" data-font="45" data-width="97" data-center="center" alt="${content.title}" />
-					</c:if>
-				<c:if test="${empty companyLogoImage}">
-					<span data-firstletter="${content.title}" class="width97 margincenter position" data-type="round" data-font="45"></span>
-				</c:if>
+					${content.title}
 				</h1>
-				<h2>${content.title}</h2>
-				<div class="font12 row ratting_star companyrate ">
+				<c:if test="${countOfReviews>0}">
+				<div>
 					<span itemscope itemtype="http://data-vocabulary.org/Review-aggregate" class="fl fileupload">
 						<span itemprop="rating" itemscope itemtype="http://data-vocabulary.org/Rating"> 
 							<span itemprop="average">
@@ -87,7 +47,7 @@ function follow(nid,uid,status) {
 						</span>
 					</span>
 				</div>
-				<div class="col-sm-3 text-center colorfff companyrating">
+					<div class="col-sm-3 text-center colorfff companyrating">
 					<div class="row" style="border:1px solid #ff0000">
 						<div class="col-xs-3" style="background:#1c817e;">
 							<div class="cmpratinginfo row">
@@ -126,6 +86,7 @@ function follow(nid,uid,status) {
 						</div>
 					</div>
 				</div>
+				</c:if>
 			</div>
 			<div class="clearfix">
 						
