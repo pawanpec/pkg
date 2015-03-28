@@ -5,16 +5,6 @@ String defaultPath1=WebConstants.IMAGE_URL+"images/static/"+random+".jpg";
 %>
 
 <div class="col-sm-9 item" style="padding-left:2%;" >
-<div class="clearfix card-heading">
-				<ul class="commands-btn">
-					<li><a data-original-title="Help" href="javascript:void(0)"
-						class="tooltipShow" data-toggle="tooltip" data-placement="top"
-						title=""> <img
-							src="<%=WebConstants.IMAGE_URL%>images/spacer.gif"
-							class="cus-icon cus-help" alt="help">
-					</a></li>
-				</ul>
-			</div>
 	<!--########### About School ###########-->
 			<div class="row">
 				<div class="col-sm-12">
@@ -36,4 +26,10 @@ String defaultPath1=WebConstants.IMAGE_URL+"images/static/"+random+".jpg";
 			</div>
 		
 	<!--########### About School Ends Here ###########-->
+	<!--########### Company OverView with logo Start Here ###########-->
+	<%@include file="schoolOverview.jsp"%>
+	<!--########### Company OverView with logo END Here ###########-->
+	<!--########### School Map Start Herr ###########-->
+	 <%@include file="schoolmap.jsp"%> 
+		<!--########### School Map Ends Here ###########-->
 </div>

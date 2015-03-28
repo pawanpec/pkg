@@ -34,14 +34,11 @@
 
 				
 					<div class="col-sm-12 m_t10">
-						<div class="row" id="companypage">
-							
+						<div id="companypage">
 						<!--########### Work for US Start Here ###########-->
 								<%@include file="schoolTabs.jsp"%>
 						<!--########### Work for US Ends Here ###########-->
-						<!--########### Company OverView with logo Start Here ###########-->
-								<%@include file="schoolOverview.jsp"%>
-						<!--########### Company OverView with logo Start Here ###########-->
+						
 						<!--########### SCHOOL REVIEW WEDGIT HERE ###########-->
 						<c:if test="${not empty reviews}">
 							<%@include file="schoolReviewWidget.jsp"%>

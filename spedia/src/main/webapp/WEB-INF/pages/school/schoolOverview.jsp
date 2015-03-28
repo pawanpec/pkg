@@ -1,15 +1,4 @@
 <!--########### COMPANY OVERVIEW WITH LOGO ENDS HERE ###########-->
-<div class="col-sm-9 item account-card interview-card" >
-<div class="clearfix card-heading">
-				<ul class="commands-btn">
-					<li><a data-original-title="Help" href="javascript:void(0)"
-						class="tooltipShow" data-toggle="tooltip" data-placement="top"
-						title=""> <img
-							src="<%=WebConstants.IMAGE_URL%>images/spacer.gif"
-							class="cus-icon cus-help" alt="help">
-					</a></li>
-				</ul>
-			</div>
 		<div class="story-wrap z2new">
 			<div class="row">
 				<div class="text-left notifyRow">
@@ -53,8 +42,4 @@
 			</div>
 				
 		</div>
-		<!--########### School Map Start Herr ###########-->
-			<%-- <%@include file="schoolmap.jsp"%> --%>
-		<!--########### School Map Ends Here ###########-->
-	</div>
-<!--########### COMPANY OVERVIEW WITH LOGO ENDS HERE ###########-->
+		
