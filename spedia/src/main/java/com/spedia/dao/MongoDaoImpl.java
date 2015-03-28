@@ -20,6 +20,7 @@ import com.mongodb.WriteResult;
 import com.mongodb.util.JSON;
 import com.spedia.model.Connection;
 import com.spedia.model.Profile;
+import com.spedia.model.SchoolBean;
 import com.spedia.model.User;
 import com.spedia.utils.Constants;
 import com.spedia.utils.MongoConstants;
@@ -416,5 +417,14 @@ public class MongoDaoImpl implements MongoDao {
 			col.save((BasicDBObject)dbObject.get(key));
 		}
 		return null;
+	}
+	@Override
+	public String updateSchoolInformation(Integer nid, DBObject schoolData) {
+		DBCollection nodeCollection = getMongoDatabase().getCollection(
+				FIELDS_CURRENT_NODE);
+		BasicDBObject nodeQuery = new BasicDBObject();
+		nodeQuery.put("_id", 24280);
+		WriteResult c = nodeCollection.update(nodeQuery, schoolData);
+		return c.getUpsertedId().toString();
 	}
 }

@@ -18,6 +18,7 @@ Search Result
 				style="color:#3273da;right:0px;top:0px;" itemprop="name">${newsContent.title }</span>
 			</a>
 			</br>
+			${newsContent.body.value }
 
 		</c:if>
 	</c:forEach>

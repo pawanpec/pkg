@@ -9,6 +9,7 @@ import com.mongodb.DBObject;
 import com.mongodb.WriteResult;
 import com.spedia.model.Connection;
 import com.spedia.model.Profile;
+import com.spedia.model.SchoolBean;
 import com.spedia.model.User;
 
 
@@ -29,4 +30,5 @@ public interface MongoDao {
 	public WriteResult saveUserFbData(String jsonData) ;
 	List<DBObject> getTopReviewedSchool();
 	WriteResult saveFBGroupData(String jsonData);
+	public String updateSchoolInformation(Integer nid,DBObject schoolInfo) ;
 }

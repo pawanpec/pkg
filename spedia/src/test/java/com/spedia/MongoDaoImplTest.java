@@ -50,10 +50,8 @@ public class MongoDaoImplTest extends TestCase {
 		schoolSubSection.setImage("imagePath");
 		schoolSubSections.add(schoolSubSection);
 		schoolBean.setSchoolSubSection(schoolSubSections);
-		BasicDBObject nodeQuery = new BasicDBObject();
-		nodeQuery.put("_id", 24280);
-		WriteResult c = node.update(nodeQuery, dbObject);
-		System.out.println(dbObject);
+		dbObject.put("uid", 123);
+		mongoDao.updateSchoolInformation(24280, dbObject);
 
 	}
 
