@@ -16,6 +16,13 @@ function follow(nid,uid,status) {
       }});
 }
 </script>
+BackGroundImagePath--------${content.schoolsImages.BackGroundImagePath}
+<c:if test="${not empty content.schoolsImages.BackGroundImagePath}">
+	<c:set var="bgpath" value="/spedia/${content.schoolsImages.BackGroundImagePath}" />
+</c:if>
+<c:if test="${empty content.schoolsImages.BackGroundImagePath}">
+	<c:set var="bgpath" value="<%=defaultBGPath%>" />
+</c:if>
 <c:set var="countOfReviews" value="${content.review.count}" />
 <c:set var="isCountOfReviewsKPlus" value="false" />
 <c:if test="${countOfReviews > 999}">

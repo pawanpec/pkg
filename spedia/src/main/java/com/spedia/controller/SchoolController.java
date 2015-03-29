@@ -47,50 +47,55 @@ public class SchoolController {
 	public ModelAndView submitSchoolDetails(
 			@Valid @ModelAttribute("schoolInformation") SchoolInformation schoolInformation,
 			BindingResult result) throws FileNotFoundException {
-		ModelAndView view = new ModelAndView("showSchoolInfo",
+		ModelAndView view = new ModelAndView("editSchoolInfo",
 				"schoolInformation", schoolInformation);
-		System.out.println(schoolInformation.getLogoFile()
-				.getOriginalFilename());
-		System.out.println(schoolInformation.getBackgroundImage()
-				.getOriginalFilename());
 		SchoolBean schoolsImages = new SchoolBean();
+		Integer sid = schoolInformation.getSid();
 		for (MultipartFile mfile : schoolInformation.getImageGallery()) {
 			System.out.println(mfile.getOriginalFilename());
 		}
-
-		FileOutputStream outputStream = null;
-		MultipartFile imageFile = schoolInformation.getLogoFile();
-		if (imageFile != null && !imageFile.isEmpty()) {
-			String filePath = WebConstants.imageDirectory
-					+ imageFile.getOriginalFilename();
-			schoolsImages.setLogoPath(filePath);
+		String fileUploadPath=WebConstants.schoolImageDirectory+"/"+sid+"/";
+		File file = new File(fileUploadPath);
+		if (!file.exists()) {
+			if (file.mkdir()) {
+				System.out.println("Directory is created!");
+			} else {
+				System.out.println("Failed to create directory!");
+				fileUploadPath=WebConstants.schoolImageDirectory;
+			}
+		}
+		MultipartFile logoImageFile = schoolInformation.getLogoFile();
+		if (logoImageFile != null && !logoImageFile.isEmpty()) {
+			String filePath = fileUploadPath+logoImageFile.getOriginalFilename();
+			uploadFile(logoImageFile, filePath);
+			schoolsImages.setLogoPath(filePath.substring(filePath.indexOf("images")));
 			System.out.println(filePath);
-			uploadFile(imageFile, filePath);
 		}
 		MultipartFile backGroundImage = schoolInformation.getBackgroundImage();
 		if (backGroundImage != null && !backGroundImage.isEmpty()) {
-			String filePath = WebConstants.imageDirectory
-					+ backGroundImage.getOriginalFilename();
-			schoolsImages.setBackGroundImagePath(filePath);
-			System.out.println(filePath);
+			String filePath = fileUploadPath+backGroundImage.getOriginalFilename();
 			uploadFile(backGroundImage, filePath);
+			schoolsImages.setBackGroundImagePath(filePath.substring(filePath.indexOf("images")));
+			System.out.println(filePath);
 		}
 		MultipartFile[] imageGallery = schoolInformation.getImageGallery();
 		List<SchoolPhotoVideoBean> list = new ArrayList<SchoolPhotoVideoBean>();
-		if (imageGallery != null && !imageFile.isEmpty()) {
+		if (imageGallery != null) {
 			for (MultipartFile mFile : imageGallery) {
-				String filePath = WebConstants.imageDirectory
-						+ mFile.getOriginalFilename();
-				SchoolPhotoVideoBean bean = new SchoolPhotoVideoBean();
-				bean.setMediaUrl(filePath);
-				list.add(bean);
-				System.out.println(filePath);
-				uploadFile(mFile, filePath);
+				if (mFile != null && !mFile.isEmpty()) {
+					String filePath = fileUploadPath
+							+ mFile.getOriginalFilename();
+					SchoolPhotoVideoBean bean = new SchoolPhotoVideoBean();
+					bean.setMediaUrl(filePath.substring(filePath.indexOf("images")));
+					list.add(bean);
+					System.out.println(filePath);
+					uploadFile(mFile, filePath);
+				}
 			}
 			schoolsImages.setPhotoVedioBean(list);
 		}
 
-		Integer sid = schoolInformation.getSid();
+		
 		DBObject schoolInfo = mongoDao.getContentByNid(sid);
 
 		schoolInfo.put("schoolsImages", schoolsImages);

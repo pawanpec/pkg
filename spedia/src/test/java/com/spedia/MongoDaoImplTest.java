@@ -23,8 +23,8 @@ public class MongoDaoImplTest extends TestCase {
 		DBCollection node = mongoDao.getMongoDatabase().getCollection(
 				"fields_current.node");
 		assertNotNull(mongoDao);
-		String url = "website/jain-bharti-model-sch-sector-16-rohini-delhi";
-		DBObject dbObject = mongoDao.getContentByURL(url);
+		int nid = 220;
+		DBObject dbObject = mongoDao.getContentByNid(nid);
 		SchoolBean schoolBean = new SchoolBean();
 		List<SchoolSubSection> schoolSubSections = new ArrayList<SchoolSubSection>();
 		schoolBean.setBackGroundImagePath("BG");
@@ -51,7 +51,7 @@ public class MongoDaoImplTest extends TestCase {
 		schoolSubSections.add(schoolSubSection);
 		schoolBean.setSchoolSubSection(schoolSubSections);
 		dbObject.put("uid", 123);
-		mongoDao.updateSchoolInformation(24280, dbObject);
+		mongoDao.updateSchoolInformation(nid, dbObject);
 
 	}
 

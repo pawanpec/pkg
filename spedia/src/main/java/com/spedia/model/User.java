@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.spedia.forum.model.AbstractDocument;
@@ -42,6 +43,7 @@ public class User extends AbstractDocument {
 	private boolean enabled=true;
 	private String socialLoginId;
 	private String socialType;
+	@Transient
 	private Set<UserRole> userRoleses = new HashSet<UserRole>(0);
 
 	// Constructors

@@ -423,7 +423,7 @@ public class MongoDaoImpl implements MongoDao {
 		DBCollection nodeCollection = getMongoDatabase().getCollection(
 				FIELDS_CURRENT_NODE);
 		BasicDBObject nodeQuery = new BasicDBObject();
-		nodeQuery.put("_id", 24280);
+		nodeQuery.put("_id", nid);
 		WriteResult c = nodeCollection.update(nodeQuery, schoolData);
 		return c.toString();
 	}

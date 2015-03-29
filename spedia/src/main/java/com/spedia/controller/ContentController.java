@@ -259,7 +259,7 @@ public class ContentController {
 		FileOutputStream outputStream = null;
 		MultipartFile imageFile = content.getImageFile();
 		if (imageFile!=null&&!imageFile.isEmpty()) {
-			String filePath = WebConstants.imageDirectory
+			String filePath = WebConstants.contentImageDirectory
 					+ imageFile.getOriginalFilename();
 			content.setImagePath(filePath);
 			// String path =
