@@ -43,4 +43,8 @@
 		<put-attribute name="body"
 			value="/WEB-INF/pages/school/editSchoolInfo.jsp" />
 	</definition>
+	<definition name="showSchoolInfo" extends="mainTemplate">
+		<put-attribute name="body"
+			value="/WEB-INF/pages/school/showSchoolInfo.jsp" />
+	</definition>
 </tiles-definitions>
