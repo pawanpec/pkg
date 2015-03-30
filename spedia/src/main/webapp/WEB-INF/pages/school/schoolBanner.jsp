@@ -4,9 +4,9 @@ int randBgImageIndex = 1 + (int)(Math.random()*8);
 String defaultBGPath=WebConstants.IMAGE_URL+"images/bg_images/"+randBgImageIndex+".jpg";
 %>
 <script>
-function follow(nid,uid,status) {
-	 var queryString="?nid="+nid+"&uid="+uid+"&status="+status;
-	 var followUrl="/spedia/followSchool.html"+queryString;
+function follow(nid,status) {
+	 var queryString="?nid="+nid+"&status="+status;
+	 var followUrl="${contextPath}/followSchool.html"+queryString;
 	  $.ajax({url: followUrl, success: function(result){
 		  if(result=="1"){
 			  //change the value of follow button to following.
@@ -16,9 +16,8 @@ function follow(nid,uid,status) {
       }});
 }
 </script>
-BackGroundImagePath--------${content.schoolsImages.BackGroundImagePath}
 <c:if test="${not empty content.schoolsImages.BackGroundImagePath}">
-	<c:set var="bgpath" value="/spedia/${content.schoolsImages.BackGroundImagePath}" />
+	<c:set var="bgpath" value="${contextPath}/${content.schoolsImages.BackGroundImagePath}" />
 </c:if>
 <c:if test="${empty content.schoolsImages.BackGroundImagePath}">
 	<c:set var="bgpath" value="<%=defaultBGPath%>" />
@@ -99,15 +98,11 @@ BackGroundImagePath--------${content.schoolsImages.BackGroundImagePath}
 						
 						<ul class="followpos inlineul">
 							<!-- <li class="font24" data-ng-if="followData.followCount > 0"> -->
-							<li>
-								<input id="follow"  class="btn btn-primary btn-sm colorfff" onclick="follow(${content.nid},2,1);" value="FOLLOW" type="button" /> 
-							</li>
-							<li>
-								<a href="/spedia/writeReview.html?nid=${content.nid}" class="btn btn-primary btn-sm colorfff"><span class="colorfff">WRITE REVIEW</span></a>
-							</li>
+								<input id="follow"  class="btn btn-primary btn-sm colorfff" onclick="follow(${content.nid},1);" value="FOLLOW" type="button" /> 
+								<a href="${contextPath}/writeReview.html?nid=${content.nid}" class="btn btn-primary btn-sm colorfff"><span class="colorfff">WRITE REVIEW</span></a>
+								<a href="${contextPath}/editSchoolInfo.html?sid=${content.nid}" class="btn btn-primary btn-sm colorfff"><span class="colorfff">Edit School</span></a>
 							
 						</ul>
-			</div>
 		</div>
 	</div>
 <!--########### Company Details with logo Container Ends Here ###########-->

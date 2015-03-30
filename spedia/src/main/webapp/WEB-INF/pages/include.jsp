@@ -14,3 +14,5 @@
 String contextPath=request.getContextPath();
 String uid=SocialUtility.getCookieByKey(request, "uid");
 %>
+<c:set var="contextPath" value="<%=contextPath%>" />
+<c:set var="uid" value="<%=uid%>" />

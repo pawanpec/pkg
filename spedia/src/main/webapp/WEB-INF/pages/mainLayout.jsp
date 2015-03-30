@@ -27,7 +27,7 @@
 	 <script src="<%=WebConstants.JS_URL %>js/jquery-1.10.2.min.js" type="text/javascript"></script> 
 	 <script type="text/javascript" src="<%=WebConstants.JS_URL %>js/autosuggest2.js"></script>
      <script type="text/javascript" src="<%=WebConstants.JS_URL %>js/suggestions2.js"></script>
-    <%--   <script type="text/javascript" src="<%=WebConstants.JS_URL %>js/fbutils.js"></script> --%>
+     <script type="text/javascript" src="<%=WebConstants.JS_URL %>js/fbutils.js"></script> 
 	<script type="text/javascript">
 	 var random = shuffle([1,2,3,4,5,6,7,8,9,10,11,12,13,14]);
 	</script>

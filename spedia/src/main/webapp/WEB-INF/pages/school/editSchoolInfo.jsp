@@ -17,7 +17,8 @@
 
 			<label>School Background image</label>
 
-			<form:hidden path="sid" value="200" />
+			<form:hidden path="sid" value="${param.sid}" />
+			
 			<form:input type="file" path="backgroundImage" />
 			<br />
 			<label>Image Gallery</label>
