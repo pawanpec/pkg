@@ -1,3 +1,4 @@
+<title>Home Page</title>
 <div>
 	<%-- <%@include file="searchHome.jsp"%>
 	<%@include file="bannerHome.jsp"%> --%>
@@ -82,8 +83,7 @@
 	</div>
 
 	<%@include file="featuredSchool.jsp"%>
-	<%-- <%@include file="whySp.jsp" %> --%>
-
+	<%@include file="whySp.jsp" %>
 	<div class="row hidden-xs">
 		<div class="margincenter col-sm-10 text-center">
 			<h1 class="robotolight">
@@ -91,6 +91,6 @@
 			</h1>
 		</div>
 	</div>
-	<%--  <%@include file="testimony.jsp" %> --%>
+	  <%@include file="testimony.jsp" %> 
 	<div class="row fearturelist"></div>
 </div>

@@ -14,6 +14,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.authentication.logout.CookieClearingLogoutHandler;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+import org.springframework.security.web.authentication.rememberme.AbstractRememberMeServices;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -54,6 +57,15 @@ public class LoginController {
 		return model;
 
 	}
+	@RequestMapping(value = { "/logout.html" }, method = { RequestMethod.GET })
+	public @ResponseBody String logOut(HttpServletRequest request, HttpServletResponse response) {
+		CookieClearingLogoutHandler cookieClearingLogoutHandler = new CookieClearingLogoutHandler(AbstractRememberMeServices.SPRING_SECURITY_REMEMBER_ME_COOKIE_KEY);
+		SecurityContextLogoutHandler securityContextLogoutHandler = new SecurityContextLogoutHandler();
+		cookieClearingLogoutHandler.logout(request, response, null);
+		securityContextLogoutHandler.logout(request, response, null);
+		removeUserDataInSession(response);
+		return "1";
+	}
 	@RequestMapping(value = { "/registerUser.html" }, method = { RequestMethod.GET })
 	public @ResponseBody String registerUser(HttpServletRequest request, HttpServletResponse response) {
 		String data=request.getParameter("data");
@@ -86,6 +98,12 @@ public class LoginController {
 		SocialUtility.addCookie("email", userExist.getMail(), response);
 		SocialUtility.addCookie("uid", userExist.getUid()+"", response);
 		SocialUtility.addCookie("socialLoginId", userExist.getSocialLoginId(), response);
+	}
+	private void removeUserDataInSession(HttpServletResponse response) {
+		SocialUtility.removeCookie("username", response);
+		SocialUtility.removeCookie("email", response);
+		SocialUtility.removeCookie("uid", response);
+		SocialUtility.removeCookie("socialLoginId", response);
 	}
 	private Boolean doAutoLogin(UserDetails userDetails) {
 		// perform login authentication

@@ -202,7 +202,8 @@ public class ContentController {
 	public @ResponseBody String followSchool(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			Integer nid=Integer.parseInt(request.getParameter("nid"));
-			Integer uid=Integer.parseInt(request.getParameter("uid"));
+			String uidS=SocialUtility.getCookieByKey(request, "uid");
+			Integer uid=Integer.parseInt(uidS);
 			Integer status=Integer.parseInt(request.getParameter("status"));
 			if(!SocialUtility.chkNull(uid)){
 				User user=new User();
@@ -212,6 +213,7 @@ public class ContentController {
 				}
 				if(status.equals(0)){
 					followService.follow(nid, user, false);
+					return "0";
 				}
 				
 			}

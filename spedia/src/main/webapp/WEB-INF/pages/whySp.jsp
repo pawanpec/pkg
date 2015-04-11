@@ -3,14 +3,11 @@
 		<div class="row">
 			<div class="margincenter col-sm-10 text-center">
 				<h2 class="robotolight font36">
-					WHY <strong data-ng-bind="jbCounts.userCount">3100000</strong>
-					USERS USE JOBBUZZ?
+					WHY <strong data-ng-bind="jbCounts.userCount">10000</strong>
+					Parents USE Schoolspedia?
 				</h2>
-				<h3 class="font16 col-sm-12">JobBuzz has consistently helped
-					them take career decisions based on the most authentic data
-					available online. Every interview question, company review, salary
-					data and job on JobBuzz has been carefully moderated by our
-					experts.</h3>
+				<h3 class="font16 col-sm-12">Schoolspedia helps parents to make better choice of school near their home by 
+				reading review provided by othe parents</h3>
 			</div>
 		</div>
 		<div class="container fearturelist">
@@ -25,8 +22,7 @@
 										alt="Simplifying Decisions" /></span>
 									<div class="media-body">
 										<h4 class="notopmargin">Simplifying Decisions</h4>
-										<p class="font12">We empower you to make decisions by
-											arming you with cutting edge data.</p>
+										<p class="font12">We empower Parents to make decision about school  by rating provided by other parents.</p>
 									</div>
 								</article>
 							</div>
@@ -54,9 +50,8 @@
 										src="<%=WebConstants.IMAGE_URL%>images/icon-home-reach.png"
 										alt="Huge Community" /></span>
 									<div class="media-body ">
-										<h4 class="notopmargin">Huge Community</h4>
-										<p class="font12">Make choices based on the experience of
-											lakhs of fellow JBians.</p>
+										<h4 class="notopmargin">Huge Community of Parents</h4>
+										<p class="font12">Parents can discuss query related to admission ,fees school reviews ,rating with other parents</p>
 									</div>
 
 								</article>

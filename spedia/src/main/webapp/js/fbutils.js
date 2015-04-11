@@ -57,6 +57,7 @@
 	}
 	function Logout() {
 		FB.logout(function() {
+			logout();
 			document.location.reload();
 		});
 	}

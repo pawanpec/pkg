@@ -16,7 +16,12 @@ int i=1;
 				   <c:set var="index" value="${status.index}"/>
 					<div class="companyarea clearfix">
 						<div class="text-right">
-							<input type="button" class="btn btn-xs btn-primary" value="FOLLOW">
+							<c:if test="${fn:contains(school.f, uid)}">
+								<input type="button" class="btn btn-xs btn-primary" id="followSchool_${index}" onclick="follow(${school.nid},this);" value="FOLLOWING">
+							</c:if>
+							<c:if test="${not fn:contains(school.f, uid)}">
+								<input type="button" class="btn btn-xs btn-primary" id="followSchool_${index}" onclick="follow(${school.nid},this);" value="FOLLOW">
+							</c:if>
 						</div>
 						<div class="clearfix notifyRow">
 							<div class="media">

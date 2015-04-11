@@ -1,17 +1,6 @@
 <%@ include file="include.jsp"%>
 
 <script type="text/javascript">
-function registerUser(data) {
-	 var queryString="?data="+data+"&socialType=fb";
-	 var aurl="/spedia/registerUser.html"+queryString;
-	  $.ajax({url: aurl, success: function(result){
-		  console.log("after login "+result);
-		  if(result=="1"){
-			//  window.location = "http://dev.timesjobs.com/spedia/userHome.html";
-		  }
-		 
-     }});
-}
 function submitForm(formName)
 {
  var value= document.getElementById("schoolSearchBox").value;

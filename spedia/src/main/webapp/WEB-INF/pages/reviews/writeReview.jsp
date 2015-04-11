@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ include file="/WEB-INF/pages/include.jsp"%>
+<title>Write the Review for ${content.title}</title>
 <script>
 function validateForm() {
     var x = document.forms["reviewForm"]["review"].value;
