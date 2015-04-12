@@ -22,8 +22,12 @@
 					<div class="col-sm-12">	
 						<ol class="breadcrumb">
 							  <li><a href="/"><img src="<%=WebConstants.IMAGE_URL %>images/spacer.gif" class="cus-icon cus-home-small" alt="home"></a></li>
+							  <c:if test="${not empty content.location.province}">
 							  <li class="active"><a href="/india/schools-in/${content.location.province}">Schools in ${content.location.province}</a></li>
+							 </c:if>
+							 <c:if test="${not empty content.location.city}">
 							  <li class="active"><a href="/india/${content.location.province}/schools-in/${content.location.city}">Schools in ${content.location.city}</a></li>
+							  </c:if>
 							  <li class="active">${content.title}</li>
 						</ol>
 					</div>
