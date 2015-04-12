@@ -1,5 +1,9 @@
 package com.spedia.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -27,6 +31,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mongodb.WriteResult;
 import com.spedia.dao.MongoDao;
 import com.spedia.model.User;
+import com.spedia.model.UserRole;
 import com.spedia.service.user.UserService;
 import com.spedia.utils.SocialUtility;
 import com.sun.org.apache.xpath.internal.operations.Bool;
@@ -94,7 +99,17 @@ public class LoginController {
 		return status;
 	}
 	private void setUserDataInSession(HttpServletResponse response, User userExist) {
+		Set<UserRole>  userroles=userExist.getUserRoleses();
+		List<String> roles=new ArrayList();
+		for (UserRole userRole : userroles) {
+			roles.add(userRole.getRole());
+		}
+		Boolean isAdmin=false;
+		if(roles!=null){
+		 isAdmin=roles.contains("ROLE_ADMIN");
+		}
 		SocialUtility.addCookie("username", userExist.getUsername(), response);
+		SocialUtility.addCookie("isAdmin", isAdmin.toString(), response);
 		SocialUtility.addCookie("email", userExist.getMail(), response);
 		SocialUtility.addCookie("uid", userExist.getUid()+"", response);
 		SocialUtility.addCookie("socialLoginId", userExist.getSocialLoginId(), response);

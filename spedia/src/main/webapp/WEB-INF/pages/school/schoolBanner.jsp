@@ -55,9 +55,11 @@ String defaultBGPath=WebConstants.IMAGE_URL+"images/bg_images/"+randBgImageIndex
 						<a href="${contextPath}/writeReview.html?nid=${content.nid}"
 							class="btn btn-primary btn-sm colorfff"><span
 							class="colorfff">WRITE REVIEW</span></a>
-						<a href="${contextPath}/editSchoolInfo.html?sid=${content.nid}"
-							class="btn btn-primary btn-sm colorfff"><span
-							class="colorfff">Edit School</span></a>
+						<c:if test="${isAdmin eq 'true'}">
+							<a href="${contextPath}/editSchoolInfo.html?sid=${content.nid}"
+								class="btn btn-primary btn-sm colorfff"><span
+								class="colorfff">Edit School</span></a>
+						</c:if>
 
 					</ul>
 				</div>

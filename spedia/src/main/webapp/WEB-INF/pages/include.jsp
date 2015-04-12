@@ -1,4 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8" session="true"%>
+<%@ page import="java.util.*"%>
 <%@ page import="com.spedia.utils.WebConstants"%>
 <%@ page import="com.spedia.utils.SEOURLUtils"%>
 <%@ page import="com.spedia.utils.SchoolsConstants"%>
@@ -13,9 +14,14 @@
 <%
 String contextPath=request.getContextPath();
 String uid=SocialUtility.getCookieByKey(request, "uid");
+String username=SocialUtility.getCookieByKey(request, "username");
+String isAdmin=SocialUtility.getCookieByKey(request, "isAdmin");
 %>
 <c:set var="contextPath" value="<%=contextPath%>" />
 <c:set var="uid" value="<%=uid%>" />
+<c:set var="username" value="<%=username%>" />
+<c:set var="isAdmin" value="<%=isAdmin%>" />
+<script type="text/javascript" src="<%=WebConstants.JS_URL %>js/fbutils.js"></script> 
 <script>
 function registerUser(data) {
 	 var queryString="?data="+data+"&socialType=fb";
@@ -28,15 +34,11 @@ function registerUser(data) {
 		 
     }});
 }
-function logout(data) {
-	 var aurl="${contextPath}/logout.html";
+function logoutFROMSP() {
+	  var aurl="${contextPath}/logout.html";
+	  console.log("before logout "+aurl);
 	  $.ajax({url: aurl, success: function(result){
-		  console.log("after logout "+result);
-		  if(result=="1"){
-			//  window.location = "http://dev.timesjobs.com/spedia/userHome.html";
-		  }
-		 
-   }});
+ }});
 }
 function follow(nid,item) {
 	 var divId=$(item).attr("id");
@@ -65,5 +67,23 @@ function follow(nid,item) {
 		  }
          
       }});
+}
+function shuffle(array) {
+	  var currentIndex = array.length, temporaryValue, randomIndex ;
+
+	  // While there remain elements to shuffle...
+	  while (0 !== currentIndex) {
+
+	    // Pick a remaining element...
+	    randomIndex = Math.floor(Math.random() * currentIndex);
+	    currentIndex -= 1;
+
+	    // And swap it with the current element.
+	    temporaryValue = array[currentIndex];
+	    array[currentIndex] = array[randomIndex];
+	    array[randomIndex] = temporaryValue;
+	  }
+
+	  return array;
 }
 </script>

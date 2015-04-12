@@ -6,7 +6,7 @@ package com.spedia.utils;
  */
 public class SchoolsConstants {
 	
-	public static String INDEX_PATH = "/home/pawan/git/pkg/spedia/auto";
+	public static String INDEX_PATH = "/var/www/spedia/auto";
 	
 	/**
 	 * sources

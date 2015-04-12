@@ -1,4 +1,4 @@
-<title>Home Page</title>
+<title>Home Page ${pageContext.request.userPrincipal.authenticated}</title>
 <div>
 	<%-- <%@include file="searchHome.jsp"%>
 	<%@include file="bannerHome.jsp"%> --%>

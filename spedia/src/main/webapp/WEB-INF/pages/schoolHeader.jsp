@@ -75,9 +75,15 @@ function submitForm(formName)
 		</nav>
 		<div class="navbar-right right-mnu position">
 			<div id="status">
-				<img
-					src="<%=WebConstants.IMAGE_URL%>images/flogin.jpg" alt="FB Login"
-					style="cursor:pointer;" onclick="Login()" />
+				<c:if test="${not pageContext.request.userPrincipal.authenticated}">
+					<img
+						src="<%=WebConstants.IMAGE_URL%>images/flogin.jpg" alt="FB Login"
+						style="cursor:pointer;" onclick="Login()" />
+				</c:if>
+				<c:if test="${pageContext.request.userPrincipal.authenticated}">
+					Hi,${username }
+					<input type='button' value='Logout' onclick='Logout();'/>
+				</c:if>
 			</div>
 			<form class="search-input col-xs-9 visible-sm visible-md visible-lg" name="searchSchool" method="post"
 			 autocomplete="off" action="/spedia/search.html">

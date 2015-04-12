@@ -14,8 +14,9 @@
 						function(response) {
 							if (response.status === 'connected') {
 								//SUCCESS
-								getUserInfo();
-
+								if(!isLogin){
+									getUserInfo();
+								}
 							} else if (response.status === 'not_authorized') {
 								document.getElementById("status").innerHTML += "<br>Connected to Facebook";
 
@@ -30,7 +31,6 @@
 	};
 
 	function Login() {
-
 		FB.login(
 						function(response) {
 							if (response.authResponse) {
@@ -57,11 +57,10 @@
 	}
 	function Logout() {
 		FB.logout(function() {
-			logout();
+			logoutFROMSP();
 			document.location.reload();
 		});
 	}
-	// Load the SDK asynchronously
 	(function(d) {
 		var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
 		if (d.getElementById(id)) {

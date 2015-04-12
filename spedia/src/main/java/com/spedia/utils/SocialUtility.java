@@ -183,6 +183,7 @@ public class SocialUtility {
 		Cookie cookie = null;
 		try {
 			cookie = new Cookie(key, "");
+			cookie.setDomain(WebConstants.SP_DOMAIN);
 			cookie.setPath("/");
 			cookie.setMaxAge(0);
 			response.addCookie(cookie);

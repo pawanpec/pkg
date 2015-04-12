@@ -20,7 +20,6 @@ public class WebConstants {
 	public static final String BACKGROUND_URL = NDATA_IMAGE_URL ;//+ reader.getValue("background.url");
 	public static final String SUB_SECTION_URL = NDATA_IMAGE_URL ;//+ reader.getValue("subsection.url");
 	public static final String PHOTOS_URL = NDATA_IMAGE_URL + "/ndata_images/company/photos/";//reader.getValue("photos.url");
-	public static final String JOB_LANDING_URL = "all-jobs.html?datacenter=7&view=all&txtKeywords=";//reader.getValue("jobLanding.url");
 	public static String FULLY_COOKIE_NAME = "FULLY_COOKIE_KEY";// ecm
 	public static String HALF_COOKIE_NAME= "ACEGI_SECURITY_HASHED_REMEMBER_ME_COOKIE";
 	
