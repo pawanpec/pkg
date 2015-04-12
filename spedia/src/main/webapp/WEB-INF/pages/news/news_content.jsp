@@ -13,7 +13,7 @@
 				</ol>
 			</div>
 			<div class="row">
-				<section class="col-md-12">
+				<section class="col-md-9">
 					<article class="newsheadingblk notifyRow">
 						<h2 class="size18"	style="text-transform: capitalize;">${content.title}</h1>
 						<%-- <div class="text-right">

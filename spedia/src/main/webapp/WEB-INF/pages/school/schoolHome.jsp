@@ -47,12 +47,12 @@
 						<c:if test="${not empty reviews}">
 							<%@include file="schoolReviewWidget.jsp"%>
 						</c:if>
-						<%@include file="adsense_320_100.jsp"%>
 						<!--########### SCHOOL REVIEW WEDGIT HERE ###########-->
 						<!--########### SCHOOL News WEDGIT Start HERE ###########-->
 						<c:if test="${newsCount>0}">
 							<%@include file="schoolNews.jsp"%>
 						</c:if>
+						<%@include file="adsense_320_100.jsp"%>
 						<!--########### SCHOOL News WEDGIT END HERE ###########-->
 						<!--########### Company Gallery START HERE ###########-->
 						<%-- 	<%@include file="schoolGallery.jsp"%> --%>

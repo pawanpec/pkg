@@ -27,7 +27,8 @@ String defaultPath1=WebConstants.IMAGE_URL+"images/static/"+random+".jpg";
 		
 	<!--########### About School Ends Here ###########-->
 	<%@include file="schoolOverview.jsp"%>
+	<%@include file="adsense_728_90.jsp"%>
 	<!--########### School Map Start Herr ###########-->
-	 <%@include file="schoolmap.jsp"%> 
+	<%--  <%@include file="schoolmap.jsp"%>  --%>
 			<!--########### School Map Ends Here ###########-->
 </div>

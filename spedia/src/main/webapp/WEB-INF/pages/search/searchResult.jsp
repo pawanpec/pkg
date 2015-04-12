@@ -7,7 +7,7 @@ Search Result
 </c:if>
 <c:set var="currentURL"
 	value="${sessionScope.orgURL}?${sessionScope.orgParam}" />
-<div class="col-sm-12 col-md-12 item account-card interview-card ng-hide">
+<div class="col-md-9">
 	<c:forEach items="${contents}" var="newsContent">
 		<c:if test="${newsContent.type eq 'group'}">
 			<%@include file="schoolListing.jsp"%>
@@ -19,6 +19,7 @@ Search Result
 			</a>
 			</br>
 			${newsContent.body.value }
+			</br>
 
 		</c:if>
 	</c:forEach>

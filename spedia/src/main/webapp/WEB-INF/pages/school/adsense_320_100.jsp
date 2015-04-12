@@ -1,12 +1,11 @@
 <!--########### School REVIEW WEDGIT STARTS HERE ###########-->
 <div class="col-sm-3 item account-card interview-card" >
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- ad_responsive -->
+<!-- adsense336X280 -->
 <ins class="adsbygoogle"
-     style="display:block"
+     style="display:inline-block;width:336px;height:280px"
      data-ad-client="ca-pub-9195507629739815"
-     data-ad-slot="5379154513"
-     data-ad-format="auto"></ins>
+     data-ad-slot="3722291716"></ins>
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
