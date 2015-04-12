@@ -31,7 +31,7 @@ int i=1;
 											title="${school.title}">${school.title} </a>
 									</h5>
 									<div>
-										${school.review.oar}/5
+										<fmt:formatNumber value="${school.review.oar}" pattern="0.0" />/5
 									</div>
 								</div>
 							</div>

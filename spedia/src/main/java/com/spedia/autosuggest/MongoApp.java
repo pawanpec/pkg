@@ -84,7 +84,7 @@ public class MongoApp {
 							//	updateRedirectURL(nodeObject, nid);--done
 							// updateNodeObject(db,node,nodeObject);
 							//updateLocation(nodeObject, nid);--done
-							//  updateReview(nodeObject, nid);--done
+						     updateReview(nodeObject, nid);
 							//updateURL(nodeObject, nid);--done
 							//	updateTags(nodeObject, nid);--done
 							//updateSchoolSummary(nodeObject, nid);--done

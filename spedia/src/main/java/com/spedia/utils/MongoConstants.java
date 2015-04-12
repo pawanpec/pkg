@@ -2,7 +2,7 @@ package com.spedia.utils;
 
 public class MongoConstants {
 	
-	public static final String MONGO_DB_NAME = "drupal";
+	public static final String MONGO_DB_NAME = "spedia";
 	public static final String FIELDS_CURRENT_NODE = "fields_current.node";
 	
 	public static final String MONGO_DB_USER_PROFILE_COLLECTION = "profile";

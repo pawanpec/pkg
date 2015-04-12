@@ -22,7 +22,7 @@ http://www.springframework.org/schema/cache http://www.springframework.org/schem
 	<!-- Define the MongoTemplate which handles connectivity with MongoDB -->
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg name="mongo" ref="mongo" />
-		<constructor-arg name="databaseName" value="drupal" />
+		<constructor-arg name="databaseName" value="spedia" />
 	</bean>
 	<bean id="mongoDao" class="com.spedia.dao.MongoDaoImpl"
 		init-method="init">

@@ -11,7 +11,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
 http://www.springframework.org/schema/task  http://www.springframework.org/schema/task/spring-task-3.2.xsd
 http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
-
+	<context:component-scan base-package="com.spedia.*" />
 	<context:annotation-config>
 
 	</context:annotation-config>
@@ -21,7 +21,7 @@ http://www.springframework.org/schema/cache http://www.springframework.org/schem
 	<!-- Define the MongoTemplate which handles connectivity with MongoDB -->
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg name="mongo" ref="mongo" />
-		<constructor-arg name="databaseName" value="drupal" />
+		<constructor-arg name="databaseName" value="spedia" />
 	</bean>
 	<bean id="mongoDao" class="com.spedia.dao.MongoDaoImpl"
 		init-method="init">

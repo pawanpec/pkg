@@ -17,7 +17,7 @@ import com.spedia.model.SchoolSubSection;
 
 public class MongoDaoImplTest extends TestCase {
 
-	public void testUpdateSchoolDetails() {
+	/*public void testUpdateSchoolDetails() {
 		MongoDao mongoDao = (MongoDao) BaseSpringTest.getInstance().getBean(
 				"mongoDao");
 		DBCollection node = mongoDao.getMongoDatabase().getCollection(
@@ -53,7 +53,7 @@ public class MongoDaoImplTest extends TestCase {
 		dbObject.put("uid", 123);
 		mongoDao.updateSchoolInformation(nid, dbObject);
 
-	}
+	}*/
 
 	/*
 	 * public void testGetSchoolDetails(){ MongoDao mongoDao=(MongoDao)
@@ -108,7 +108,7 @@ public class MongoDaoImplTest extends TestCase {
 	 * writeResult=mongoDao.saveUserFbData(data);
 	 * System.out.println(writeResult.getLastError()); }
 	 */
-	/*public void testTopSchool() {
+	public void testTopSchool() {
 		MongoDao mongoDao = (MongoDao) BaseSpringTest.getInstance().getBean(
 				"mongoDao");
 		List<DBObject> topReviewedSchool = mongoDao.getTopReviewedSchool();
@@ -116,5 +116,5 @@ public class MongoDaoImplTest extends TestCase {
 			System.out.println(dbObject.get("title"));
 			System.out.println(dbObject.get("review"));
 		}
-	}*/
+	}
 }
