@@ -1,18 +1,19 @@
 <!--******* Why JobBuzz *************-->
-	<div class="fearturelist fearturecontainer hidden-xs">
-		<div class="row">
+	<div class="fearturecontainer hidden-xs">
+		<div class="container">
+        	<div class="">
 			<div class="margincenter col-sm-10 text-center">
-				<h2 class="robotolight font36">
+				<h2 class="robotolight">
 					WHY <strong data-ng-bind="jbCounts.userCount">10000</strong>
 					Parents USE Schoolspedia?
 				</h2>
-				<h3 class="font16 col-sm-12">Schoolspedia helps parents to make better choice of school near their home by 
-				reading review provided by othe parents</h3>
+				<p>Schoolspedia helps parents to make better choice of school near their home by 
+				reading review provided by othe parents</p>
 			</div>
 		</div>
-		<div class="container fearturelist">
+			<div class="container fearturelist">
 			<div class="margincenter col-xs-10">
-				<section class="row notifyRow">
+				<section class="notifyRow">
 					<div class="col-sm-6">
 						<div class="clearfix">
 							<div class="col-sm-10 col-md-8 notifyRow">
@@ -75,5 +76,6 @@
 				</section>
 			</div>
 		</div>
+        </div>
 	</div>
-	<!--************* Why JobBuzz ****************-->
+<!--************* Why JobBuzz ****************-->

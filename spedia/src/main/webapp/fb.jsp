@@ -10,7 +10,7 @@ function saveFbGroupData(d) {
 	 $.ajax({
 		    url : aurl,
 		    method : 'post',
-		    data:'data='+escape(d),
+		    data:'data='+d,
 		    success : function(data) {
 		        console.log(data);
 
@@ -93,12 +93,22 @@ $appId = '191358334217968';
  
     });
         //getFriends();
-        getGroupData();
+        getGroupData('/1506585852913224/feed');
     }
-  function getGroupData() {
-      FB.api('/1506585852913224/feed', function(response) {
-         console.log("group data----"+JSON.stringify(response.data));
-         saveFbGroupData(JSON.stringify(response.data));
+  function getGroupData(groupURL) {
+      FB.api(groupURL, function(response) {
+    	  var jsonData=JSON.stringify(response.data);
+    	  var jObject = JSON.parse(jsonData);
+    	  var pos = response['paging']['next'].indexOf("v1.0/");
+    	  var groupURL = response['paging']['next'].slice(pos+4);
+    	  console.log("group data----"+groupURL);
+	      for(i=0;i<jObject.length;i++){
+	    		 saveFbGroupData(JSON.stringify(jObject[i]));
+	      }
+    	  if(response!=null&&jObject!=null&&jObject.length!=0){
+    		  getGroupData(groupURL);
+    	  }
+    	 
       });
   }
 

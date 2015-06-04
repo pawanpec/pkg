@@ -13,34 +13,63 @@ function submitForm(formName)
                 var oTextbox = new AutoSuggestControl(document.getElementById("schoolSearchBox"),document.getElementById("nid"), new StateSuggestions());        
             }
 </script>
-<div class="navbar navbar-inverse hidden-xs topheader">
-	<div class="container-fluid">
-		<!--Top Navigation-->
-		<div class="row">
-			<div class="navbar-header">
-				<button data-target=".navbar-collapse" data-toggle="collapse"
-					class="navbar-toggle" type="button">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-			</div>
-			<nav class="navbar-collapse collapse topnavbar">
-				<div class="row">
-					<ul class="nav navbar-nav">
-						<!--  <li><a href="http://www.timesjobs.com/" target="_blank">TimesJobs</a></li>
-					  <li><a href="/"><strong>Job Buzz</strong></a></li>
-					  <li><a href="http://stepahead.timesjobs.com/" target="_blank">StepAhead</a></li>
-					  <li><a href="http://www.techgig.com/" target="_blank">TechGig</a></li> -->
-					</ul>
-				</div>
-			</nav>
-		</div>
-		<!--  Top Navigation  -->
-	</div>
+<script>
+$(document).ready(function(){
+  $('.bxslider').bxSlider({
+	  auto:true
+	  });
+	  
+	  
+	  $(".selector").click(function(){
+		  $(".down_data").toggle();		  
+	  });
+	  
+	  
+	$(".down_data li").click(function(){
+  	var input_val = $(this).find("span").html() 
+    $("#schoolSearchBox").attr('placeholder','Search school in '+input_val);
+	$(".down_data").hide();	
+
+ 
+	  });
+	  
+	  
+  
+
+
+
+
+
+});
+</script>
+<div class="top_header">
+    <div class="container">
+        <div class="social_icons">
+            <ul>
+            <li class="facebook"><a href=""><i class="fa fa-facebook"></i></a></li>
+            <li class="twitter"><a href=""><i class="fa fa-twitter"></i></a></li>
+            <li class="google"><a href=""><i class="fa fa-google"></i></a></li>
+            <li class="linkdin"><a href=""><i class="fa fa-linkedin"></i></a></li>
+            <li class="email"><a href=""><i class="fa fa-envelope"></i></a></li>
+            <li class="chat"><a href=""><i class="fa fa-weixin"></i></a></li>
+            <c:if test="${not pageContext.request.userPrincipal.authenticated}">
+            <li class="facebook_login"><a href="javascript:void(0)" onclick="Login()"><img src="<%=WebConstants.IMAGE_URL%>images/facebook_login.png"  /></a></li>
+            </c:if>
+            <li style="display:none;"><c:if test="${pageContext.request.userPrincipal.authenticated}">
+                                Hi,${username }
+                                <input type='button' value='Logout' onclick='Logout();'/>
+                            </c:if></li>
+            </ul>
+        </div>
+    </div>
 </div>
+
+
+
+
 <header id="fixedNavigation" class="clearfix">
 	<div class="clearfix z2new" id="fixed">
+    <div class="container">
 		<div class="xs-headerl">
 			<button type="button" class="navbar-toggle mobilemnubtn"
 				id="navbar-toggle" data-target="#navbar-collapse1">
@@ -48,15 +77,15 @@ function submitForm(formName)
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<h1 class="logo">
+			<div class="logo">
 				<a href="/"><img
 					src="<%=WebConstants.IMAGE_URL%>images/logo.png"
 					alt="Schoolspedia"></a>
-			</h1>
+			</div>
 		</div>
 		<nav class="main-mnu" id="navbar-collapse1">
 			<ul class="nav navbar-nav">
-				<li class="active home"><i class="top"></i><a href="/"><img
+				<li class="home"><i class="top"></i><a href="/"><img
 						src="<%=WebConstants.IMAGE_URL%>images/spacer.gif" /><span>home</span></a><i
 					class="bot"></i></li>
 				<li class="discover"><i class="top"></i><a href="<%=contextPath%>/searchSchool.html"><img
@@ -73,7 +102,29 @@ function submitForm(formName)
 			</ul>
 			<div class="clearfix visible-sm"></div>
 		</nav>
-		<div class="navbar-right right-mnu position">
+        
+        
+        
+        
+        
+        <div class="new_form_header">
+        <div class="down_data">
+        <ul>
+        <li><i class="fa fa-area-chart"></i> <span>Delhi</span></li>
+        <li><i class="fa fa-area-chart"></i> <span>Goa</span></li>
+        </ul>
+        </div>
+        <div class="selector"><i class="fa fa-ship"></i></div>
+        <form name="searchSchool" method="post"
+			 autocomplete="off" action="/spedia/search.html">
+        <input type="text" placeholder="Search schools" id="schoolSearchBox" />
+        <input type="hidden" id="nid" name="nid" value="">
+        </form>
+        </div>
+        
+        
+        
+		<div class="navbar-right right-mnu position" style="display:none;">
 			<div id="status">
 				<c:if test="${not pageContext.request.userPrincipal.authenticated}">
 					<img
@@ -93,13 +144,12 @@ function submitForm(formName)
 				</select>
 				<div class="input-group ng-hide" style="width: 200px; display: inline-flex; float:right">
 					  	<p><input type="text" id="schoolSearchBox" onselect="submitForm('searchSchool')"/></p>
-					  		    <input
-					style="visibility: visible;" type="hidden" id="nid"
-					name="nid" value="">
+					  		    
 				</div>
 				
 		
 			</form>
 		</div>
-	</div>
+	</div></div>
 </header>
+<div class="gap_40"></div>

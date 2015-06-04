@@ -2,7 +2,7 @@
 		<div class="margincenter col-xs-10">
 			<section class="row notifyRow">
 				<div class="col-sm-4">
-					<article class="media">
+					<article class="media custom">
 						<span class="pull-left profile-homewrap z1"> <img
 							src="<%=WebConstants.IMAGE_URL%>images/vikas_s.jpg" alt="profile" /></span>
 						<div class="media-body">
@@ -16,7 +16,7 @@
 					</article>
 				</div>
 				<div class="col-sm-4">
-					<article class="media">
+					<article class="media custom">
 						<span class="pull-left profile-homewrap z1"> <img
 							src="<%=WebConstants.IMAGE_URL%>images/richi.jpg" alt="profile" /></span>
 						<div class="media-body">
@@ -29,7 +29,7 @@
 					</article>
 				</div>
 				<div class="col-sm-4">
-					<article class="media">
+					<article class="media custom">
 						<span class="pull-left profile-homewrap z1"> <img
 							src="<%=WebConstants.IMAGE_URL%>images/sara.jpg" alt="profile" /></span>
 						<div class="media-body">

@@ -1,8 +1,9 @@
-<div class="container fearturelist hidden-xs">
-	<div class="region region-footer">
-		<p>&nbsp;</p>
-		<ul class="footerLinks">
-			<li class="footerLinksTitle">Top Schools List:</li>
+<div class="footer">
+<div class="title">Top Schools <span>List</span></div>
+<div class="wraper">
+<div class="links">
+<ul class="footerLinks">
+			
 			<li><a
 				href="/articles/famous-school-in-east-delhi-and-their-website"
 				target="_blank">Top Schools In East Delhi</a></li>
@@ -63,6 +64,7 @@
 				href="/website/sacred-heart-sr-sec-school-sector-26-chandigarh">Sacred
 					Heart School Chandigarh</a></li>
 		</ul>
-	</div>
 </div>
-
+</div>
+</div>
+<div class="footer_sub"></div>

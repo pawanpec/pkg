@@ -1,44 +1,27 @@
-	<div class="normal_listing" itemscope="" itemtype="http://schema.org/LocalBusiness"  style="border:1px solid #000; width:70%;">
-			<div class="row rowpdng">
-				<div class="col-lg-1 hidden-xs" style="padding:0;">
-					<a
-						href="/${newsContent.alias }"><img
-						src="images/static/1.jpg" alt="${newsContent.title }"
-						title="${newsContent.title }" width="108" height="60"
-						class="img-border"> </a>
-				</div>
-				<div class="innerdiv">
-					<h1>
-						<a itemprop="url" class="biznme_txt"
-							title="${newsContent.title }" id="${newsContent.nid }"
-							href="/${newsContent.alias }"><span
-							style="color:#3273da;right:0px;top:0px;" itemprop="name">${newsContent.title }</span> </a>
-					</h1>
-				</div>
-					<div class="row" style="border-top:1px solid #e3e3e3;">
-						<div class="col-lg-2" style="padding:0;">
-							<img class="rating"
-								src="images/star5.png"
-								title="Poor">
-						</div>
-						<div class="col-lg-4 _listResult" style="padding:0;">
-								<li class=""><a rel="nofollow"
-									href="javascript:openAjaxPopup('favourite/getfavusers/53251/business/1')"
-									title="Follow ${newsContent.title }"
-									class="link1 btn btn-primary btn-sm colorfff">${newsContent.f} Follow </a></li>
-								<li class="last"><a
-									href="/${newsContent.alias }/review-rating"
-									title="Read reviews of ${newsContent.title }" class="link1 btn btn-primary btn-sm colorfff">${newsContent.review.count }
-										Review </a></li>
-						</div>
-						
-						<!-- <div class="col-lg-2" data-id="comparePopup"
-							title="Compare KGT International School with other similar businesses ">
-							<a href=""
-								onclick="compareListingsData('282','53251');return false;"><input
-								type="button" name="" value="Compare" class="Afc_button"></a>
-						</div> -->
-					</div>
-				
-			</div>
-		</div>
+<li>
+          <div class="school_title"><a href="/${newsContent.alias }" target="_blank"
+						title="${newsContent.title}"><strong>${newsContent.title}</strong></a>
+						<fmt:formatNumber value="${newsContent.review.oar}" pattern="0.0" />/5</div>
+          <div class="school_description">
+          <c:if test="${not empty newsContent.body.summary}">
+					<p class="ellipsetext newscontentdesc">${fn:substring(newsContent.body.summary, 0, 100)}</p>
+				</c:if>
+				<c:if test="${empty newsContent.body.summary}">
+					<p class="ellipsetext newscontentdesc">${fn:substring(newsContent.body.value, 0, 100)}</p>
+				</c:if>
+          </div>
+          <div class="school_pic" data-ng-if="insight.imageName !== null"><a href="/${newsContent.alias }" target="_blank"
+						title="${newsContent.title}">
+					 <img alt="${newsContent.title}" id="contentImage"
+						src="/spedia/images/static/${theCount.count}.jpg"
+						style="width: 100%"></a></div>
+          <div class="follow_row">
+            <c:if test="${fn:contains(newsContent.f, uid)}">
+								<input type="button" class="btn btn-xs btn-primary" id="followSchool_${index}" onclick="follow(${newsContent.nid},this);" value="FOLLOWING">
+							</c:if>
+							<c:if test="${not fn:contains(newsContent.f, uid)}">
+								<input type="button" class="btn btn-xs btn-primary" id="followSchool_${index}" onclick="follow(${newsContent.nid},this);" value="FOLLOW">
+							</c:if>
+          </div>
+        </li>
+  

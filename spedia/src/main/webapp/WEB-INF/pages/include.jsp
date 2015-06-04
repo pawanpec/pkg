@@ -21,7 +21,6 @@ String isAdmin=SocialUtility.getCookieByKey(request, "isAdmin");
 <c:set var="uid" value="<%=uid%>" />
 <c:set var="username" value="<%=username%>" />
 <c:set var="isAdmin" value="<%=isAdmin%>" />
-<script type="text/javascript" src="<%=WebConstants.JS_URL %>js/fbutils.js"></script> 
 <script>
 function registerUser(data) {
 	 var queryString="?data="+data+"&socialType=fb";

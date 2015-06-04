@@ -405,17 +405,22 @@ public class MongoDaoImpl implements MongoDao {
 	public WriteResult saveFBGroupData(String jsonData) {
 		DBCollection col = getMongoDatabase().getCollection(
 				MongoConstants.MONGO_DB_FB_GROUP_COLLECTION);
-		BasicDBObject basicDBObject=new BasicDBObject();
-		basicDBObject.put("data", jsonData);
+		/*BasicDBObject basicDBObject=new BasicDBObject();
+		basicDBObject.put("data", jsonData);*/
 		//Gson gson=new Gson();
 		/*Gson gson = new GsonBuilder().registerTypeAdapter(DBObject.class, new InterfaceAdapter<DBObject>()).create();
 		DBObject dbObject = gson.fromJson(jsonData, DBObject.class);*/
 		
-		DBObject dbObject = (DBObject) JSON.parse(jsonData);
-		Set<String> keys=dbObject.keySet();
-		for (String key : keys) {
-			col.save((BasicDBObject)dbObject.get(key));
+		DBObject dbObject = null;
+		try {
+			dbObject = (BasicDBObject) JSON.parse(jsonData);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			dbObject=new BasicDBObject();
+			dbObject.put("data", jsonData);
 		}
+		col.save(dbObject);
 		return null;
 	}
 	@Override

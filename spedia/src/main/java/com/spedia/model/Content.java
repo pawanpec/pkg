@@ -3,6 +3,7 @@ package com.spedia.model;
 import org.springframework.web.multipart.MultipartFile;
 
 public class Content {
+	private int _id;
 	private Long created;
 	private Long changed;
 	private String uid;
@@ -122,6 +123,14 @@ public class Content {
 
 	public void setSid(String sid) {
 		this.sid = sid;
+	}
+
+	public int get_id() {
+		return _id;
+	}
+
+	public void set_id(int _id) {
+		this._id = _id;
 	}
 
 }

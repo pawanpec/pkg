@@ -1,6 +1,5 @@
 <%@ include file="/WEB-INF/pages/include.jsp"%>
-<html>
-<head>
+<html><head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="shortcut icon" type="image/ico" href="<%=WebConstants.IMAGE_URL%>images/favicon.ico"/>
@@ -22,16 +21,18 @@
 	<meta name="Rating" content="General"/>
 	<meta name="expires" content="never"/>
 	<meta name="language" content="english"/>
-	
-
+	<script type="text/javascript" src="<%=WebConstants.JS_URL %>js/fbutils.js"></script> 
 	 <script src="<%=WebConstants.JS_URL %>js/jquery-1.10.2.min.js" type="text/javascript"></script> 
 	 <script type="text/javascript" src="<%=WebConstants.JS_URL %>js/autosuggest2.js"></script>
      <script type="text/javascript" src="<%=WebConstants.JS_URL %>js/suggestions2.js"></script>
+     <script type="text/javascript" src="<%=WebConstants.JS_URL %>js/jquery.bxslider.js"></script>
+     <script type="text/javascript" src="<%=WebConstants.JS_URL %>js/star_rate.js"></script>
 	<script type="text/javascript">
 	 var random = shuffle([1,2,3,4,5,6,7,8,9,10,11,12,13,14]);
 	 var isLogin='<c:out value="${pageContext.request.userPrincipal.authenticated}"/>';
 	</script>
 <!-- css inludes -->
+
 	<link rel="stylesheet" type="text/css" href="<%=WebConstants.CSS_URL %>css/bootstrap.css" />
 	<link rel="stylesheet" type="text/css" href="<%=WebConstants.CSS_URL %>css/stylesheet.css" />
 	<link rel="stylesheet" type="text/css" href="<%=WebConstants.CSS_URL %>css/bootstrap-slider.css" />
@@ -39,7 +40,9 @@
 	<link rel="stylesheet" type="text/css" href="<%=WebConstants.CSS_URL %>fonts/font.css" />
 	<link rel="stylesheet" type="text/css" href="<%=WebConstants.CSS_URL%>css/star-rating.css" />
 	<link rel="stylesheet" type="text/css" href="<%=WebConstants.CSS_URL %>css/autosuggest.css" />
-		
+   <link rel="stylesheet" type="text/css" href="<%=WebConstants.CSS_URL %>css/sp.css" />
+    <link rel="stylesheet" type="text/css" href="<%=WebConstants.CSS_URL %>css/jquery.bxslider.css" />
+	<link rel="stylesheet" type="text/css" href="<%=WebConstants.CSS_URL %>css/font-awesome.css" />	
 </head>
 <div id="fb-root"></div>
 <body data-ng-click="visibleOption(false); mobileSearchvisible(false)">
@@ -75,7 +78,7 @@
 	</div>
 	</div>
 	<!-- Js Includes -->
-
+<%@ include file="ga.jsp"%>
 	 
 </body>
 </html>

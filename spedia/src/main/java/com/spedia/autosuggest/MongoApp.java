@@ -30,6 +30,7 @@ public class MongoApp {
 	public static DBCollection taxonomy_term_data;
 	public static DBCollection aff_1;
 	public static DBCollection node_drupal;
+	public static DBCollection fb_group;
 	static{
 		
 		try {
@@ -39,6 +40,7 @@ public class MongoApp {
 			sp_dev = mongo.getDB("sp_dev_live");
 			node = db.getCollection("fields_current.node");
 			node_drupal = drupal.getCollection("fields_current.node");
+			fb_group = drupal.getCollection("fb_group");
 			redirect = db.getCollection("fields_current.redirect");
 			location = sp_dev.getCollection("location_nid_table");
 			review = sp_dev.getCollection("reviews_count");
@@ -84,7 +86,7 @@ public class MongoApp {
 							//	updateRedirectURL(nodeObject, nid);--done
 							// updateNodeObject(db,node,nodeObject);
 							//updateLocation(nodeObject, nid);--done
-						     updateReview(nodeObject, nid);
+						    // updateReview(nodeObject, nid);
 							//updateURL(nodeObject, nid);--done
 							//	updateTags(nodeObject, nid);--done
 							//updateSchoolSummary(nodeObject, nid);--done

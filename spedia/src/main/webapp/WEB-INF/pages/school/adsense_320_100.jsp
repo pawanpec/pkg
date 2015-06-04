@@ -1,5 +1,4 @@
-<!--########### School REVIEW WEDGIT STARTS HERE ###########-->
-<div class="col-sm-3 item account-card interview-card" >
+<div class="google_ad">
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- adsense336X280 -->
 <ins class="adsbygoogle"

@@ -28,5 +28,5 @@ function loadScript() {
 window.onload = loadScript;
 
     </script>
- <div id="map-canvas" class="cmpwho z2new story-wrap account-card interview-card">
+ <div id="map-canvas" class="map_school">
  </div>
