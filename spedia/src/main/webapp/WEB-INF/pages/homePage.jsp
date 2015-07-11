@@ -10,16 +10,12 @@
     </div>
     <div class="banner_right">
       <div class="news_subscribe">
-        <div class="news_text">Subscribe for news leatter</div>
-        <div class="news_fields">
-          <input type="text" placeholder="Enter your email address" />
-          <input type="submit" value="SUBSCRIBE" />
-        </div>
+        <h4>Recent News</h4>
       </div>
  		<%@include file="recentNews.jsp"%>
    </div>
   </div>
-</div>  
+</div>
   <%@include file="sp_theme.jsp"%>
 <div class="container"> 
   <%@include file="featuredSchool.jsp"%>

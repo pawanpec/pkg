@@ -1,7 +1,8 @@
-<li>
+<li class="col-sm-4">
+	<div class="tile tile-height">
           <div class="school_title"><a href="/${newsContent.alias }" target="_blank"
 						title="${newsContent.title}"><strong>${newsContent.title}</strong></a>
-						<fmt:formatNumber value="${newsContent.review.oar}" pattern="0.0" />/5</div>
+						<div><span class="stars"><fmt:formatNumber value="${newsContent.review.oar}" pattern="0.0" /></span> <fmt:formatNumber value="${newsContent.review.oar}" pattern="0.0" />/5</div></div>
           <div class="school_description">
           <c:if test="${not empty newsContent.body.summary}">
 					<p class="ellipsetext newscontentdesc">${fn:substring(newsContent.body.summary, 0, 100)}</p>
@@ -12,7 +13,7 @@
           </div>
           <div class="school_pic" data-ng-if="insight.imageName !== null"><a href="/${newsContent.alias }" target="_blank"
 						title="${newsContent.title}">
-					 <img alt="${newsContent.title}" id="contentImage"
+					 <img alt="${newsContent.title}"
 						src="/spedia/images/static/${theCount.count}.jpg"
 						style="width: 100%"></a></div>
           <div class="follow_row">
@@ -23,5 +24,6 @@
 								<input type="button" class="btn btn-xs btn-primary" id="followSchool_${index}" onclick="follow(${newsContent.nid},this);" value="FOLLOW">
 							</c:if>
           </div>
-        </li>
+          </div>
+</li>
   

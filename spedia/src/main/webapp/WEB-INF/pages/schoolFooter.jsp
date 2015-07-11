@@ -1,6 +1,6 @@
 <div class="footer">
 <div class="title">Top Schools <span>List</span></div>
-<div class="wraper">
+<div class="container">
 <div class="links">
 <ul class="footerLinks">
 			
@@ -68,3 +68,34 @@
 </div>
 </div>
 <div class="footer_sub"></div>
+<div class="subs_container">
+	<div class="subs">
+    	<div class=""><a href="javascript:void(0);" data-toggle="modal" data-target="#myModal"><img src="/spedia/images/subs.png" /></a></div>
+    </div>
+</div>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Subscribe to news letter</h4>
+      </div>
+      <div class="modal-body">
+        <form role="form">
+        	<div class="form-group">
+            	<input type="email" name="subs" class="form-control" placeholder="Please enter email id" />
+            </div>
+            <input type="button" class="btn btn-primary" value="Subscribe" />
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>   
+    
+    
+</div>
+

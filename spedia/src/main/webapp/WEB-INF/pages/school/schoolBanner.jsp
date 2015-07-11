@@ -20,21 +20,19 @@ String defaultBGPath=WebConstants.IMAGE_URL+"images/bg_images/"+randBgImageIndex
 </c:if>
 	<c:if test="${countOfReviews>0}">
 		<div>
-			<span itemscope
-				itemtype="http://data-vocabulary.org/Review-aggregate"
-				class="fl fileupload"> <span itemprop="rating" itemscope
-				itemtype="http://data-vocabulary.org/Rating"> <span
-					itemprop="average"> <c:choose>
+			<span 
+				class="fl fileupload hreview-aggregate"> <span> 
+					<span class="rating1"> <c:choose>
 							<c:when
 								test="${content.review.oar ne null && content.review.oar > 2.5}">
-								<fmt:formatNumber value="${content.review.oar}" pattern="0.0" />/5</c:when>
-							<c:otherwise>2.5/5</c:otherwise>
+								<span class="stars"><fmt:formatNumber value="${content.review.oar}" pattern="0.0" /></span> <fmt:formatNumber value="${content.review.oar}" pattern="0.0" />/5</c:when>
+							<c:otherwise><span class="stars">2.5</span> 2.5/5</c:otherwise>
 						</c:choose>
-				</span> <%-- <a itemprop="votes pad_l15" href="/company/${fn:replace(companyViewBean.companyMast.companyName,' ','-')}/review&txtCompId=${companyViewBean.companyMast.companyId}"> --%>
-					<a itemprop="votes pad_l15" href="#reviews"> (<fmt:formatNumber
+				</span>
+					<a class="count" href="#reviews"> (<fmt:formatNumber
 							value="${countOfReviews}" pattern="0" /> <c:if
 							test="${isCountOfReviewsKPlus eq true}">K</c:if> Reviews )
-				</a>
+					</a>
 
 			</span>
 			</span>

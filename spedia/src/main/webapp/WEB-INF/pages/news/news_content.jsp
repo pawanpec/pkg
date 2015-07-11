@@ -48,11 +48,7 @@ ${content.body.value}
   </div>
   <div class="right_coloum">
     <div class="news_subscribe">
-      <div class="news_text">Subscribe for news leatter</div>
-      <div class="news_fields">
-        <input type="text" placeholder="Enter your email address" />
-        <input type="submit" value="SUBSCRIBE" />
-      </div>
+      <h4>Recent News</h4>
     </div>
    <%@include file="../recentNews.jsp"%>
    <%@include file="../amazon_336_280.jsp"%>

@@ -46,14 +46,13 @@ $(document).ready(function(){
     <div class="container">
         <div class="social_icons">
             <ul>
-            <li class="facebook"><a href=""><i class="fa fa-facebook"></i></a></li>
-            <li class="twitter"><a href=""><i class="fa fa-twitter"></i></a></li>
-            <li class="google"><a href=""><i class="fa fa-google"></i></a></li>
-            <li class="linkdin"><a href=""><i class="fa fa-linkedin"></i></a></li>
-            <li class="email"><a href=""><i class="fa fa-envelope"></i></a></li>
-            <li class="chat"><a href=""><i class="fa fa-weixin"></i></a></li>
+            <li class="facebook"><a href="https://www.facebook.com/schoolspedia"><i class="fa fa-facebook"></i></a></li>
+            <li class="twitter"><a href="https://twitter.com/schoolspedia"><i class="fa fa-twitter"></i></a></li>
+            <li class="google"><a href="https://plus.google.com/+SchoolsPediaNurseryAdmission/posts"><i class="fa fa-google"></i></a></li>
+           <!--  <li class="linkdin"><a href=""><i class="fa fa-linkedin"></i></a></li>
+            <li class="email"><a href=""><i class="fa fa-envelope"></i></a></li> -->
             <c:if test="${not pageContext.request.userPrincipal.authenticated}">
-            <li class="facebook_login"><a href="javascript:void(0)" onclick="Login()"><img src="<%=WebConstants.IMAGE_URL%>images/facebook_login.png"  /></a></li>
+            <li class="facebook_login"><a href="javascript:void(0)" onclick="Login()"><img src="<%=WebConstants.IMAGE_URL%>images/facebook_login1.jpg"  /></a></li>
             </c:if>
             <li style="display:none;"><c:if test="${pageContext.request.userPrincipal.authenticated}">
                                 Hi,${username }
@@ -97,8 +96,8 @@ $(document).ready(function(){
 						src="<%=WebConstants.IMAGE_URL%>images/spacer.gif" /><span>Summer
 							Camp</span></a><i class="bot"></i></li>
 				<li class="logosm visible-xs"><a href="/"><img
-						src="<%=WebConstants.IMAGE_URL%>images/jobuzz_logo.png"
-						alt="JobBuzz"></a></li>
+						src="<%=WebConstants.IMAGE_URL%>/images/logo.png"
+						alt="spedia"></a></li>
 			</ul>
 			<div class="clearfix visible-sm"></div>
 		</nav>

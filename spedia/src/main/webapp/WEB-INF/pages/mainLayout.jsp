@@ -1,5 +1,6 @@
 <%@ include file="/WEB-INF/pages/include.jsp"%>
 <html><head>
+<meta name="google-site-verification" content="nTGysMFL1hut1kYFbMcXB5KTTSbt0Ixso9zAKD4oB5w" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="shortcut icon" type="image/ico" href="<%=WebConstants.IMAGE_URL%>images/favicon.ico"/>
@@ -26,7 +27,8 @@
 	 <script type="text/javascript" src="<%=WebConstants.JS_URL %>js/autosuggest2.js"></script>
      <script type="text/javascript" src="<%=WebConstants.JS_URL %>js/suggestions2.js"></script>
      <script type="text/javascript" src="<%=WebConstants.JS_URL %>js/jquery.bxslider.js"></script>
-     <script type="text/javascript" src="<%=WebConstants.JS_URL %>js/star_rate.js"></script>
+     <script src="<%=WebConstants.JS_URL %>js/bootstrap.min.js" type="text/javascript"></script>
+     <script type="text/javascript" src="<%=WebConstants.JS_URL %>js/star-rating.js"></script>
 	<script type="text/javascript">
 	 var random = shuffle([1,2,3,4,5,6,7,8,9,10,11,12,13,14]);
 	 var isLogin='<c:out value="${pageContext.request.userPrincipal.authenticated}"/>';
@@ -42,7 +44,20 @@
 	<link rel="stylesheet" type="text/css" href="<%=WebConstants.CSS_URL %>css/autosuggest.css" />
    <link rel="stylesheet" type="text/css" href="<%=WebConstants.CSS_URL %>css/sp.css" />
     <link rel="stylesheet" type="text/css" href="<%=WebConstants.CSS_URL %>css/jquery.bxslider.css" />
-	<link rel="stylesheet" type="text/css" href="<%=WebConstants.CSS_URL %>css/font-awesome.css" />	
+	<link rel="stylesheet" type="text/css" href="<%=WebConstants.CSS_URL %>css/font-awesome.css" />
+    <script>
+		$(function() {
+			$('span.stars').stars();
+		});
+    	$('document').ready(function(e) {
+            $('.navbar-toggle').on('click', function(){
+				$('nav.main-mnu').toggleClass('open');
+			})
+        });				
+    </script>	
+    <style>
+    	.open{left:180px;}
+    </style>
 </head>
 <div id="fb-root"></div>
 <body data-ng-click="visibleOption(false); mobileSearchvisible(false)">

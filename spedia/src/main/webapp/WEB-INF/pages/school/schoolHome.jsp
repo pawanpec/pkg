@@ -42,35 +42,42 @@
 </div>
 <div class="container">
 	<div class="left_coloum">
-		<div class="details_grid">
-			<%@include file="school_main_image.jsp"%>
-			<%@include file="school_main_content.jsp"%>
+		<div class="details_grid">        	
+			<%@include file="school_main_image.jsp"%>            
+			<%@include file="school_main_content.jsp"%>            
 			<%@include file="adsense_728_90.jsp"%>
 			<%@include file="schoolOverview.jsp"%>
+            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5576a0fa20345530" async="async"></script>            
+            <div class="clearfix" style="padding:5px 0 20px;"><div class="addthis_native_toolbox pull-right"></div></div>
 			<%@include file="adsense_728_90.jsp"%>
 			<%@include file="schoolmap.jsp"%>
 		</div>
 	</div>
 	<div class="right_coloum">
 		<div class="review_bars_green">
-			<strong><fmt:formatNumber value="${content.review.ora}"
-					pattern="0.0" />/5</strong><span>Academic Result</span>
+			<div style="display:inline" class="pull-left"><span class="stars" style="margin-top:5px" title='<fmt:formatNumber value="${content.review.ora}"
+					pattern="0.0" />/5'><fmt:formatNumber value="${content.review.ora}"
+					pattern="0.0" /></span></div><span>Academic Result</span>
 		</div>
 		<div class="review_bars_orange">
-			<strong><fmt:formatNumber value="${content.review.orb}"
-					pattern="0.0" />/5</strong> <span>Infrastructure and facilities</span>
+			<div style="display:inline" class="pull-left"><span class="stars" style="margin-top:5px" title='<fmt:formatNumber value="${content.review.orb}"
+					pattern="0.0" />/5'><fmt:formatNumber value="${content.review.orb}"
+					pattern="0.0" /></span></div> <span>Infrastructure and facilities</span>
 		</div>
 		<div class="review_bars_black">
-			<strong><fmt:formatNumber value="${content.review.orc}"
-					pattern="0.0" />/5</strong><span>Attention to students</span>
+			<div style="display:inline" class="pull-left"><span class="stars" style="margin-top:5px" title='<fmt:formatNumber value="${content.review.orc}"
+					pattern="0.0" />'><fmt:formatNumber value="${content.review.orc}"
+					pattern="0.0" /></span></div><span>Attention to students</span>
 		</div>
 		<div class="review_bars_red">
-			<strong><fmt:formatNumber value="${content.review.ord}"
-					pattern="0.0" />/5</strong><span>Co-curricular activities</span>
+			<div style="display:inline" class="pull-left"><span class="stars" style="margin-top:5px" title='<fmt:formatNumber value="${content.review.ord}"
+					pattern="0.0" />'><fmt:formatNumber value="${content.review.ord}"
+					pattern="0.0" /></span></div><span>Co-curricular activities</span>
 		</div>
 		<div class="review_bars_blue">
-			<strong><fmt:formatNumber value="${content.review.ore}"
-					pattern="0.0" />/5</strong><span>Quality of faculty</span>
+			<div style="display:inline" class="pull-left"><span class="stars" style="margin-top:5px;" title='<fmt:formatNumber value="${content.review.ore}"
+					pattern="0.0" />'><fmt:formatNumber value="${content.review.ore}"
+					pattern="0.0" /></span></div><span>Quality of faculty</span>
 		</div>
 		<%@include file="../adsense_336_280.jsp"%>
 		<c:if test="${newsCount>0}">

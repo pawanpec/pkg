@@ -7,10 +7,10 @@ int i=1;
 
 <div class="featured_school">
   <div class="title">FEATURED Schools In <span>Delhi</span></div>
-  <ul>
     <c:forEach items="${topSchools}" var="school" varStatus="status">
     <c:set var="index" value="${status.index}"/>
-    <li>
+    <div class="col-sm-3">
+    <div class="tile">
       <div class="follow_row">
         <c:if test="${fn:contains(school.f, uid)}">
           <input type="button" class="btn btn-xs btn-primary" id="followSchool_${index}" onclick="follow(${school.nid},this);" value="FOLLOWING">
@@ -20,16 +20,19 @@ int i=1;
         </c:if>
       </div>
       <div class="head">
-        <div class="head_logo"></div>
+       <!-- <div class="head_logo"></div> -->
         <div class="head_t">
           <div class="school_name"><a href="/${school.alias}" target="_blank" title="${school.title}">${school.title} </a></div>
           <div class="school_rate">
-<div class="rating_div"><fmt:formatNumber value="${school.review.oar}" pattern="0.0" /></div><fmt:formatNumber value="${school.review.oar}" pattern="0.0" />/5</div>
+<span class="stars"><fmt:formatNumber value="${school.review.oar}" pattern="0.0"/></span> <fmt:formatNumber value="${school.review.oar}" pattern="0.0" />/5</div>
+
         </div>
       </div>
       <div class="image"><img src="<%=WebConstants.IMAGE_URL%>images/static/<%=(int)( Math.random() * 14 ) %>.jpg" alt="${school.title}" /></div>
       <div class="reviews">
-      ${school.review.count} Reviews
+      	${school.review.count} Reviews
+      </div>
+      </div>
+      </div>
       </c:forEach>
-  </ul>
 </div>
