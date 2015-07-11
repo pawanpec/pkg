@@ -1,0 +1,37 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+	<!-- enable use-expressions -->
+	<http auto-config="true" use-expressions="true" authentication-manager-ref="authenticationManager">
+		<intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/get_all_unmoderated_review.html" access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/editSchoolInfo.html" access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/writeReview.html" access="hasRole('ROLE_USER')" />
+		<!-- access denied page -->
+		<access-denied-handler error-page="/403" />
+		<form-login 
+		    login-page="/login.html" 
+		    default-target-url="/userHome.html"
+			authentication-failure-url="/login.html?error" 
+			username-parameter="username"
+			password-parameter="password" />
+		<logout logout-success-url="/login.html?logout" />
+		<!-- enable csrf protection -->
+		<!-- <csrf /> -->
+	</http>
+
+	<authentication-manager id="authenticationManager">
+		<authentication-provider user-service-ref="userDetailsService" >
+			<password-encoder hash="md5" />    
+		</authentication-provider>
+	</authentication-manager>
+	<authentication-manager id="authenticationManagerAutoLogin">
+		<authentication-provider user-service-ref="userDetailsService" >
+		</authentication-provider>
+	</authentication-manager>
+
+</beans:beans>

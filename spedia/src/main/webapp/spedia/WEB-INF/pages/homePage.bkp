@@ -1,0 +1,84 @@
+<title>Home Page ${pageContext.request.userPrincipal.authenticated}</title>
+<div class="container">
+  <div class="sliders_row">
+    <div class="banner">
+      <ul class="bxslider">
+        <li><img src="images/im1.jpg" /></li>
+        <li><img src="images/im2.jpg" /></li>
+      </ul>
+    </div>
+    <div class="banner_right">
+      <div class="news_subscribe">
+        <div class="news_text">Subscribe for news leatter</div>
+        <div class="news_fields">
+          <input type="text" placeholder="Enter your email address" />
+          <input type="submit" value="SUBSCRIBE" />
+        </div>
+      </div>
+      <div class="news_tick">
+        <div class="image"></div>
+        <div class="image_data">
+          <div class="news_title">News title comes here</div>
+          <div class="news_desc">We empower Parents to make decision about school by rating provided by other parents.</div>
+        </div>
+      </div>
+      <div class="news_tick">
+        <div class="image"></div>
+        <div class="image_data">
+          <div class="news_title">News title comes here</div>
+          <div class="news_desc">We empower Parents to make decision about school by rating provided by other parents.</div>
+        </div>
+      </div>
+      <div class="news_tick">
+        <div class="image"></div>
+        <div class="image_data">
+          <div class="news_title">News title comes here</div>
+          <div class="news_desc">We empower Parents to make decision about school by rating provided by other parents.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>  
+  <%@include file="sp_theme.jsp"%>
+<div class="container"> 
+  <%@include file="featuredSchool.jsp"%>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="clearfix"></div>
+<div class="homepage">
+	<!--******* Feature Screen *************-->
+	
+
+	
+	<%@include file="whySp.jsp" %>
+    <div class="what-parents">    
+     <div class="container">   
+        <div class="row hidden-xs">
+            <div class="margincenter col-sm-10 text-center">
+                <h2 class="robotolight">
+                    WHAT Parents ARE <strong>SAYING</strong> ABOUT US
+                </h2>
+            </div>
+        </div>
+          <%@include file="testimony.jsp" %> 
+         
+        <div class="row fearturelist"></div>
+    </div>
+    </div>
+</div>
